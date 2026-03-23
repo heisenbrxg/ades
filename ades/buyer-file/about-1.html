@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gramentheme">
+    <meta name="description"
+        content="ADES - Engineering Excellence. Leading MEP Consultancy since 2008, specializing in HVAC, Electrical, PHE, and Fire Protection.">
+    <!-- ======== Page title ============ -->
+    <title>About Us | ADES - Engineering Excellence</title>
+    <!--<< Favcion >>-->
+    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Custom Glass Nav Style -->
+    <style>
+        .nav-wrap {
+            position: fixed;
+            top: 24px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .glass-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            width: min(920px, 90%);
+            padding: 16px 28px;
+            border-radius: 999px;
+            background: #494949;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.35s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .glass-nav.scrolled {
+            padding: 10px 22px;
+            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter: blur(22px);
+            background: rgba(50, 50, 50, 0.85);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0.96);
+        }
+
+        .glass-nav .logo img {
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .glass-nav .nav-links {
+            display: flex;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .glass-nav .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.25s;
+        }
+
+        .glass-nav .nav-links a:hover {
+            color: white;
+        }
+
+        /* Dropdown Support */
+        .glass-nav .nav-links li {
+            position: relative;
+        }
+
+        .glass-nav .nav-links .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(45, 45, 45, 0.95);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 12px;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(.22, .61, .36, 1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            margin-top: 15px;
+            z-index: 1000;
+        }
+
+        .glass-nav .nav-links .dropdown::before {
+            content: '';
+            position: absolute;
+            top: -35px;
+            left: 0;
+            right: 0;
+            height: 40px;
+        }
+
+        .glass-nav .nav-links li:hover .dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .glass-nav .nav-links .dropdown li {
+            padding: 0;
+            width: 100%;
+        }
+
+        .glass-nav .nav-links .dropdown a {
+            padding: 10px 16px !important;
+            display: block !important;
+            border-radius: 10px !important;
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.2s !important;
+        }
+
+        .glass-nav .nav-links .dropdown a:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+
+        .nav-links li a i {
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s;
+        }
+
+        .nav-links li:hover a i {
+            transform: rotate(180deg);
+        }
+
+        .glass-nav .cta {
+            background: white;
+            color: black;
+            padding: 9px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: opacity 0.2s;
+        }
+
+        .glass-nav .cta:hover {
+            opacity: 0.85;
+        }
+
+        .mobile-header {
+            padding: 16px 18px;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .mobile-nav {
+            background: #494949;
+            border-radius: 999px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .brand img {
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .menu-btn {
+            width: 32px;
+            height: 24px;
+            border: none;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .menu-btn span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            left: 0;
+            transition: 0.3s ease;
+        }
+
+        .menu-btn span:nth-child(1) {
+            top: 4px;
+        }
+
+        .menu-btn span:nth-child(2) {
+            bottom: 4px;
+        }
+
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            transform: rotate(-45deg);
+            bottom: 11px;
+        }
+
+        .mobile-dropdown {
+            margin-top: 10px;
+            background: rgba(40, 40, 40, 0.97);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transform: scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s ease;
+        }
+
+        .mobile-dropdown.open {
+            transform: scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-dropdown a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+        }
+
+        .mobile-dropdown .mob-cta {
+            margin-top: 8px;
+            border: none;
+            border-radius: 999px;
+            padding: 12px;
+            background: white;
+            color: #111;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrap {
+                display: none;
+            }
+
+            .mobile-header {
+                display: block;
+            }
+        }
+    </style>
+    <!-- Glassmorphism Footer Style -->
+    <style>
+        footer.footer-area-four {
+            position: relative;
+            background: transparent !important;
+            margin: 40px 16px 16px 16px;
+            border-radius: 28px;
+            overflow: visible;
+        }
+
+        footer.footer-area-four .footer-wrapper {
+            background: #111 !important;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 28px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer.footer-area-four .footer-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.06) 0%,
+                    rgba(255, 255, 255, 0.01) 50%,
+                    rgba(255, 255, 255, 0.04) 100%);
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        footer.footer-area-four .footer-wrapper>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        footer.footer-area-four .footer-border {
+            border-color: rgba(0, 0, 0, 0.06) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Desktop Glass Nav -->
+    <!-- Desktop Glass Nav -->
+    <div class="nav-wrap">
+        <nav id="navbar" class="glass-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/img/ades LOGO 2026 (2).png" alt="ADES logo" style="height: 38px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-1.html">About</a></li>
+                <li>
+                    <a href="service-2.html">Services <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="service-mep.html">Integrated MEP</a></li>
+                        <li><a href="service-electrical.html">Electrical Systems</a></li>
+                        <li><a href="service-hvac.html">HVAC Engineering</a></li>
+                        <li><a href="service-phe.html">Plumbing & PHE</a></li>
+                        <li><a href="service-fire.html">Fire Protection</a></li>
+                        <li>
+                            <hr style="margin: 4px 0; opacity: 0.1;">
+                        </li>
+                        <li><a href="service-2.html">All Services</a></li>
+                    </ul>
+                </li>
+                <li><a href="project-1.html">Projects</a></li>
+                <li>
+                    <a href="#">Company <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="blog-1.html">Our Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta">Let's Talk</a>
+        </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-header">
+        <div class="mobile-nav">
+            <div class="brand">
+                <img src="assets/img/ades LOGO 2026 (2).png" alt="ADES logo" style="height: 34px; width: auto;">
+            </div>
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-dropdown" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about-1.html">About</a>
+            <a href="service-2.html">Services</a>
+            <a href="project-1.html">Projects</a>
+            <a href="blog-1.html">Our Blog</a>
+            <a href="team.html">Company</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="mob-cta">Let's Talk</a>
+        </div>
+    </div>
+
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <!-- Breadcrumb Section Start -->
+            <div class="breadcrumb-page-area-one style-2 pt-110 pb-0 fix">
+                <div class="breadcrumb-page-wrap pt-80 pb-80"
+                    style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;">
+                    <div class="container">
+                        <div class="gt-breadcrumb-wrapper mb-0">
+                            <div class="title">ABOUT US</div>
+                            <p class="text text-white opacity-75" style="max-width: 600px;">ADES, founded in 2008, is a
+                                process-driven and service-oriented design
+                                firm committed to delivering outstanding design and consulting services. We ensure high
+                                standards, innovative solutions, and reliable results for our clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Breadcrumb Section End -->
+
+            <!-- About Section Start -->
+            <div class="about-area fix">
+                <div class="about-wrapper style-3 pt-100 pb-80">
+                    <div class="container">
+                        <div class="row gy-4">
+                            <div class="col-xl-3 order-xl-1 order-lg-1 order-md-1 col-lg-6 col-md-6">
+                                <div class="about-card">
+                                    <div class="about-card-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/img/home-3/about/aboutIcon1_1.png" alt="icon">
+                                        </div>
+
+                                        <div class="card-content">
+                                            <span>1</span><span>x</span>
+                                            <p class="text">THE BEST THEME RESTAURANT TAMILNADU TOURISM AWARDS -2023
+                                                AWARDS </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 order-xl-2 order-lg-3 col-md-12 col-md-12">
+                                <div class="about-card style-2">
+                                    <div class="about-card-wrapper">
+                                        <div class="card-content">
+                                            <span>100+</span><span>x</span>
+                                            <p class="text">Successful projects</p>
+                                        </div>
+
+                                        <div class="thumb-wrap">
+                                            <div class="thumb thumb-one">
+                                                <img src="./assets/img/about/nd.png" alt="thumb">
+                                            </div>
+
+                                            <div class="thumb-wrap">
+                                                <div class="thumb thumb-two">
+                                                    <img src="./assets/img/about/tn.png" alt="thumb">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 order-xl-3 order-lg-2 col-md-6 col-lg-6 col-md-6">
+                                <div class="about-card">
+                                    <div class="about-card-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/img/home-3/about/aboutIcon1_2.png" alt="icon">
+                                        </div>
+
+                                        <div class="card-content">
+                                            <span>1</span><span>x</span>
+                                            <p class="text">DESIGN AND ARCHITECTURE AWARDS -NDTV 2016</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About Section End -->
+
+            <!-- About page Section Start -->
+            <div class="about-page-area-two gt-sticky-wrap pb-80 fix">
+                <div class="container">
+                    <div class="row gy-5">
+                        <div class="col-xl-6">
+                            <div class="section-title gt-sticky">
+                                <p>Why partner with us</p>
+                                <div class="title gt_text_invert_3">At ADES digital, we blend creativity, strategy,
+                                    and technology to
+                                    bring your vision to life.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="main-content">
+                                <div class="card-item">
+                                    <div class="icon">
+                                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_123_903)">
+                                                <path
+                                                    d="M15.9827 24.3507C15.6008 24.7314 15.6008 25.3498 15.9827 25.7316C16.3645 26.1123 16.9825 26.1123 17.3636 25.7316C17.7454 25.3498 17.7454 24.7314 17.3636 24.3507C16.9825 23.9689 16.3645 23.9689 15.9827 24.3507Z"
+                                                    fill="#121212" />
+                                                <path
+                                                    d="M20.2728 42.1157L22.7359 38.0095L24.2683 39.5419C24.3358 39.6094 24.4106 39.664 24.4899 39.7075L25.3742 45.8949C25.4886 46.6952 26.4659 47.0122 27.0313 46.4473L35.3175 38.161C35.4743 38.0042 35.5727 37.799 35.5975 37.5785L36.5958 28.5968L42.1184 23.0731C44.5434 20.6481 46.4744 17.2572 47.8583 12.9947C49.8328 6.91219 49.9938 1.23937 49.9995 1.00057C50.006 0.733539 49.903 0.475285 49.7138 0.286076C49.525 0.0968675 49.2682 -0.00689209 48.9993 0.000355818C48.7609 0.00645932 43.0881 0.167058 37.0052 2.14154C32.7426 3.52551 29.3517 5.45689 26.9267 7.88189L21.4046 13.404L12.4214 14.4023C12.2009 14.4268 11.9957 14.5256 11.8389 14.6823L3.55261 22.9686C3.29092 23.2303 3.19975 23.6171 3.31686 23.9677C3.43359 24.3186 3.73877 24.5734 4.10498 24.6257L10.2924 25.5099C10.4126 25.7293 10.4229 25.677 11.9903 27.2639L7.88419 29.7267C7.62632 29.8816 7.45427 30.1463 7.41765 30.445C7.38065 30.7433 7.48365 31.0424 7.69613 31.2549L18.745 42.3037C19.1917 42.7504 19.9443 42.6631 20.2728 42.1157ZM27.0313 43.685L26.3404 38.8511L34.3848 30.8074L33.694 37.0223L27.0313 43.685ZM46.4644 10.8474L39.1524 3.53543C42.8824 2.49974 46.3176 2.13658 47.9865 2.01337C47.8637 3.68268 47.5001 7.1178 46.4644 10.8474ZM28.3077 9.2628C30.4065 7.16396 33.345 5.45918 37.0441 4.18927L45.811 12.9558C44.5407 16.6549 42.8359 19.5934 40.7371 21.6922L27.7217 34.7076L20.1263 27.1121C19.7448 26.731 19.1265 26.731 18.745 27.1121C18.3635 27.4936 18.3635 28.1119 18.745 28.4934L26.3404 36.0888L24.9591 37.4705L12.5297 25.0411L22.5429 15.0283L28.3077 9.2628ZM12.9776 16.3059L19.1936 15.615L11.1488 23.6594L6.31483 22.9686L12.9776 16.3059ZM13.414 28.6876L21.3123 36.5859L19.2417 40.0382L9.96205 30.7586L13.414 28.6876Z"
+                                                    fill="#121212" />
+                                                <path
+                                                    d="M1.66702 49.7138L11.8389 39.5419C12.2204 39.1608 12.2204 38.5424 11.8389 38.161C11.4574 37.7795 10.8394 37.7795 10.458 38.161L0.286102 48.3329C-0.0953673 48.7143 -0.0953673 49.3327 0.286102 49.7142C0.667571 50.0952 1.28555 50.0952 1.66702 49.7138Z"
+                                                    fill="#121212" />
+                                                <path
+                                                    d="M14.6018 40.9228C14.2203 40.5414 13.602 40.5414 13.2205 40.9228L7.19138 46.9519C6.80991 47.3334 6.80991 47.9518 7.19138 48.3332C7.57284 48.7143 8.19082 48.7143 8.57229 48.3332L14.6018 42.3037C14.9829 41.9223 14.9829 41.3039 14.6018 40.9228Z"
+                                                    fill="#121212" />
+                                                <path
+                                                    d="M7.69608 35.3984L1.66696 41.4275C1.28549 41.809 1.28549 42.4274 1.66696 42.8088C2.04843 43.1899 2.66641 43.1899 3.04788 42.8088L9.07738 36.7793C9.45847 36.3982 9.45847 35.7799 9.07738 35.3984C8.69591 35.0169 8.07755 35.0169 7.69608 35.3984Z"
+                                                    fill="#121212" />
+                                                <path
+                                                    d="M35.9035 22.383C38.1874 20.0988 38.1874 16.3817 35.9032 14.0964C33.6182 11.8125 29.9011 11.8129 27.6169 14.0967C25.3281 16.3859 25.3258 20.0931 27.6169 22.383C29.9061 24.673 33.6128 24.6734 35.9035 22.383ZM28.9982 15.4777C30.5206 13.9552 32.999 13.9552 34.5222 15.4777C36.0447 17.0009 36.0451 19.4793 34.5222 21.0017C32.9956 22.5284 30.5248 22.5295 28.9982 21.0017C27.4715 19.4758 27.4708 17.0047 28.9982 15.4777Z"
+                                                    fill="#121212" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_123_903">
+                                                    <rect width="50" height="50" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                    <div class="title">Reliable Engineering Expertise</div>
+                                    <p class="text">We deliver professional MEP solutions including HVAC, electrical,
+                                        and plumbing services. Our experienced team ensures every project meets high
+                                        standards of quality, safety, and efficiency.</p>
+                                </div>
+
+                                <div class="card-item">
+                                    <div class="icon">
+                                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3.01855 32.3591C3.01855 37.2359 6.9861 41.2035 11.8629 41.2035C16.7396 41.2035 20.7072 37.2359 20.7072 32.3591C20.7072 27.4823 16.7396 23.5148 11.8629 23.5148C6.9861 23.5147 3.01855 27.4822 3.01855 32.3591ZM19.2465 32.3591C19.2465 36.4305 15.9343 39.7427 11.863 39.7427C7.79174 39.7427 4.47929 36.4305 4.47929 32.3591C4.47929 28.2878 7.79165 24.9755 11.8629 24.9755C15.9342 24.9755 19.2465 28.2877 19.2465 32.3591Z"
+                                                fill="#121212" />
+                                            <path
+                                                d="M48.3209 26.2812C48.3192 26.2774 48.3179 26.2734 48.3161 26.2696L42.3918 13.9876C41.5733 12.2906 40.2138 10.9443 38.5824 10.1152L38.0233 8.9558C37.092 7.0252 35.1052 5.77783 32.9618 5.77783C29.8633 5.77783 27.3425 8.29867 27.3425 11.3973V13.555C26.8501 14.4377 26.511 15.4169 26.3612 16.4567H23.639C23.4892 15.4169 23.1501 14.4376 22.6576 13.5548V11.3973C22.6576 8.29876 20.1368 5.77783 17.0383 5.77783C14.8949 5.77783 12.9082 7.0253 11.9768 8.9559L11.4177 10.1152C9.78632 10.9444 8.42677 12.2907 7.60827 13.9876L6.58216 16.1149C6.40687 16.4781 6.55937 16.9148 6.92261 17.09C7.28594 17.2651 7.7225 17.1129 7.89779 16.7495L8.92391 14.6222C10.087 12.2106 12.5688 10.6524 15.2462 10.6524C19.1168 10.6524 22.2658 13.8012 22.2658 17.6718V26.6567C21.578 25.4032 20.6619 24.2693 19.5443 23.319C19.2371 23.0576 18.7761 23.095 18.5149 23.4022C18.2535 23.7094 18.2908 24.1704 18.598 24.4317C20.929 26.4139 22.2658 29.3033 22.2658 32.3591C22.2658 38.095 17.5992 42.7615 11.8633 42.7615C6.12738 42.7615 1.46073 38.0951 1.46073 32.3592C1.46073 26.6233 6.12729 21.9567 11.8632 21.9567C13.3542 21.9567 14.7933 22.2653 16.1407 22.874C16.5079 23.0399 16.9409 22.8767 17.107 22.509C17.2731 22.1413 17.1097 21.7088 16.7421 21.5427C15.2045 20.8482 13.563 20.496 11.8632 20.496C9.3297 20.496 6.97948 21.2947 5.05014 22.653L6.54213 19.5597C6.71742 19.1964 6.56492 18.7599 6.20169 18.5846C5.83855 18.4097 5.40179 18.5618 5.2265 18.9251L1.68393 26.2696C1.68208 26.2734 1.68082 26.2774 1.67906 26.2812C0.613605 28.0599 0 30.1391 0 32.3592C0 38.9005 5.32174 44.2224 11.8632 44.2224C18.3222 44.2224 23.5914 39.0337 23.7233 32.6058H26.2768C26.4087 39.0337 31.6779 44.2224 38.1368 44.2224C44.6783 44.2224 50 38.9005 50 32.3592C50 30.1391 49.3865 28.0599 48.3209 26.2812ZM41.0762 14.6222L44.9498 22.6528C43.0205 21.2946 40.6703 20.4959 38.1368 20.4959C33.6592 20.4959 29.7535 22.9897 27.7344 26.6611V17.6718C27.7344 13.8012 30.8833 10.6524 34.7538 10.6524C37.4313 10.6524 39.913 12.2107 41.0762 14.6222ZM26.2737 31.1451H23.7265V17.9173H26.2737V31.1451ZM32.9618 7.23856C34.4763 7.23856 35.8832 8.08121 36.6074 9.40074C36.0051 9.26411 35.3841 9.19176 34.7538 9.19176C32.4374 9.19176 30.3352 10.1258 28.8032 11.6364V11.3973C28.8031 9.10412 30.6688 7.23856 32.9618 7.23856ZM15.2462 9.19166C14.616 9.19166 13.995 9.26402 13.3927 9.40064C14.117 8.08111 15.5239 7.23847 17.0383 7.23847C19.3313 7.23847 21.1969 9.10402 21.1969 11.3972V11.6363C19.6649 10.1257 17.5627 9.19166 15.2462 9.19166ZM38.1368 42.7616C32.4009 42.7616 27.7344 38.0951 27.7344 32.3592C27.7344 26.6233 32.4009 21.9567 38.1368 21.9567C43.8727 21.9567 48.5393 26.6233 48.5393 32.3592C48.5393 38.0951 43.8727 42.7616 38.1368 42.7616Z"
+                                                fill="#121212" />
+                                            <path
+                                                d="M41.4544 24.1628C41.0807 24.0109 40.6545 24.191 40.5029 24.5646C40.351 24.9384 40.531 25.3643 40.9047 25.5161C43.7084 26.6549 45.52 29.341 45.52 32.3591C45.52 36.4304 42.2076 39.7427 38.1363 39.7427C34.0651 39.7427 30.7528 36.4304 30.7528 32.3591C30.7528 28.2958 34.0585 24.9838 38.1218 24.9759C38.5252 24.9751 38.8515 24.6474 38.8507 24.244C38.85 23.8412 38.5231 23.5151 38.1204 23.5151C38.1199 23.5151 38.1194 23.5151 38.1189 23.5151C33.2518 23.5246 29.292 27.492 29.292 32.3591C29.292 37.2359 33.2595 41.2034 38.1362 41.2034C43.013 41.2034 46.9806 37.2359 46.9806 32.3591C46.9807 28.7438 44.8116 25.5265 41.4544 24.1628Z"
+                                                fill="#121212" />
+                                        </svg>
+
+                                    </div>
+
+                                    <div class="title">Your Project, Our Commitment</div>
+                                    <p class="text">We work closely with our clients to understand their requirements
+                                        and deliver customized engineering solutions that support long-term performance
+                                        and reliability.</p>
+                                </div>
+
+                                <div class="card-item">
+                                    <div class="icon">
+                                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M48.0488 2.84558H8.53658C7.47967 2.84558 6.58537 3.69924 6.58537 4.7968V9.43095H1.95122C0.853659 9.43095 0 10.2846 0 11.3822V45.2033C0 46.2602 0.853659 47.1545 1.95122 47.1545H41.4634C42.5203 47.1545 43.4146 46.3009 43.4146 45.2033V40.5692H48.0488C49.1057 40.5692 50 39.7155 50 38.6179V4.7968C50 3.69924 49.1463 2.84558 48.0488 2.84558ZM8.53658 4.4716H48.0488C48.2114 4.4716 48.374 4.59355 48.374 4.7968V10.4066H8.21138V4.7968C8.21138 4.59355 8.37398 4.4716 8.53658 4.4716ZM1.95122 11.057H6.58537V16.9919H1.62602V11.3822C1.62602 11.2196 1.74797 11.057 1.95122 11.057ZM41.7886 45.2033C41.7886 45.3659 41.6667 45.5285 41.4634 45.5285H1.95122C1.78862 45.5285 1.62602 45.4066 1.62602 45.2033V18.6179H6.58537V38.6179C6.58537 39.6748 7.43902 40.5692 8.53658 40.5692H41.7886V45.2033ZM48.0488 38.9431H8.53658C8.37398 38.9431 8.21138 38.8212 8.21138 38.6179V12.0326H48.374V38.6179C48.374 38.7805 48.252 38.9431 48.0488 38.9431Z"
+                                                fill="#121212" />
+                                            <path
+                                                d="M15.0809 8.08952H12.0728C11.6256 8.08952 11.2598 7.72366 11.2598 7.27651C11.2598 6.82935 11.6256 6.4635 12.0728 6.4635H15.0809C15.5281 6.4635 15.8939 6.82935 15.8939 7.27651C15.8939 7.72366 15.5281 8.08952 15.0809 8.08952Z"
+                                                fill="#121212" />
+                                            <path
+                                                d="M21.951 8.08952H18.9429C18.4957 8.08952 18.1299 7.72366 18.1299 7.27651C18.1299 6.82935 18.4957 6.4635 18.9429 6.4635H21.951C22.3982 6.4635 22.764 6.82935 22.764 7.27651C22.764 7.72366 22.3982 8.08952 21.951 8.08952Z"
+                                                fill="#121212" />
+                                            <path
+                                                d="M15.8135 25.5691L23.5371 29.5528V28.0081L17.6021 25.0406L23.5371 22.0732V20.5284L15.8135 24.4715V25.5691Z"
+                                                fill="#121212" />
+                                            <path d="M25.2441 30.0407H26.7076L31.2604 18.2521H29.7563L25.2441 30.0407Z"
+                                                fill="#121212" />
+                                            <path
+                                                d="M32.9268 20.5284V22.0732L38.9024 25.0406L32.9268 28.0081V29.5528L40.6503 25.5691V24.4715L32.9268 20.5284Z"
+                                                fill="#121212" />
+                                        </svg>
+
+                                    </div>
+
+                                    <div class="title">Integrated Engineering Solutions</div>
+                                    <p class="text">Our team combines technical expertise and modern tools to provide
+                                        seamless installation, maintenance, and system optimization for commercial and
+                                        residential projects.</p>
+                                </div>
+
+                                <div class="card-item">
+                                    <div class="icon">
+                                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_123_1002)">
+                                                <path
+                                                    d="M38.5351 24.2188H25.7812V11.4649C25.7812 11.0335 25.4313 10.6837 24.9999 10.6837C17.1059 10.6837 10.6835 17.106 10.6835 25.0001C10.6835 32.8942 17.1058 39.3165 24.9999 39.3165C32.894 39.3165 39.3163 32.8941 39.3163 25.0001C39.3163 24.5687 38.9665 24.2188 38.5351 24.2188ZM20.8437 12.9421C20.2764 13.564 19.7517 14.3197 19.2816 15.2012C19.1242 15.4965 18.9759 15.804 18.8345 16.1197C18.2354 15.7886 17.6614 15.4082 17.1182 14.9806C18.2269 14.1065 19.4833 13.4123 20.8437 12.9421ZM15.9367 16.0352C16.6638 16.6304 17.4424 17.1487 18.261 17.5858C17.5844 19.5723 17.1901 21.841 17.1194 24.2188H12.2706C12.4639 21.0377 13.8275 18.1673 15.9367 16.0352ZM12.2706 25.7813H17.1193C17.1901 28.1592 17.5844 30.4279 18.261 32.4144C17.4426 32.8514 16.6642 33.3696 15.9373 33.9646C13.828 31.8325 12.4639 28.9626 12.2706 25.7813ZM17.1181 35.0202C17.6614 34.5925 18.2354 34.2115 18.8345 33.8803C18.9759 34.1961 19.1242 34.5037 19.2816 34.799C19.7516 35.6804 20.2763 36.436 20.8436 37.0579C19.4834 36.5878 18.2268 35.8941 17.1181 35.0202ZM24.2187 37.4566C22.6606 37.0564 21.2587 35.4805 20.2536 33.2072C21.5106 32.7034 22.8476 32.4004 24.2187 32.3169V37.4566ZM24.2187 30.7518C22.6545 30.8366 21.1286 31.176 19.6949 31.7478C19.1174 29.9937 18.7535 27.9521 18.6825 25.7812H24.2187V30.7517V30.7518ZM24.2187 24.2188H18.6825C18.7535 22.048 19.1175 20.0063 19.695 18.2521C21.1287 18.8239 22.6545 19.1628 24.2187 19.2477V24.2189V24.2188ZM24.2187 17.6825C22.8477 17.599 21.5107 17.2965 20.2538 16.7926C21.2589 14.5195 22.6607 12.9438 24.2187 12.5436V17.6825ZM25.7812 25.7813H31.3173C31.2463 27.9521 30.8824 29.9937 30.3049 31.7478C28.8713 31.176 27.3454 30.8366 25.7812 30.7519V25.7814V25.7813ZM25.7812 37.4566V32.3169C27.1522 32.4004 28.4893 32.7033 29.7462 33.2071C28.7411 35.4805 27.3392 37.0564 25.7812 37.4566ZM29.1562 37.0581C29.7234 36.4362 30.2481 35.6805 30.7182 34.7991C30.8757 34.5037 31.0239 34.1962 31.1653 33.8803C31.7645 34.2114 32.3383 34.5925 32.8816 35.0201C31.7729 35.894 30.5163 36.5879 29.1562 37.0581ZM34.0623 33.9646C33.3354 33.3694 32.5571 32.8513 31.7388 32.4143C32.4153 30.4278 32.8096 28.1591 32.8804 25.7813H37.7301C37.5369 28.9628 36.1717 31.8324 34.0623 33.9646ZM26.9434 9.92148V22.2753C26.9434 22.7067 27.2932 23.0565 27.7246 23.0565H40.0784C40.3098 23.0565 40.5292 22.954 40.6776 22.7766C40.8261 22.5991 40.8882 22.365 40.8474 22.1373C39.6653 15.5528 34.4473 10.3347 27.8627 9.15264C27.635 9.11191 27.4009 9.17393 27.2234 9.32236C27.046 9.4708 26.9435 9.69023 26.9435 9.92158L26.9434 9.92148ZM28.5059 10.8867C33.7098 12.1771 37.823 16.2902 39.1132 21.494H28.5059V10.8867ZM22.8479 2.90371L24.3489 0.642187C24.4937 0.424121 24.7381 0.292969 24.9999 0.292969C25.2617 0.292969 25.5061 0.424121 25.6509 0.642187L27.1519 2.90371C27.3904 3.26318 27.2924 3.74805 26.9329 3.98662C26.5735 4.2252 26.0886 4.12725 25.85 3.76768L25.7812 3.66396V7.36338C25.7812 7.79482 25.4313 8.14463 24.9999 8.14463C24.5685 8.14463 24.2187 7.79482 24.2187 7.36338V3.66396L24.1498 3.76768C23.9112 4.12715 23.4264 4.22529 23.0669 3.98662C22.7074 3.74805 22.6094 3.26318 22.8479 2.90371ZM36.9184 13.0815C36.6132 12.7765 36.6133 12.2818 36.9184 11.9768L39.5343 9.36084L39.4123 9.38545C38.9894 9.471 38.5772 9.19736 38.4918 8.77451C38.4063 8.35156 38.6799 7.93945 39.1027 7.854L41.7632 7.31631C42.0196 7.26436 42.2853 7.34453 42.4704 7.52969C42.6556 7.71484 42.7356 7.98027 42.6838 8.23691L42.1461 10.8974C42.0606 11.3202 41.6484 11.5941 41.2256 11.5083C40.8026 11.4229 40.5291 11.0106 40.6147 10.5878L40.6393 10.4657L38.0233 13.0816C37.8708 13.2342 37.6709 13.3105 37.4709 13.3105C37.2709 13.3105 37.071 13.2342 36.9185 13.0816L36.9184 13.0815ZM49.7069 25C49.7069 25.2618 49.5758 25.5062 49.3577 25.651L47.0963 27.152C46.9635 27.2401 46.8134 27.2823 46.6649 27.2823C46.4119 27.2823 46.1638 27.1597 46.0133 26.933C45.7747 26.5735 45.8728 26.0887 46.2322 25.8501L46.3359 25.7812H42.6365C42.2051 25.7812 41.8553 25.4314 41.8553 25C41.8553 24.5686 42.2051 24.2188 42.6365 24.2188H46.3359L46.2322 24.1499C45.8728 23.9113 45.7747 23.4265 46.0133 23.067C46.2519 22.7075 46.7367 22.6094 47.0962 22.848L49.3576 24.349C49.5757 24.4937 49.7068 24.7382 49.7068 25H49.7069ZM42.6838 41.7633C42.7356 42.0198 42.6556 42.2854 42.4704 42.4705C42.3225 42.6185 42.123 42.6993 41.918 42.6993C41.8665 42.6993 41.8146 42.6942 41.7632 42.6838L39.1027 42.1461C38.6798 42.0606 38.4062 41.6484 38.4918 41.2256C38.5772 40.8027 38.9891 40.5286 39.4123 40.6147L39.5344 40.6393L36.9185 38.0233C36.6134 37.7183 36.6134 37.2236 36.9185 36.9186C37.2235 36.6135 37.7182 36.6135 38.0232 36.9186L40.6392 39.5345L40.6146 39.4124C40.5291 38.9895 40.8026 38.5773 41.2255 38.4919C41.6484 38.4064 42.0605 38.68 42.146 39.1028L42.6837 41.7633H42.6838ZM27.152 47.0964L25.6509 49.3578C25.5062 49.5759 25.2617 49.707 24.9999 49.707C24.7381 49.707 24.4937 49.5759 24.3489 49.3578L22.8479 47.0964C22.6094 46.7369 22.7074 46.2521 23.0669 46.0135C23.4264 45.775 23.9112 45.8729 24.1498 46.2324L24.2186 46.336V42.6366C24.2186 42.2052 24.5684 41.8554 24.9998 41.8554C25.4312 41.8554 25.7811 42.2052 25.7811 42.6366V46.3361L25.8499 46.2323C26.0885 45.873 26.5732 45.7749 26.9329 46.0135C27.2924 46.2521 27.3904 46.737 27.1518 47.0965L27.152 47.0964ZM13.0815 36.9186C13.3867 37.2236 13.3866 37.7183 13.0815 38.0233L10.4656 40.6393L10.5876 40.6147C11.0105 40.5291 11.4227 40.8027 11.5081 41.2256C11.5936 41.6485 11.32 42.0606 10.8972 42.1461L8.23672 42.6838C8.18525 42.6941 8.1334 42.6993 8.08193 42.6993C7.87676 42.6993 7.67744 42.6185 7.52949 42.4705C7.34434 42.2854 7.26426 42.0199 7.31611 41.7633L7.85381 39.1028C7.93926 38.6799 8.35098 38.406 8.77432 38.4919C9.19727 38.5773 9.4708 38.9896 9.38525 39.4124L9.36064 39.5345L11.9766 36.9186C12.2817 36.6135 12.7764 36.6135 13.0813 36.9186H13.0815ZM3.98662 26.9331C3.83613 27.1597 3.58799 27.2824 3.33496 27.2824C3.18652 27.2824 3.03652 27.2401 2.90361 27.1521L0.642188 25.651C0.424121 25.5063 0.292969 25.2618 0.292969 25C0.292969 24.7382 0.424121 24.4938 0.642188 24.349L2.90361 22.848C3.26309 22.6097 3.74795 22.7074 3.98652 23.067C4.2251 23.4265 4.12705 23.9113 3.76758 24.1499L3.66396 24.2187H7.36328C7.79473 24.2187 8.14453 24.5685 8.14453 24.9999C8.14453 25.4313 7.79473 25.7812 7.36328 25.7812H3.66377L3.76758 25.85C4.12705 26.0886 4.2251 26.5735 3.98643 26.933L3.98662 26.9331ZM7.31621 8.23672C7.26436 7.98018 7.34443 7.71465 7.52959 7.52949C7.71475 7.34434 7.97998 7.26436 8.23682 7.31611L10.8973 7.85381C11.3202 7.93926 11.5938 8.35147 11.5082 8.77432C11.4228 9.19717 11.0108 9.4707 10.5877 9.38525L10.4656 9.36064L13.0815 11.9766C13.3867 12.2816 13.3866 12.7763 13.0815 13.0813C12.929 13.2339 12.7291 13.3102 12.5291 13.3102C12.3291 13.3102 12.1292 13.2339 11.9767 13.0813L9.36074 10.4654L9.38535 10.5874C9.4708 11.0104 9.19727 11.4225 8.77441 11.5079C8.35107 11.5932 7.93926 11.3197 7.85391 10.897L7.31621 8.23652V8.23672Z"
+                                                    fill="#121212" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_123_1002">
+                                                    <rect width="50" height="50" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                    <div class="title">Trusted Service Across Industries</div>
+                                    <p class="text">With experience across multiple sectors, we provide dependable MEP
+                                        services that support infrastructure, commercial spaces, and residential
+                                        developments.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About page Section End -->
+
+            <!-- About page Section Start -->
+            <div class="about-page-area-three gt-sticky-wrap fix">
+                <div class="about-page-wrapper">
+                    <div class="thumb fix">
+                        <img data-speed=".8" src="assets/img/about/blackabout.png" alt="thumb">
+
+                        <div class="title">Our history</div>
+                        <div class="text">ADES's start</div>
+                    </div>
+                </div>
+            </div>
+            <!-- About page Section End -->
+
+            <!-- We do Section Start -->
+            <section class="we-do-section pt-150 fix">
+                <div class="container">
+                    <div class="section-title-area">
+                        <div class="section-title">
+                            <p>Our Key Strengths</p>
+                            <h2 class="title title-anim text-black">
+                                What drives us to deliver the best
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="we-do-line">
+                        <span class="dot-1"></span>
+                        <span class="dot-2"></span>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="we-do-item">
+                                <h3>PROCESS ORIENTED</h3>
+                                <p>ADES is a process driven & service
+                                    oriented design firm. We assure our
+                                    clients of principal involvement and
+                                    commitment on every project..</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="we-do-item">
+                                <h3>OUR ETHICS</h3>
+                                <p>We have a strong foundation of
+                                    corporate ethical commitments and
+                                    the organization's approach to our
+                                    corporate responsibility.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="we-do-item">
+                                <h3>VALUE ENGINEERING</h3>
+                                <p>Adding value to services that we
+                                    provide seems to be the path
+                                    forward. ADES ensures this in it's
+                                    offerings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="group tp-hero-2-wrapper fix pb-150">
+                <div class="">
+                    <section class="p-relative">
+                        <div class="cta-area overflow-hidden">
+                            <div class="cta-area-inner section-spacing">
+                                <div class="area-bg"></div>
+                                <div class="container large">
+                                    <div class="section-content">
+                                        <div class="section-title-wrapper">
+                                            <div class="title-wrapper">
+                                                <div class="icon text-center">
+
+                                                    </svg>
+                                                </div>
+                                                <h2 class="title">Our Principal</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="team-members overflow-hidden">
+                    <div class="swiper team-slider-active">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="team-card">
+
+                                    <div class="team-member-info">
+                                        <div class="name">
+                                            <a href="team-details.html">Dr. Ferno Susai A</a>
+                                        </div>
+                                        <p class="designation">PRINCIPAL</p>
+                                    </div>
+
+                                    <div class="thumb">
+                                        <img src="./assets/img/about/prinicpal.png" alt="thumb">
+
+                                        <div class="social-links">
+                                            <ul>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                                            viewBox="0 0 21 21" fill="none">
+                                                            <g clip-path="url(#clip0_222_192)">
+                                                                <path
+                                                                    d="M10.2426 12.5451C10.2081 12.5796 9.44862 13.3391 9.1034 13.6843C8.91928 13.8684 8.79269 13.8569 8.62008 13.6843C8.15978 13.224 7.68798 12.7522 7.22768 12.2919C7.04356 12.1078 7.05507 11.9812 7.22768 11.8086L8.36692 10.6693C8.3324 10.6348 7.66496 9.96738 7.35426 9.65668C6.89396 9.19638 6.53723 8.67855 6.36462 8.04564C6.19201 7.38971 6.26105 6.76831 6.53723 6.16992C6.72135 5.77867 6.96301 5.44495 7.27371 5.13425L8.40144 4.00652C8.56255 3.84541 8.70064 3.84541 8.86174 4.00652L10.1736 5.31837C10.3347 5.47947 10.3347 5.61756 10.1736 5.77867C9.86289 6.08937 9.55219 6.40007 9.25299 6.72228C8.94229 7.03298 8.93079 7.34368 9.25299 7.66589C9.58671 8.02262 9.93193 8.34483 10.2887 8.70156L11.6235 7.3667C11.8077 7.18258 11.9457 7.18258 12.1299 7.3667L13.5223 8.7591C13.7064 8.94322 13.7064 9.05829 13.5108 9.25392C13.0965 9.66819 12.2104 10.5543 12.1759 10.5888L15.9273 14.3402C16.1229 14.5358 16.1345 14.6624 15.9273 14.8696C15.444 15.3529 14.9722 15.8247 14.4889 16.308C14.3163 16.4806 14.1782 16.4806 14.0056 16.308C12.7973 15.0997 10.2772 12.5796 10.2426 12.5451Z"
+                                                                    fill="white" />
+                                                            </g>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                                            viewBox="0 0 21 21" fill="none">
+                                                            <path
+                                                                d="M10.609 8.46602L10.0233 0.668197L9.16875 1.52272L9.67725 8.29351L3.53676 7.1547L0.652344 10.0391L9.93789 11.7612L10.5518 19.9386L11.4064 19.084L10.8694 11.9339L17.354 13.1364L20.2385 10.252L10.6088 8.46623Z"
+                                                                fill="#121212" />
+                                                        </svg>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                                            viewBox="0 0 21 21" fill="none">
+                                                            <path
+                                                                d="M1.57141 9.1344C0.844403 9.86141 0.844289 11.0451 1.57134 11.7732C2.29891 12.5008 3.48275 12.5008 4.21029 11.7733C4.93757 11.046 4.93726 9.86247 4.20968 9.13489C3.48218 8.40739 2.29865 8.40716 1.57141 9.1344Z"
+                                                                fill="white" />
+                                                        </svg>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                                            viewBox="0 0 21 21" fill="none">
+                                                            <path
+                                                                d="M13.7458 3.76926C13.1966 3.26645 12.7499 2.98989 12.3147 2.79839C11.8564 2.59148 11.3652 2.48709 10.8643 2.4929C10.3654 2.48905 9.87026 2.59345 9.41777 2.79847C8.98076 2.99178 8.53597 3.26645 7.98678 3.76926C7.4317 4.27403 7.25765 4.43644 5.91361 5.78049C4.56956 7.12453 4.40715 7.29858 3.90238 7.84973Z"
+                                                                fill="white" />
+                                                        </svg>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Section Start -->
+                <div class="testimonial-area-two fix">
+                    <div class="testimonial-wrapper pb-150">
+                        <div class="container">
+                            <div class="row gy-5">
+                                <div class="col-xl-1">
+                                    <div class="slider-control">
+                                        <div class="array-nav">
+                                            <button class="array-prev" type="button" aria-label="Previous">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M16.0044 9.414L7.3974 18.021L5.9834 16.607L14.5894 8H7.0044V6H18.0044V17H16.0044V9.414Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </button>
+                                            <button class="array-next" type="button" aria-label="Next">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M7.99561 14.586L16.6026 5.979L18.0166 7.393L9.41061 16L16.9956 16L16.9956 18L5.99561 18L5.99561 7L7.99561 7L7.99561 14.586Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <div class="page-control">
+                                            <div class="page-1">07</div>
+                                            <div class="page-2">05</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-11">
+                                    <div class="main-slider">
+                                        <div class="swiper testimonial-slider-two">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="testimonial-card">
+                                                        <div class="thumb">
+                                                            <img src="./assets/img/about us image (1).png" alt="thumb">
+
+                                                            <div class="thumb-content">
+                                                                <div class="title">Caroline caldwell</div>
+                                                                <p class="text">founder & CEO</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="testimonial-review">
+                                                            <div class="quotation-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                    height="100" viewBox="0 0 100 100" fill="none">
+                                                                    <path
+                                                                        d="M19.5837 73.7494C15.417 69.166 12.917 64.166 12.917 55.8327C12.917 41.2493 23.3337 28.3327 37.917 21.666L41.667 27.0827C27.917 34.5827 25.0003 44.166 24.167 50.416C26.2503 49.166 29.167 48.7494 32.0837 49.166C39.5837 49.9994 45.417 55.8327 45.417 63.7494C45.417 67.4994 43.7503 71.2494 41.2503 74.166C38.3337 77.0827 35.0003 78.3327 30.8337 78.3327C26.2503 78.3327 22.0837 76.2494 19.5837 73.7494ZM61.2503 73.7494C57.0837 69.166 54.5837 64.166 54.5837 55.8327C54.5837 41.2493 65.0003 28.3327 79.5837 21.666L83.3337 27.0827C69.5837 34.5827 66.667 44.166 65.8337 50.416C67.917 49.166 70.8337 48.7494 73.7503 49.166C81.2503 49.9994 87.0837 55.8327 87.0837 63.7494C87.0837 67.4994 85.417 71.2494 82.917 74.166C80.417 77.0827 76.667 78.3327 72.5003 78.3327C67.917 78.3327 63.7503 76.2494 61.2503 73.7494Z"
+                                                                        fill="black" />
+                                                                </svg>
+                                                            </div>
+
+                                                            <p class="review-text">ADAS did an amazing job
+                                                                on our
+                                                                project. Their team is
+                                                                highly professional, creative, and always delivers on
+                                                                time.
+                                                                I’m
+                                                                really
+                                                                impressed
+                                                                with the quality of their design work. and the results
+                                                                were
+                                                                beyond
+                                                                expectations.
+                                                                They truly understand client needs and bring fresh
+                                                                <span>modern ideas to the table.</span>
+                                                            </p>
+
+                                                            <div class="review-items">
+                                                                <div class="review-star">
+                                                                    <img src="./assets/img/about us image (2).png"
+                                                                        alt="logo">
+                                                                </div>
+
+                                                                <div class="page">
+                                                                    <span class="page-1">1</span>
+                                                                    <span class="page-2">7</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide">
+                                                    <div class="testimonial-card">
+                                                        <div class="thumb">
+                                                            <img src="./assets/img/about us image (3).png" alt="thumb">
+
+                                                            <div class="thumb-content">
+                                                                <div class="title">Caroline caldwell</div>
+                                                                <p class="text">founder & CEO</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="testimonial-review">
+                                                            <div class="quotation-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                    height="100" viewBox="0 0 100 100" fill="none">
+                                                                    <path
+                                                                        d="M19.5837 73.7494C15.417 69.166 12.917 64.166 12.917 55.8327C12.917 41.2493 23.3337 28.3327 37.917 21.666L41.667 27.0827C27.917 34.5827 25.0003 44.166 24.167 50.416C26.2503 49.166 29.167 48.7494 32.0837 49.166C39.5837 49.9994 45.417 55.8327 45.417 63.7494C45.417 67.4994 43.7503 71.2494 41.2503 74.166C38.3337 77.0827 35.0003 78.3327 30.8337 78.3327C26.2503 78.3327 22.0837 76.2494 19.5837 73.7494ZM61.2503 73.7494C57.0837 69.166 54.5837 64.166 54.5837 55.8327C54.5837 41.2493 65.0003 28.3327 79.5837 21.666L83.3337 27.0827C69.5837 34.5827 66.667 44.166 65.8337 50.416C67.917 49.166 70.8337 48.7494 73.7503 49.166C81.2503 49.9994 87.0837 55.8327 87.0837 63.7494C87.0837 67.4994 85.417 71.2494 82.917 74.166C80.417 77.0827 76.667 78.3327 72.5003 78.3327C67.917 78.3327 63.7503 76.2494 61.2503 73.7494Z"
+                                                                        fill="black" />
+                                                                </svg>
+                                                            </div>
+
+                                                            <p class="review-text">ADAS did an amazing job
+                                                                on our
+                                                                project. Their team is
+                                                                highly professional, creative, and always delivers on
+                                                                time.
+                                                                I’m
+                                                                really
+                                                                impressed
+                                                                with the quality of their design work. and the results
+                                                                were
+                                                                beyond
+                                                                expectations.
+                                                                They truly understand client needs and bring fresh
+                                                                <span>modern ideas to the table.</span>
+                                                            </p>
+
+                                                            <div class="review-items">
+                                                                <div class="review-star">
+                                                                    <img src="./assets/img/about us image (1).png"
+                                                                        alt="logo">
+                                                                </div>
+
+                                                                <div class="page">
+                                                                    <span class="page-1">1</span>
+                                                                    <span class="page-2">7</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide">
+                                                    <div class="testimonial-card">
+                                                        <div class="thumb">
+                                                            <img src="./assets/img/about us image (1).png" alt="thumb">
+
+                                                            <div class="thumb-content">
+                                                                <div class="title">Caroline caldwell</div>
+                                                                <p class="text">founder & CEO</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="testimonial-review">
+                                                            <div class="quotation-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                    height="100" viewBox="0 0 100 100" fill="none">
+                                                                    <path
+                                                                        d="M19.5837 73.7494C15.417 69.166 12.917 64.166 12.917 55.8327C12.917 41.2493 23.3337 28.3327 37.917 21.666L41.667 27.0827C27.917 34.5827 25.0003 44.166 24.167 50.416C26.2503 49.166 29.167 48.7494 32.0837 49.166C39.5837 49.9994 45.417 55.8327 45.417 63.7494C45.417 67.4994 43.7503 71.2494 41.2503 74.166C38.3337 77.0827 35.0003 78.3327 30.8337 78.3327C26.2503 78.3327 22.0837 76.2494 19.5837 73.7494ZM61.2503 73.7494C57.0837 69.166 54.5837 64.166 54.5837 55.8327C54.5837 41.2493 65.0003 28.3327 79.5837 21.666L83.3337 27.0827C69.5837 34.5827 66.667 44.166 65.8337 50.416C67.917 49.166 70.8337 48.7494 73.7503 49.166C81.2503 49.9994 87.0837 55.8327 87.0837 63.7494C87.0837 67.4994 85.417 71.2494 82.917 74.166C80.417 77.0827 76.667 78.3327 72.5003 78.3327C67.917 78.3327 63.7503 76.2494 61.2503 73.7494Z"
+                                                                        fill="black" />
+                                                                </svg>
+                                                            </div>
+
+                                                            <p class="review-text">ADAS did an amazing job
+                                                                on our
+                                                                project. Their team is
+                                                                highly professional, creative, and always delivers on
+                                                                time.
+                                                                I’m
+                                                                really
+                                                                impressed
+                                                                with the quality of their design work. and the results
+                                                                were
+                                                                beyond
+                                                                expectations.
+                                                                They truly understand client needs and bring fresh
+                                                                <span>modern ideas to the table.</span>
+                                                            </p>
+
+                                                            <div class="review-items">
+                                                                <div class="review-star">
+                                                                    <img src="./assets/img/about us image (2).png"
+                                                                        alt="logo">
+                                                                </div>
+
+                                                                <div class="page">
+                                                                    <span class="page-1">1</span>
+                                                                    <span class="page-2">7</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="testimonial-card">
+                                                        <div class="thumb">
+                                                            <img src="./assets/img/about us image (3).png" alt="thumb">
+
+                                                            <div class="thumb-content">
+                                                                <div class="title">Caroline caldwell</div>
+                                                                <p class="text">founder & CEO</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="testimonial-review">
+                                                            <div class="quotation-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                    height="100" viewBox="0 0 100 100" fill="none">
+                                                                    <path
+                                                                        d="M19.5837 73.7494C15.417 69.166 12.917 64.166 12.917 55.8327C12.917 41.2493 23.3337 28.3327 37.917 21.666L41.667 27.0827C27.917 34.5827 25.0003 44.166 24.167 50.416C26.2503 49.166 29.167 48.7494 32.0837 49.166C39.5837 49.9994 45.417 55.8327 45.417 63.7494C45.417 67.4994 43.7503 71.2494 41.2503 74.166C38.3337 77.0827 35.0003 78.3327 30.8337 78.3327C26.2503 78.3327 22.0837 76.2494 19.5837 73.7494ZM61.2503 73.7494C57.0837 69.166 54.5837 64.166 54.5837 55.8327C54.5837 41.2493 65.0003 28.3327 79.5837 21.666L83.3337 27.0827C69.5837 34.5827 66.667 44.166 65.8337 50.416C67.917 49.166 70.8337 48.7494 73.7503 49.166C81.2503 49.9994 87.0837 55.8327 87.0837 63.7494C87.0837 67.4994 85.417 71.2494 82.917 74.166C80.417 77.0827 76.667 78.3327 72.5003 78.3327C67.917 78.3327 63.7503 76.2494 61.2503 73.7494Z"
+                                                                        fill="black" />
+                                                                </svg>
+                                                            </div>
+
+                                                            <p class="review-text">ADAS did an amazing job
+                                                                on our
+                                                                project. Their team is
+                                                                highly professional, creative, and always delivers on
+                                                                time.
+                                                                I’m
+                                                                really
+                                                                impressed
+                                                                with the quality of their design work. and the results
+                                                                were
+                                                                beyond
+                                                                expectations.
+                                                                They truly understand client needs and bring fresh
+                                                                <span>modern ideas to the table.</span>
+                                                            </p>
+
+                                                            <div class="review-items">
+                                                                <div class="review-star">
+                                                                    <img src="./assets/img/about us image (2).png"
+                                                                        alt="logo">
+                                                                </div>
+
+                                                                <div class="page">
+                                                                    <span class="page-1">1</span>
+                                                                    <span class="page-2">7</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial Section End -->
+
+                <!-- CTA Section Start -->
+                <div class="cta-area-three fix">
+                    <div class="cta-wrapper pb-150">
+                        <div class="cta-content">
+                            <div class="bg-shape float-bob-x">
+                                <img src="./assets/img/home-3/cta/ctaLogo.png" alt="shape">
+                            </div>
+                            <div class="container">
+                                <div class="cta-content-wrap">
+                                    <div class="title title-anim">
+                                        Let's create the best
+                                        <span>
+                                            product experience
+                                            <img src="./assets/img/home-3/cta/ctaLineShape.png" alt="shape">
+                                        </span>
+                                        for your project
+                                    </div>
+
+
+                                    <div class="content-inner">
+                                        <div class="our-clint-2 gt_fade_anim" data-delay=".5" data-fade-from="bottom"
+                                            data-ease="bounce">
+                                            <ul>
+                                                <li><img src="assets/img/home-1/hero/heroVector1_1.png" alt="img"></li>
+                                                <li><img src="assets/img/home-1/hero/heroVector1_2.png" alt="img"></li>
+                                                <li><img src="assets/img/home-1/hero/heroVector1_3.png" alt="img"></li>
+                                                <li><img src="assets/img/home-1/hero/heroVector1_4.png" alt="img"></li>
+                                            </ul>
+                                            <p class="text">trusted clients world wide</p>
+                                        </div>
+
+                                        <div class="move-btn gt_fade_anim" data-delay=".5" data-fade-from="top"
+                                            data-ease="bounce">
+                                            <div class="gt-hover-btn-wrapper-two">
+                                                <a href="project-1.html"
+                                                    class="gt-hover-btn gt-hover-btn-item gt-btn-circle-2 d-flex align-items-center justify-content-center flex-column">
+                                                    <span class="gt-btn-circle-text-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
+                                                            viewBox="0 0 46 46" fill="none">
+                                                            <path
+                                                                d="M30.6737 18.0435L14.177 34.5402L11.4668 31.8301L27.9616 15.3333H13.4237V11.5H34.507V32.5833H30.6737V18.0435Z"
+                                                                fill="black"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <i class="gt-btn-circle-dot"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CTA Section End -->
+
+                <!-- Footer Section -->
+                <!-- Contact and Footer Custom Design -->
+                <style>
+                    .custom-footer-bg {
+                        background-color: #1a1a1a;
+                        padding: 60px 0;
+                        color: #a1a1a1;
+                        font-family: 'Inter', sans-serif;
+                    }
+
+                    .custom-social-btn {
+                        display: block;
+                        border-left: 2px solid #C9F31D;
+                        background: #222;
+                        padding: 12px 24px;
+                        color: #a1a1a1;
+                        margin-bottom: 15px;
+                        text-decoration: none;
+                        font-size: 14px;
+                        font-weight: 500;
+                        text-align: center;
+                        max-width: 200px;
+                    }
+
+                    .custom-social-btn:hover {
+                        color: #fff;
+                        background: #2a2a2a;
+                    }
+
+                    .custom-contact-card {
+                        background: #222;
+                        border-radius: 12px;
+                        padding: 30px;
+                        border: 1px solid #333;
+                    }
+
+                    .custom-contact-item {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 25px;
+                    }
+
+                    .custom-contact-item:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .custom-contact-icon {
+                        width: 36px;
+                        height: 36px;
+                        border: 1px solid #444;
+                        border-radius: 6px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 15px;
+                        flex-shrink: 0;
+                    }
+
+                    .custom-contact-icon svg {
+                        width: 16px;
+                        height: 16px;
+                        fill: #fff;
+                    }
+
+                    .custom-contact-text,
+                    .custom-contact-text a {
+                        color: #a1a1a1;
+                        font-size: 13px;
+                        line-height: 1.6;
+                        text-decoration: none;
+                    }
+
+                    .custom-footer-container {
+                        background-color: #111;
+                        border-radius: 20px;
+                        padding: 60px 50px 30px;
+                        margin: 0 20px 20px;
+                        color: #fff;
+                    }
+
+                    .custom-footer-title {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #fff;
+                        margin-bottom: 25px;
+                    }
+
+                    .custom-footer-link {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    .custom-footer-link li {
+                        margin-bottom: 12px;
+                        font-size: 13px;
+                        color: #a1a1a1;
+                    }
+
+                    .custom-footer-link a {
+                        color: #a1a1a1;
+                        text-decoration: none;
+                        transition: 0.3se;
+                    }
+
+                    .custom-footer-link a:hover {
+                        color: #fff;
+                    }
+
+                    .custom-newsletter-input {
+                        background: #1a1a1a;
+                        border: 1px solid #333;
+                        border-radius: 4px;
+                        padding: 12px 15px;
+                        color: #fff;
+                        width: 100%;
+                        font-size: 13px;
+                    }
+
+                    .custom-newsletter-input:focus {
+                        outline: none;
+                        border-color: #555;
+                    }
+
+                    .custom-newsletter-form {
+                        position: relative;
+                        margin-bottom: 15px;
+                    }
+
+                    .custom-newsletter-icon {
+                        position: absolute;
+                        right: 15px;
+                        top: 12px;
+                        color: #fff;
+                    }
+
+                    .custom-big-text {
+                        text-transform: uppercase;
+                        line-height: 1;
+                    }
+
+                    .custom-big-text-1 {
+                        font-size: 8vw;
+                        font-weight: bold;
+                        color: #fff;
+                        letter-spacing: -2px;
+                    }
+
+                    .custom-big-text-2 {
+                        font-size: 8vw;
+                        font-weight: 400;
+                        color: #666;
+                        font-style: italic;
+                        letter-spacing: -2px;
+                        padding-left: 20%;
+                    }
+
+                    .custom-arrow-btn {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        background: #fff;
+                        color: #000;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 32px;
+                        text-decoration: none;
+                        position: relative;
+                    }
+
+                    .custom-arrow-btn::before {
+                        content: '';
+                        position: absolute;
+                        bottom: 10px;
+                        left: 10px;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        background: #C9F31D;
+                    }
+
+                    .custom-arrow-btn:hover {
+                        background: #e0e0e0;
+                        color: #000;
+                    }
+
+                    .custom-divider {
+                        border-top: 1px solid #333;
+                        margin: 40px 0;
+                    }
+
+                    .custom-copyright {
+                        font-size: 11px;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        text-align: center;
+                        color: #666;
+                    }
+                </style>
+
+                <div class="custom-footer-bg">
+                    <div class="container">
+                        <div class="row gy-5 align-items-center">
+                            <!-- Left Info -->
+                            <div class="col-xl-4 col-lg-4 col-md-12 pe-lg-5">
+                                <a href="index.html" class="d-inline-block mb-4">
+                                    <img src="assets/img/ades LOGO 2026 (2).png" alt="logo" style="height: 40px; width: auto;">
+                                </a>
+                                <p style="font-size: 13px; line-height: 1.8;">2026 Begins Its Journey With
+                                    Road To Jia CURATED, An Immersive Exhibition Featuring Threadapeutic, A
+                                    Pioneering Studio Redefining Textile Re-Crafting.</p>
+                            </div>
+
+                            <!-- Center Social -->
+                            <div class="col-xl-4 col-lg-4 col-md-6 d-flex flex-column align-items-center">
+                                <a href="#" class="custom-social-btn w-100">Facebook</a>
+                                <a href="#" class="custom-social-btn w-100">Linked In</a>
+                                <a href="#" class="custom-social-btn w-100">Instagram</a>
+                                <a href="#" class="custom-social-btn w-100">You Tube</a>
+                            </div>
+
+                            <!-- Right Contact -->
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="custom-contact-card">
+                                    <div class="custom-contact-item">
+                                        <div class="custom-contact-icon">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
+                                        </div>
+                                        <div class="custom-contact-text">731 Madison Ave, New York,
+                                            NY<br>10065 New York City</div>
+                                    </div>
+                                    <div class="custom-contact-item">
+                                        <div class="custom-contact-icon">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="custom-contact-text">+91 0321 5098 003<br>+88 0123 987
+                                            258 002</div>
+                                    </div>
+                                    <div class="custom-contact-item">
+                                        <div class="custom-contact-icon">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="custom-contact-text">
+                                            Info.Company@Yahoo.Mail.Com<br>Hi@Adas.Com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height: 60px;"></div>
+
+                    <div class="custom-footer-container">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <h4 class="custom-footer-title">Our Company</h4>
+                                <ul class="custom-footer-link">
+                                    <li><a href="service-1.html">Services</a></li>
+                                    <li><a href="project-1.html">Cases</a></li>
+                                    <li><a href="about-1.html">About</a></li>
+                                    <li><a href="contact.html">Team & Advisors</a></li>
+                                    <li><a href="contact.html">Career</a></li>
+                                    <li><a href="blog-1.html">Blog</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4 pl-lg-4">
+                                <h4 class="custom-footer-title">Main Services</h4>
+                                <ul class="custom-footer-link">
+                                    <li><a href="service-details.html">Branding Guideline</a></li>
+                                    <li><a href="service-details.html">Ux/Ui Design</a></li>
+                                    <li><a href="service-details.html">Digital Marketing</a></li>
+                                    <li><a href="service-details.html">Website Design</a></li>
+                                    <li><a href="service-details.html">Graphic Design</a></li>
+                                    <li><a href="service-details.html">Consulting Services</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <h4 class="custom-footer-title">Worldwide Office Locations</h4>
+                                <ul class="custom-footer-link">
+                                    <li><a href="#">United State Of America</a></li>
+                                    <li><a href="#">Canada</a></li>
+                                    <li><a href="#">United Kingdom</a></li>
+                                    <li><a href="#">India</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4 pl-lg-5">
+                                <h4 class="custom-footer-title">Newsletter</h4>
+                                <p style="font-size: 12px; color: #a1a1a1; margin-bottom: 20px;">Don't Miss
+                                    Out—Join Now For Promotions & Deals.</p>
+                                <div class="custom-newsletter-form">
+                                    <input type="email" placeholder="Enter You Email" class="custom-newsletter-input">
+                                    <svg class="custom-newsletter-icon" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </div>
+                                <div style="font-size: 11px; color: #888; display: flex; align-items: center;">
+                                    <input type="checkbox" style="margin-right: 8px;"> I Here By Accept All
+                                    <strong style="color: #fff; margin-left: 4px;">Terms &
+                                        Conditions.</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-divider"></div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-9">
+                                <div class="custom-big-text">
+                                    <div class="custom-big-text-1">Collaborate</div>
+                                    <div class="custom-big-text-2">WITH US</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
+                                <a href="#" class="custom-arrow-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="19" x2="19" y2="5"></line>
+                                        <polyline points="10 5 19 5 19 14"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="custom-divider"></div>
+
+                        <div class="custom-copyright">
+                            © ADAS. ALL RIGHT RESERVED
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Section end (Modified manually) -->
+            </div>
+        </div>
+
+        <!--<< All JS Plugins >>-->
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <!--<< Viewport Js >>-->
+        <script src="assets/js/viewport.jquery.js"></script>
+        <!--<< Bootstrap Js >>-->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <!--<< nice-selec Js >>-->
+        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <!--<< Waypoints Js >>-->
+        <script src="assets/js/jquery.waypoints.js"></script>
+        <!--<< Counterup Js >>-->
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        <!--<< Swiper Slider Js >>-->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <!--<< MeanMenu Js >>-->
+        <script src="assets/js/jquery.meanmenu.min.js"></script>
+        <!--<< Parallaxie Js >>-->
+        <script src="assets/js/parallaxie.js"></script>
+        <!--<< Magnific Popup Js >>-->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <!--<< Wow Animation Js >>-->
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/gasp/plugin.js"></script>
+        <!-- <script src="assets/js/gasp/three.js"></script> -->
+        <script src="assets/js/gasp/scroll-magic.js"></script>
+        <script src="assets/js/gasp/parallax-slider.js"></script>
+        <script src="assets/js/gasp/nice-select.js"></script>
+        <script src="assets/js/gasp/purecounter.js"></script>
+        <script src="assets/js/gasp/imagesloaded-pkgd.js"></script>
+        <script src="assets/js/gasp/Observer.min.js"></script>
+        <script src="assets/js/gasp/splitting.min.js"></script>
+        <script src="assets/js/gasp/webgl.js"></script>
+        <script src="assets/js/gasp/parallax-scroll.js"></script>
+        <script src="assets/js/gasp/atropos.js"></script>
+        <script src="assets/js/main.js?v=1.1"></script>
+        <!-- Custom Nav Script -->
+        <script>
+            const nav = document.getElementById("navbar");
+            if (nav) {
+                window.addEventListener("scroll", () => {
+                    nav.classList.toggle("scrolled", window.scrollY > 40);
+                });
+            }
+            const btn = document.getElementById("menuBtn");
+            const menu = document.getElementById("mobileMenu");
+            if (btn && menu) {
+                btn.addEventListener("click", () => {
+                    btn.classList.toggle("active");
+                    menu.classList.toggle("open");
+                });
+            }
+        </script>
+</body>
+
+</html>

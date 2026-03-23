@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Clients | ADES - Engineering Excellence</title>
+    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Custom Glass Nav Style -->
+    <style>
+        .nav-wrap {
+            position: fixed;
+            top: 24px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .glass-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            width: min(920px, 90%);
+            padding: 16px 28px;
+            border-radius: 999px;
+            background: #494949;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.35s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .glass-nav.scrolled {
+            padding: 10px 22px;
+            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter: blur(22px);
+            background: rgba(50, 50, 50, 0.85);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0.96);
+        }
+
+        .glass-nav .logo img {
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .glass-nav .nav-links {
+            display: flex;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .glass-nav .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.25s;
+        }
+
+        .glass-nav .nav-links a:hover {
+            color: white;
+        }
+
+        /* Dropdown Support */
+        .glass-nav .nav-links li {
+            position: relative;
+        }
+
+        .glass-nav .nav-links .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(45, 45, 45, 0.95);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 12px;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(.22, .61, .36, 1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            margin-top: 15px;
+            z-index: 1000;
+        }
+
+        .glass-nav .nav-links .dropdown::before {
+            content: '';
+            position: absolute;
+            top: -35px;
+            left: 0;
+            right: 0;
+            height: 40px;
+        }
+
+        .glass-nav .nav-links li:hover .dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .glass-nav .nav-links .dropdown li {
+            padding: 0;
+            width: 100%;
+        }
+
+        .glass-nav .nav-links .dropdown a {
+            padding: 10px 16px !important;
+            display: block !important;
+            border-radius: 10px !important;
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.2s !important;
+        }
+
+        .glass-nav .nav-links .dropdown a:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+
+        .nav-links li a i {
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s;
+        }
+
+        .nav-links li:hover a i {
+            transform: rotate(180deg);
+        }
+
+        .glass-nav .cta {
+            background: white;
+            color: black;
+            padding: 9px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: opacity 0.2s;
+        }
+
+        .glass-nav .cta:hover {
+            opacity: 0.85;
+        }
+
+        .mobile-header {
+            padding: 16px 18px;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .mobile-nav {
+            background: #494949;
+            border-radius: 999px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .brand img {
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .menu-btn {
+            width: 32px;
+            height: 24px;
+            border: none;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .menu-btn span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            left: 0;
+            transition: 0.3s ease;
+        }
+
+        .menu-btn span:nth-child(1) {
+            top: 4px;
+        }
+
+        .menu-btn span:nth-child(2) {
+            bottom: 4px;
+        }
+
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            transform: rotate(-45deg);
+            bottom: 11px;
+        }
+
+        .mobile-dropdown {
+            margin-top: 10px;
+            background: rgba(40, 40, 40, 0.97);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transform: scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s ease;
+        }
+
+        .mobile-dropdown.open {
+            transform: scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-dropdown a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+        }
+
+        .mobile-dropdown .mob-cta {
+            margin-top: 8px;
+            border: none;
+            border-radius: 999px;
+            padding: 12px;
+            background: white;
+            color: #111;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrap {
+                display: none;
+            }
+
+            .mobile-header {
+                display: block;
+            }
+        }
+        /* Client Logo Styles */
+        .client-card {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+        .client-card:hover {
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #adb5bd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <!-- Glassmorphism Footer Style -->
+    <style>
+        footer.footer-area-four {
+            position: relative;
+            background: transparent !important;
+            margin: 40px 16px 16px 16px;
+            border-radius: 28px;
+            overflow: visible;
+        }
+
+        footer.footer-area-four .footer-wrapper {
+            background: #111 !important;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 28px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+            padding: 60px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Desktop Glass Nav -->
+    <!-- Desktop Glass Nav -->
+    <div class="nav-wrap">
+        <nav id="navbar" class="glass-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/img/ades LOGO 2026 (2).png" alt="ADES logo" style="height: 38px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-1.html">About</a></li>
+                <li>
+                    <a href="service-2.html">Services <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="service-mep.html">Integrated MEP</a></li>
+                        <li><a href="service-electrical.html">Electrical Systems</a></li>
+                        <li><a href="service-hvac.html">HVAC Engineering</a></li>
+                        <li><a href="service-phe.html">Plumbing & PHE</a></li>
+                        <li><a href="service-fire.html">Fire Protection</a></li>
+                        <li><hr style="margin: 4px 0; opacity: 0.1;"></li>
+                        <li><a href="service-2.html">All Services</a></li>
+                    </ul>
+                </li>
+                <li><a href="project-1.html">Projects</a></li>
+                <li>
+                    <a href="#">Company <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="blog-1.html">Our Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta">Let's Talk</a>
+        </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-header">
+        <div class="mobile-nav">
+            <div class="brand">
+                <img src="assets/img/ades LOGO 2026 (2).png" alt="ADES logo">
+            </div>
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-dropdown" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about-1.html">About</a>
+            <a href="service-2.html">Services</a>
+            <a href="project-1.html">Projects</a>
+            <a href="blog-1.html">Our Blog</a>
+            <a href="team.html">Company</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="mob-cta">Let's Talk</a>
+        </div>
+    </div>
+    
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categorized Client Sections -->
+                <section class="client-grid-area pt-150 pb-80">
+                    <div class="container">
+                        <!-- Food & Beverage -->
+                        <div class="row mb-80">
+                            <div class="col-12 text-center mb-40">
+                                <h2 class="text-dark">Food & Beverage</h2>
+                                <div class="header-line mx-auto"
+                                    style="width: 60px; height: 3px; background: #007bff; margin-top: 15px;"></div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/Lulu_Hypermarket_logo.png" alt="Lulu Mall Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Lulu Mall (Sharjah)</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/ITC_Limited-Logo.wine.png" alt="ITC Foods Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">ITC Foods</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/adani-wilmar.webp" alt="Adani Wilmar Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Adani Wilmar</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/Bisleri_logo.svg.png" alt="Bisleri Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Bisleri</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IT & Corporate -->
+                        <div class="row mb-80">
+                            <div class="col-12 text-center mb-40">
+                                <h2 class="text-dark">IT & Corporate</h2>
+                                <div class="header-line mx-auto"
+                                    style="width: 60px; height: 3px; background: #007bff; margin-top: 15px;"></div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/Cognizant_logo_2022.svg.png" alt="Cognizant Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Cognizant (CTS)</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/eUfs7_7QpwrIcXzsECLola877BLom34xh-_LYfWtkFb5Be8CMn1jx1HwtxduveWmdLA1ETfspNcTiM39FTxOJiBQ_ctXaiw5NSqrk-rmZY8.jpg" alt="HP Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">HP (Hewlett Packard)</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/Tbznqoi2l8lIZVmzdmjvrIw2gN8z6MUb3EKA3X6ebWcee0XWI6GlXyjvBp4fsHD75WS3IU49I1iLaRnNGHM1Il39g1iuXjPEipeA4kLE2x0.jpg" alt="NSE Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">National Stock Exchange</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/stacked.jpg" alt="L&T Tech Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">L&T Technology</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Automobile & Industry -->
+                        <div class="row mb-80">
+                            <div class="col-12 text-center mb-40">
+                                <h2 class="text-dark">Industrial & Automobile</h2>
+                                <div class="header-line mx-auto"
+                                    style="width: 60px; height: 3px; background: #007bff; margin-top: 15px;"></div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/RGB_LOGO_APOLLO_TYRES_COMPACT_POS_GTD.jpg" alt="Apollo Tyres Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Apollo Tyres</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/-lfJgV716d_WKE1mvg9jRwLhPRwdfDiJNYRIgkvOhty_pXv1wIQoWBhjQWvE5E44O3ERgtj8qC5S3REAeg7r6k1P2iG2hWQlObPLRZ7lHSc.jpg" alt="Saint Gobain Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Saint Gobain</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/Parker_Hannifin.svg.png" alt="Parker Hannifin Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Parker Hannifin</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/tpi-logo-release-v01-01-color.png" alt="TPI Composites Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">TPI Composites</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Institutional & Hotels -->
+                        <div class="row">
+                            <div class="col-12 text-center mb-40">
+                                <h2 class="text-dark">Institutional & Hospitality</h2>
+                                <div class="header-line mx-auto"
+                                    style="width: 60px; height: 3px; background: #007bff; margin-top: 15px;"></div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/IIT_Madras_Logo.svg.png" alt="IIT Madras Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">IIT Madras</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/1280px-Radisson_Blu_logo.svg.png" alt="Radisson Blu Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">Radisson Blu</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/GRT_corporate_Frontal_Final.avif" alt="GRT Hotels Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">GRT Hotels</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 mb-4">
+                                <div class="client-card">
+                                    <img src="assets/img/small_SRM_6efef0c655_dade87cbf2_5037ed67b9_93342d9b05.png" alt="SRM University Logo" style="max-height: 80px; max-width: 100%; object-fit: contain; margin-bottom: 15px;">
+                                    <h5 class="text-dark small mb-0">SRM University</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Testimonial Mini Section -->
+                <section class="testimonial-area pb-150">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 text-center">
+                                <h3 class="text-dark mb-40">"ADES is an innovative MEP consultancy passionately
+                                    dedicated to delivering measurable benefits. Their optimized design solutions saved
+                                    us significant capacity and cost."</h3>
+                                <p class="text-primary mb-0">— Official Stakeholder, Apollo Tyres</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer Section -->
+                <!-- Contact and Footer Custom Design -->
+                            <style>
+                                .custom-footer-bg {
+                                    background-color: #1a1a1a;
+                                    padding: 60px 0;
+                                    color: #a1a1a1;
+                                    font-family: 'Inter', sans-serif;
+                                }
+
+                                .custom-social-btn {
+                                    display: block;
+                                    border-left: 2px solid #C9F31D;
+                                    background: #222;
+                                    padding: 12px 24px;
+                                    color: #a1a1a1;
+                                    margin-bottom: 15px;
+                                    text-decoration: none;
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    text-align: center;
+                                    max-width: 200px;
+                                }
+
+                                .custom-social-btn:hover {
+                                    color: #fff;
+                                    background: #2a2a2a;
+                                }
+
+                                .custom-contact-card {
+                                    background: #222;
+                                    border-radius: 12px;
+                                    padding: 30px;
+                                    border: 1px solid #333;
+                                }
+
+                                .custom-contact-item {
+                                    display: flex;
+                                    align-items: center;
+                                    margin-bottom: 25px;
+                                }
+
+                                .custom-contact-item:last-child {
+                                    margin-bottom: 0;
+                                }
+
+                                .custom-contact-icon {
+                                    width: 36px;
+                                    height: 36px;
+                                    border: 1px solid #444;
+                                    border-radius: 6px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    margin-right: 15px;
+                                    flex-shrink: 0;
+                                }
+
+                                .custom-contact-icon svg {
+                                    width: 16px;
+                                    height: 16px;
+                                    fill: #fff;
+                                }
+
+                                .custom-contact-text,
+                                .custom-contact-text a {
+                                    color: #a1a1a1;
+                                    font-size: 13px;
+                                    line-height: 1.6;
+                                    text-decoration: none;
+                                }
+
+                                .custom-footer-container {
+                                    background-color: #111;
+                                    border-radius: 20px;
+                                    padding: 60px 50px 30px;
+                                    margin: 0 20px 20px;
+                                    color: #fff;
+                                }
+
+                                .custom-footer-title {
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                    color: #fff;
+                                    margin-bottom: 25px;
+                                }
+
+                                .custom-footer-link {
+                                    list-style: none;
+                                    padding: 0;
+                                    margin: 0;
+                                }
+
+                                .custom-footer-link li {
+                                    margin-bottom: 12px;
+                                    font-size: 13px;
+                                    color: #a1a1a1;
+                                }
+
+                                .custom-footer-link a {
+                                    color: #a1a1a1;
+                                    text-decoration: none;
+                                    transition: 0.3se;
+                                }
+
+                                .custom-footer-link a:hover {
+                                    color: #fff;
+                                }
+
+                                .custom-newsletter-input {
+                                    background: #1a1a1a;
+                                    border: 1px solid #333;
+                                    border-radius: 4px;
+                                    padding: 12px 15px;
+                                    color: #fff;
+                                    width: 100%;
+                                    font-size: 13px;
+                                }
+
+                                .custom-newsletter-input:focus {
+                                    outline: none;
+                                    border-color: #555;
+                                }
+
+                                .custom-newsletter-form {
+                                    position: relative;
+                                    margin-bottom: 15px;
+                                }
+
+                                .custom-newsletter-icon {
+                                    position: absolute;
+                                    right: 15px;
+                                    top: 12px;
+                                    color: #fff;
+                                }
+
+                                .custom-big-text {
+                                    text-transform: uppercase;
+                                    line-height: 1;
+                                }
+
+                                .custom-big-text-1 {
+                                    font-size: 8vw;
+                                    font-weight: bold;
+                                    color: #fff;
+                                    letter-spacing: -2px;
+                                }
+
+                                .custom-big-text-2 {
+                                    font-size: 8vw;
+                                    font-weight: 400;
+                                    color: #666;
+                                    font-style: italic;
+                                    letter-spacing: -2px;
+                                    padding-left: 20%;
+                                }
+
+                                .custom-arrow-btn {
+                                    width: 80px;
+                                    height: 80px;
+                                    border-radius: 50%;
+                                    background: #fff;
+                                    color: #000;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-size: 32px;
+                                    text-decoration: none;
+                                    position: relative;
+                                }
+
+                                .custom-arrow-btn::before {
+                                    content: '';
+                                    position: absolute;
+                                    bottom: 10px;
+                                    left: 10px;
+                                    width: 12px;
+                                    height: 12px;
+                                    border-radius: 50%;
+                                    background: #C9F31D;
+                                }
+
+                                .custom-arrow-btn:hover {
+                                    background: #e0e0e0;
+                                    color: #000;
+                                }
+
+                                .custom-divider {
+                                    border-top: 1px solid #333;
+                                    margin: 40px 0;
+                                }
+
+                                .custom-copyright {
+                                    font-size: 11px;
+                                    text-transform: uppercase;
+                                    letter-spacing: 2px;
+                                    text-align: center;
+                                    color: #666;
+                                }
+                            </style>
+
+                            <div class="custom-footer-bg">
+                                <div class="container">
+                                    <div class="row gy-5 align-items-center">
+                                        <!-- Left Info -->
+                                        <div class="col-xl-4 col-lg-4 col-md-12 pe-lg-5">
+                                            <a href="index.html" class="d-inline-block mb-4">
+                                                <img src="assets/img/ades LOGO 2026 (2).png" alt="logo"
+                                                    style="height: 40px; width: auto;">
+                                            </a>
+                                            <p style="font-size: 13px; line-height: 1.8;">2026 Begins Its Journey With
+                                                Road To Jia CURATED, An Immersive Exhibition Featuring Threadapeutic, A
+                                                Pioneering Studio Redefining Textile Re-Crafting.</p>
+                                        </div>
+
+                                        <!-- Center Social -->
+                                        <div class="col-xl-4 col-lg-4 col-md-6 d-flex flex-column align-items-center">
+                                            <a href="#" class="custom-social-btn w-100">Facebook</a>
+                                            <a href="#" class="custom-social-btn w-100">Linked In</a>
+                                            <a href="#" class="custom-social-btn w-100">Instagram</a>
+                                            <a href="#" class="custom-social-btn w-100">You Tube</a>
+                                        </div>
+
+                                        <!-- Right Contact -->
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="custom-contact-card">
+                                                <div class="custom-contact-item">
+                                                    <div class="custom-contact-icon">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="custom-contact-text">731 Madison Ave, New York,
+                                                        NY<br>10065 New York City</div>
+                                                </div>
+                                                <div class="custom-contact-item">
+                                                    <div class="custom-contact-icon">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="custom-contact-text">+91 0321 5098 003<br>+88 0123 987
+                                                        258 002</div>
+                                                </div>
+                                                <div class="custom-contact-item">
+                                                    <div class="custom-contact-icon">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="custom-contact-text">
+                                                        Info.Company@Yahoo.Mail.Com<br>Hi@Adas.Com</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="height: 60px;"></div>
+
+                                <div class="custom-footer-container">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-6 mb-4">
+                                            <h4 class="custom-footer-title">Our Company</h4>
+                                            <ul class="custom-footer-link">
+                                                <li><a href="service-1.html">Services</a></li>
+                                                <li><a href="project-1.html">Cases</a></li>
+                                                <li><a href="about-1.html">About</a></li>
+                                                <li><a href="contact.html">Team & Advisors</a></li>
+                                                <li><a href="contact.html">Career</a></li>
+                                                <li><a href="blog-1.html">Blog</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 mb-4 pl-lg-4">
+                                            <h4 class="custom-footer-title">Main Services</h4>
+                                            <ul class="custom-footer-link">
+                                                <li><a href="service-details.html">Branding Guideline</a></li>
+                                                <li><a href="service-details.html">Ux/Ui Design</a></li>
+                                                <li><a href="service-details.html">Digital Marketing</a></li>
+                                                <li><a href="service-details.html">Website Design</a></li>
+                                                <li><a href="service-details.html">Graphic Design</a></li>
+                                                <li><a href="service-details.html">Consulting Services</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 mb-4">
+                                            <h4 class="custom-footer-title">Worldwide Office Locations</h4>
+                                            <ul class="custom-footer-link">
+                                                <li><a href="#">United State Of America</a></li>
+                                                <li><a href="#">Canada</a></li>
+                                                <li><a href="#">United Kingdom</a></li>
+                                                <li><a href="#">India</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 mb-4 pl-lg-5">
+                                            <h4 class="custom-footer-title">Newsletter</h4>
+                                            <p style="font-size: 12px; color: #a1a1a1; margin-bottom: 20px;">Don't Miss
+                                                Out—Join Now For Promotions & Deals.</p>
+                                            <div class="custom-newsletter-form">
+                                                <input type="email" placeholder="Enter You Email"
+                                                    class="custom-newsletter-input">
+                                                <svg class="custom-newsletter-icon" width="16" height="16"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                                </svg>
+                                            </div>
+                                            <div
+                                                style="font-size: 11px; color: #888; display: flex; align-items: center;">
+                                                <input type="checkbox" style="margin-right: 8px;"> I Here By Accept All
+                                                <strong style="color: #fff; margin-left: 4px;">Terms &
+                                                    Conditions.</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-divider"></div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <div class="custom-big-text">
+                                                <div class="custom-big-text-1">Collaborate</div>
+                                                <div class="custom-big-text-2">WITH US</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
+                                            <a href="#" class="custom-arrow-btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="5" y1="19" x2="19" y2="5"></line>
+                                                    <polyline points="10 5 19 5 19 14"></polyline>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-divider"></div>
+
+                                    <div class="custom-copyright">
+                                        © ADAS. ALL RIGHT RESERVED
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Footer Section end (Modified manually) -->
+            </div>
+        </div>
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/main.js"></script>
+<!-- Custom Nav Script -->
+        <script>
+            const scrollNav = document.getElementById("navbar");
+            if (scrollNav) {
+                window.addEventListener("scroll", () => {
+                    scrollNav.classList.toggle("scrolled", window.scrollY > 40);
+                });
+            }
+            const mobileBtn = document.getElementById("menuBtn");
+            const mobileDropdown = document.getElementById("mobileMenu");
+            if (mobileBtn && mobileDropdown) {
+                mobileBtn.addEventListener("click", () => {
+                    mobileBtn.classList.toggle("active");
+                    mobileDropdown.classList.toggle("open");
+                });
+            }
+        </script>
+</body>
+
+</html>
