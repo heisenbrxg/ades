@@ -1,16 +1,27 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: "Inter", sans-serif !important;
-	margin: 0px;
-	padding: 0;
-	color:#000 !important;
+/* =============================================
+   Century Gothic – Universal Font Override
+   ============================================= */
+
+*, *::before, *::after,
+body, html,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, ul, ol,
+button, input, textarea, select,
+label, th, td, caption,
+blockquote, pre, code,
+.nav-links a, .glass-nav a,
+.mobile-dropdown a, .btn,
+div, section, header, footer, nav, article, aside {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, "Gill Sans", "Gill Sans MT", Calibri, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+    padding: 0;
+    color: #000 !important;
 }
 
 .simple-btn-white a {
-	text-transform: capitalize !important;
-	font-weight: 500 !important;
+    text-transform: capitalize !important;
+    font-weight: 500 !important;
 }
