@@ -2,7 +2,8 @@
    Century Gothic – Universal Font Override
    ============================================= */
 
-*, *::before, *::after,
+/* Apply Century Gothic to all text elements (NOT ::before/::after which FA uses for icons) */
+*,
 body, html,
 h1, h2, h3, h4, h5, h6,
 p, a, span, li, ul, ol,
@@ -15,17 +16,34 @@ div, section, header, footer, nav, article, aside {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, "Gill Sans", "Gill Sans MT", Calibri, sans-serif !important;
 }
 
-/* ── Restore Font Awesome icon fonts (chevrons, etc.) ── */
-i,
-i.fas, i.far, i.fal, i.fad, i.fab,
-i.fa, i.fa-solid, i.fa-regular, i.fa-light,
-i.fa-brands, i.fa-duotone, i[class*="fa-"],
-span[class*="fa-"], .flaticon,
-span.flaticon, i.flaticon {
+/* ── Restore Font Awesome icon fonts on <i> elements ── */
+i[class*="fa-"],
+i.fas, i.far, i.fal, i.fad, i.fab, i.fa,
+i.fa-solid, i.fa-regular, i.fa-light,
+i.fa-brands, i.fa-duotone, i.fa-thin,
+span[class*="fa-"], i.flaticon, span.flaticon {
     font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free",
                  "Font Awesome 5 Pro", "Font Awesome 5 Free",
                  "Font Awesome 6 Brands", "Font Awesome 5 Brands",
-                 "FontAwesome", "flaticon" !important;
+                 "Font Awesome 5 Duotone", "FontAwesome",
+                 "flaticon" !important;
+}
+
+/* ── Restore FA font on ::before / ::after pseudo-elements of icon tags ── */
+i[class*="fa-"]::before, i[class*="fa-"]::after,
+i.fas::before, i.far::before, i.fal::before,
+i.fab::before, i.fad::before, i.fa::before,
+i.fa-solid::before, i.fa-regular::before,
+i.fa-light::before, i.fa-brands::before,
+i.fa-duotone::before, i.fa-thin::before,
+i.flaticon::before, i.flaticon::after,
+span[class*="fa-"]::before, span[class*="fa-"]::after,
+span.flaticon::before, span.flaticon::after {
+    font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free",
+                 "Font Awesome 5 Pro", "Font Awesome 5 Free",
+                 "Font Awesome 6 Brands", "Font Awesome 5 Brands",
+                 "Font Awesome 5 Duotone", "FontAwesome",
+                 "flaticon" !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,4 +55,4 @@ h1, h2, h3, h4, h5, h6 {
 .simple-btn-white a {
     text-transform: capitalize !important;
     font-weight: 500 !important;
-}
+}
