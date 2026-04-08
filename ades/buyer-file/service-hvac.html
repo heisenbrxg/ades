@@ -17,274 +17,6 @@
 
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/style-6.css">
-    <!-- Custom Glass Nav Style -->
-    <style>
-        .nav-wrap {
-            position: fixed;
-            top: 24px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .glass-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            width: min(920px, 90%);
-            padding: 16px 28px;
-            border-radius: 999px;
-            background: #494949;
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-            transition: all 0.35s cubic-bezier(.22, .61, .36, 1);
-        }
-
-        .glass-nav.scrolled {
-            padding: 10px 22px;
-            -webkit-backdrop-filter: blur(22px);
-            backdrop-filter: blur(22px);
-            background: rgba(50, 50, 50, 0.85);
-            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
-            transform: scale(0.96);
-        }
-
-        .glass-nav .logo img {
-            height: 38px;
-            object-fit: contain;
-        }
-
-        .glass-nav .nav-links {
-            display: flex;
-            gap: 24px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .glass-nav .nav-links a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color 0.25s;
-        }
-
-        .glass-nav .nav-links a:hover {
-            color: white;
-        }
-
-        /* Dropdown Support */
-        .glass-nav .nav-links li {
-            position: relative;
-        }
-
-        .glass-nav .nav-links .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: rgba(45, 45, 45, 0.95);
-            -webkit-backdrop-filter: blur(15px);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 18px;
-            padding: 12px;
-            min-width: 200px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(.22, .61, .36, 1);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            margin-top: 15px;
-            z-index: 1000;
-        }
-
-        .glass-nav .nav-links .dropdown::before {
-            content: '';
-            position: absolute;
-            top: -35px;
-            left: 0;
-            right: 0;
-            height: 40px;
-        }
-
-        .glass-nav .nav-links li:hover .dropdown {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .glass-nav .nav-links .dropdown li {
-            padding: 0;
-            width: 100%;
-        }
-
-        .glass-nav .nav-links .dropdown a {
-            padding: 10px 16px !important;
-            display: block !important;
-            border-radius: 10px !important;
-            font-size: 13px !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-            transition: all 0.2s !important;
-        }
-
-        .glass-nav .nav-links .dropdown a:hover {
-            background: rgba(255, 255, 255, 0.1) !important;
-            color: white !important;
-        }
-
-        .nav-links li a i {
-            font-size: 10px;
-            margin-left: 4px;
-            transition: transform 0.3s;
-        }
-
-        .nav-links li:hover a i {
-            transform: rotate(180deg);
-        }
-
-        .glass-nav .cta {
-            background: white;
-            color: black;
-            padding: 9px 20px;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 13px;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: opacity 0.2s;
-        }
-
-        .glass-nav .cta:hover {
-            opacity: 0.85;
-        }
-
-        .mobile-header {
-            padding: 16px 18px;
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .mobile-nav {
-            background: #494949;
-            border-radius: 999px;
-            padding: 14px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .brand {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .brand img {
-            height: 34px;
-            object-fit: contain;
-        }
-
-        .menu-btn {
-            width: 32px;
-            height: 24px;
-            border: none;
-            background: transparent;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .menu-btn span {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: #fff;
-            left: 0;
-            transition: 0.3s ease;
-        }
-
-        .menu-btn span:nth-child(1) {
-            top: 4px;
-        }
-
-        .menu-btn span:nth-child(2) {
-            bottom: 4px;
-        }
-
-        .menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 11px;
-        }
-
-        .menu-btn.active span:nth-child(2) {
-            transform: rotate(-45deg);
-            bottom: 11px;
-        }
-
-        .mobile-dropdown {
-            margin-top: 10px;
-            background: rgba(40, 40, 40, 0.97);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            transform: scale(0.95);
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.25s ease;
-        }
-
-        .mobile-dropdown.open {
-            transform: scale(1);
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .mobile-dropdown a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 15px;
-        }
-
-        .mobile-dropdown .mob-cta {
-            margin-top: 8px;
-            border: none;
-            border-radius: 999px;
-            padding: 12px;
-            background: white;
-            color: #111;
-            font-weight: 700;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .nav-wrap {
-                display: none;
-            }
-
-            .mobile-header {
-                display: block;
-            }
-        }
-    </style>
     <!-- Glassmorphism Footer Style -->
     <style>
         footer.footer-area-four {
@@ -309,69 +41,84 @@
     </style>
 </head>
 
-<body>
-    <!-- Desktop Glass Nav -->
-    <!-- Desktop Glass Nav -->
-    <div class="nav-wrap">
-        <nav id="navbar" class="glass-nav">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/img/update new logo.png" alt="ADES logo" style="height: 38px; width: auto;">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-1.html">About</a></li>
-                <li>
-                    <a href="service-2.html">Services <i class="fa-solid fa-chevron-down"></i></a>
-                    <ul class="dropdown">
-                        <li><a href="service-mep.html">Integrated MEP</a></li>
-                        <li><a href="service-electrical.html">Electrical Systems</a></li>
-                        <li><a href="service-hvac.html">HVAC Engineering</a></li>
-                        <li><a href="service-phe.html">Plumbing & PHE</a></li>
-                        <li><a href="service-fire.html">Fire Protection</a></li>
-                        <li><hr style="margin: 4px 0; opacity: 0.1;"></li>
-                        <li><a href="service-2.html">All Services</a></li>
-                    </ul>
-                </li>
-                <li><a href="project-1.html">Projects</a></li>
-                <li>
-                    <a href="#">Company <i class="fa-solid fa-chevron-down"></i></a>
-                    <ul class="dropdown">
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="clients.html">Our Clients</a></li>
-                        <li><a href="blog-1.html">Our Blog</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <a href="contact.html" class="cta">Let's Talk</a>
-        </nav>
-    </div>
+<body>    <!-- Header Section Start -->
+    <header class="header-section">
+        <div id="header-sticky" class="header-3">
+            <div class="container-fluid">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo-2">
+                                <img src="assets/img/update new logo.png" alt="ADES logo" style="height:40px;width:auto;">
+                            </a>
+                        </div>
 
-    <!-- Mobile Nav -->
-    <div class="mobile-header">
-        <div class="mobile-nav">
-            <div class="brand">
-                <img src="assets/img/update new logo.png" alt="ADES logo" style="height: 34px; width: auto;">
+                        <div class="header-left">
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li>
+                                                <a href="index.html">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="about-1.html">About</a>
+                                            </li>
+                                            <li class="has-dropdown">
+                                                <a href="service-2.html">
+                                                    Services <i class="fa-solid fa-chevron-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="service-mep.html">Integrated MEP</a></li>
+                                                    <li><a href="service-electrical.html">Electrical Systems</a></li>
+                                                    <li><a href="service-hvac.html">HVAC Engineering</a></li>
+                                                    <li><a href="service-phe.html">Plumbing &amp; PHE</a></li>
+                                                    <li><a href="service-fire.html">Fire Protection</a></li>
+                                                    <li><a href="service-2.html">All Services</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="project-1.html">Projects</a>
+                                            </li>
+                                            <li class="has-dropdown">
+                                                <a href="#">
+                                                    Company <i class="fa-solid fa-chevron-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="team.html">Our Team</a></li>
+                                                    <li><a href="faq.html">FAQ</a></li>
+                                                    <li><a href="clients.html">Our Clients</a></li>
+                                                    <li><a href="blog-1.html">Our Blog</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="contact.html">Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="header__hamburger">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M19.375 5H0.625C0.45924 5 0.300269 4.93415 0.183058 4.81694C0.065848 4.69973 0 4.54076 0 4.375C0 4.20924 0.065848 4.05027 0.183058 3.93306C0.300269 3.81585 0.45924 3.75 0.625 3.75H19.375C19.5408 3.75 19.6997 3.81585 19.8169 3.93306C19.9342 4.05027 20 4.20924 20 4.375C20 4.54076 19.9342 4.69973 19.8169 4.81694C19.6997 4.93415 19.5408 5 19.375 5Z" fill="currentColor"/>
+                                            <path d="M19.375 11.25H0.625C0.45924 11.25 0.300269 11.1842 0.183058 11.0669C0.065848 10.9497 0 10.7908 0 10.625C0 10.4592 0.065848 10.3003 0.183058 10.1831C0.300269 10.0658 0.45924 10 0.625 10H19.375C19.5408 10 19.6997 10.0658 19.8169 10.1831C19.9342 10.3003 20 10.4592 20 10.625C20 10.7908 19.9342 10.9497 19.8169 11.0669C19.6997 11.1842 19.5408 11.25 19.375 11.25Z" fill="currentColor"/>
+                                            <path d="M19.375 17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.065848 17.1997 0 17.0408 0 16.875C0 16.7092 0.065848 16.5503 0.183058 16.4331C0.300269 16.3158 0.45924 16.25 0.625 16.25H19.375C19.5408 16.25 19.6997 16.3158 19.8169 16.4331C19.9342 16.5503 20 16.7092 20 16.875C20 17.0408 19.9342 17.1997 19.8169 17.3169C19.6997 17.4342 19.5408 17.5 19.375 17.5Z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-                <span></span><span></span>
-            </button>
         </div>
-        <div class="mobile-dropdown" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="about-1.html">About</a>
-            <a href="service-2.html">Services</a>
-            <a href="project-1.html">Projects</a>
-            <a href="blog-1.html">Our Blog</a>
-            <a href="team.html">Company</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html" class="mob-cta">Let's Talk</a>
-        </div>
-    </div>
-    
+    </header>
+    <!-- Header Section End -->
 
     <div id="smooth-wrapper">
         <div id="smooth-content">

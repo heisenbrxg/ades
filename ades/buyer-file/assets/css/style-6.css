@@ -55,4 +55,11 @@ h1, h2, h3, h4, h5, h6 {
 .simple-btn-white a {
     text-transform: capitalize !important;
     font-weight: 500 !important;
-}
+}
+
+/* ── Shift logo more to the left ── */
+@media (min-width: 1200px) {
+    .header-section .header-3 .logo {
+        margin-left: -80px !important;
+    }
+}
