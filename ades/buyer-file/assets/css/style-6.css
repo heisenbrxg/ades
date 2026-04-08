@@ -63,3 +63,17 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: -80px !important;
     }
 }
+
+/* ── Navbar Size Adjustments ── */
+.header-section .header-3 .main-menu ul li > a {
+    font-size: 18px !important;
+}
+.header-section .header-3 .main-menu ul li .submenu li a {
+    font-size: 16px !important;
+}
+.header-section .header-3 .logo img {
+    height: 55px !important;
+}
+.sticky.header-3 .logo img {
+    height: 50px !important;
+}
