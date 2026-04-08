@@ -15,6 +15,19 @@ div, section, header, footer, nav, article, aside {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, "Gill Sans", "Gill Sans MT", Calibri, sans-serif !important;
 }
 
+/* ── Restore Font Awesome icon fonts (chevrons, etc.) ── */
+i,
+i.fas, i.far, i.fal, i.fad, i.fab,
+i.fa, i.fa-solid, i.fa-regular, i.fa-light,
+i.fa-brands, i.fa-duotone, i[class*="fa-"],
+span[class*="fa-"], .flaticon,
+span.flaticon, i.flaticon {
+    font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free",
+                 "Font Awesome 5 Pro", "Font Awesome 5 Free",
+                 "Font Awesome 6 Brands", "Font Awesome 5 Brands",
+                 "FontAwesome", "flaticon" !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0px;
     padding: 0;
