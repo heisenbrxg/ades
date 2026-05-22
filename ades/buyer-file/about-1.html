@@ -29,8 +29,51 @@
     <!--<< Nice Select.css >>-->
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <!--<< Main.css >>-->
+    <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/style-6.css">
+    <!-- Principal Section Override -->
+    <style>
+        body, #smooth-wrapper, #smooth-content,
+        .about-area, .about-wrapper, .about-page-area-two,
+        .about-page-area-three, .we-do-section, section, div { background-color: transparent; }
+        body { background: #000 !important; }
+        #principal-sec { background: #060b18 !important; }
+        #principal-sec .psec-img-frame {
+            border: 3px solid #00c8ff !important;
+            border-radius: 0 !important;
+            overflow: hidden !important;
+            position: relative !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7) !important;
+        }
+        #principal-sec .psec-img-frame img {
+            width: 100% !important;
+            display: block !important;
+            border-radius: 0 !important;
+            object-fit: cover !important;
+        }
+        .cred-row {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .cred-icon {
+            width: 40px; height: 40px;
+            border-radius: 0;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 16px;
+        }
+        .cred-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+        .cred-desc  { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+        @media(max-width:1024px){
+            #principal-sec .container > div { grid-template-columns: 1fr !important; }
+        }
+    </style>
     <!-- Glassmorphism Footer Style -->
     <style>
         footer.footer-area-four {
@@ -77,7 +120,7 @@
     </style>
 </head>
 
-<body>    <!-- Header Section Start -->
+<body class="dark-bg">    <!-- Header Section Start -->
     <header class="header-section">
         <div id="header-sticky" class="header-3">
             <div class="container-fluid">
@@ -239,6 +282,120 @@
             </div>
             <!-- About Section End -->
 
+            <!-- Principal Section Start -->
+            <section id="principal-sec" style="padding:100px 0;position:relative;overflow:hidden;display:block;">
+                <div class="container" style="position:relative;z-index:1;">
+                    <div style="display:grid;grid-template-columns:400px 1fr;gap:70px;align-items:start;">
+
+                        <!-- ── IMAGE COLUMN ── -->
+                        <div style="position:relative;">
+
+                            <!-- Rectangle image frame with solid border -->
+                            <div class="psec-img-frame" style="border:3px solid #00c8ff;border-radius:0;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+                                <!-- Top accent stripe -->
+                                <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#00c8ff,#0066ff,#7b2fff);z-index:2;"></div>
+
+                                <!-- Photo -->
+                                <img src="./assets/img/about/prinicpal.png" alt="Dr. Ferno Susai A"
+                                    style="width:100%;display:block;object-fit:cover;object-position:top center;border-radius:0;">
+
+                                <!-- Name overlay -->
+                                <div style="position:absolute;bottom:0;left:0;right:0;padding:40px 22px 22px;background:linear-gradient(to top,rgba(6,11,24,0.97) 0%,rgba(6,11,24,0.6) 60%,transparent 100%);">
+                                    <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 5px;">Dr. Ferno Susai A</h3>
+                                    <span style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#00c8ff;">Principal Consultant</span>
+                                </div>
+                            </div>
+
+                            <!-- Corner accents (sharp corners, no radius) -->
+                            <div style="position:absolute;bottom:-12px;right:-12px;width:50px;height:50px;border-bottom:3px solid #0066ff;border-right:3px solid #0066ff;border-radius:0;"></div>
+                            <div style="position:absolute;top:-12px;left:-12px;width:50px;height:50px;border-top:3px solid #00c8ff;border-left:3px solid #00c8ff;border-radius:0;"></div>
+                        </div>
+
+                        <!-- ── BIO COLUMN ── -->
+                        <div style="padding-top:8px;">
+
+                            <!-- Eyebrow -->
+                            <div style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00c8ff;margin-bottom:18px;">
+                                <span style="display:inline-block;width:32px;height:2px;background:linear-gradient(90deg,#00c8ff,#0066ff);border-radius:2px;"></span>
+                                Meet Our Principal
+                            </div>
+
+                            <!-- Headline -->
+                            <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;letter-spacing:-0.02em;">
+                                Versatile Design Team Lead,<br>Trainer &amp; Principal Consultant
+                            </h2>
+
+                            <!-- Bio -->
+                            <p style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.85;margin-bottom:30px;">
+                                Proven success in steering diverse building projects with visionary leadership.
+                                Expertise in project management, innovation, and client relations.
+                                Committed to design excellence and team growth.
+                            </p>
+
+                            <!-- Stats -->
+                            <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;">
+                                <div style="flex:1;min-width:120px;padding:22px;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;border-top:2px solid #00c8ff;">
+                                    <div style="font-size:2.8rem;font-weight:900;color:#00c8ff;line-height:1;">39</div>
+                                    <div style="font-size:11px;color:rgba(255,255,255,0.55);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-top:8px;line-height:1.4;">Years Total<br>Experience</div>
+                                </div>
+                                <div style="flex:1;min-width:120px;padding:22px;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;border-top:2px solid #0066ff;">
+                                    <div style="font-size:2.8rem;font-weight:900;color:#0066ff;line-height:1;">18</div>
+                                    <div style="font-size:11px;color:rgba(255,255,255,0.55);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-top:8px;line-height:1.4;">Years as<br>Principal Consultant</div>
+                                </div>
+                            </div>
+
+                            <!-- Credentials -->
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+
+                                <div class="cred-row" style="border-left:3px solid #00c8ff;">
+                                    <div class="cred-icon" style="background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.2);">
+                                        <i class="fas fa-award" style="color:#00c8ff;"></i>
+                                    </div>
+                                    <div>
+                                        <div class="cred-title">Doctorate in Human Rights (Honoris Causa)</div>
+                                        <div class="cred-desc">Conferred by the Board of the World Human Rights Protection Commission (WHRPC)</div>
+                                    </div>
+                                </div>
+
+                                <div class="cred-row" style="border-left:3px solid #0066ff;">
+                                    <div class="cred-icon" style="background:rgba(0,102,255,0.1);border:1px solid rgba(0,102,255,0.2);">
+                                        <i class="fas fa-globe" style="color:#0066ff;"></i>
+                                    </div>
+                                    <div>
+                                        <div class="cred-title">Active Member — WHRPC</div>
+                                        <div class="cred-desc">World Human Rights Protection Commission</div>
+                                    </div>
+                                </div>
+
+                                <div class="cred-row" style="border-left:3px solid #00c8ff;">
+                                    <div class="cred-icon" style="background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.2);">
+                                        <i class="fas fa-graduation-cap" style="color:#00c8ff;"></i>
+                                    </div>
+                                    <div>
+                                        <div class="cred-title">Master's Degree in Sociology</div>
+                                        <div class="cred-desc">Advanced academic background complementing engineering expertise</div>
+                                    </div>
+                                </div>
+
+                                <div class="cred-row" style="border-left:3px solid #7b2fff;">
+                                    <div class="cred-icon" style="background:rgba(123,47,255,0.1);border:1px solid rgba(123,47,255,0.2);">
+                                        <i class="fas fa-trophy" style="color:#7b2fff;"></i>
+                                    </div>
+                                    <div>
+                                        <div class="cred-title">President 2022–23</div>
+                                        <div class="cred-desc">ISHRAE — Indian Society of Heating, Refrigerating and Air-conditioning Engineers, Chennai Chapter</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <!-- Principal Section End -->
+
             <!-- About page Section Start -->
             <div class="about-page-area-two gt-sticky-wrap pb-80 fix">
                 <div class="container">
@@ -375,26 +532,13 @@
             </div>
             <!-- About page Section End -->
 
-            <!-- About page Section Start -->
-            <div class="about-page-area-three gt-sticky-wrap fix">
-                <div class="about-page-wrapper">
-                    <div class="thumb fix">
-                        <img data-speed=".8" src="assets/img/about/blackabout.png" alt="thumb">
-
-                        <div class="title">Our history</div>
-                        <div class="text">ADES's start</div>
-                    </div>
-                </div>
-            </div>
-            <!-- About page Section End -->
-
             <!-- We do Section Start -->
-            <section class="we-do-section pt-150 fix">
+            <section class="we-do-section pt-150 pb-100 fix">
                 <div class="container">
                     <div class="section-title-area">
                         <div class="section-title">
                             <p>Our Key Strengths</p>
-                            <h2 class="title title-anim text-black">
+                            <h2 class="title title-anim" style="color:#fff;">
                                 What drives us to deliver the best
                             </h2>
                         </div>
@@ -435,110 +579,9 @@
                 </div>
             </section>
 
-            <div class="group tp-hero-2-wrapper fix pb-150">
-                <div class="">
-                    <section class="p-relative">
-                        <div class="cta-area overflow-hidden">
-                            <div class="cta-area-inner section-spacing">
-                                <div class="area-bg"></div>
-                                <div class="container large">
-                                    <div class="section-content">
-                                        <div class="section-title-wrapper">
-                                            <div class="title-wrapper">
-                                                <div class="icon text-center">
-
-                                                    </svg>
-                                                </div>
-                                                <h2 class="title">Our Principal</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="team-members overflow-hidden">
-                    <div class="swiper team-slider-active">
-                        <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <div class="team-card">
-
-                                    <div class="team-member-info">
-                                        <div class="name">
-                                            <a href="team-details.html">Dr. Ferno Susai A</a>
-                                        </div>
-                                        <p class="designation">PRINCIPAL</p>
-                                    </div>
-
-                                    <div class="thumb">
-                                        <img src="./assets/img/about/prinicpal.png" alt="thumb">
-
-                                        <div class="social-links">
-                                            <ul>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
-                                                            viewBox="0 0 21 21" fill="none">
-                                                            <g clip-path="url(#clip0_222_192)">
-                                                                <path
-                                                                    d="M10.2426 12.5451C10.2081 12.5796 9.44862 13.3391 9.1034 13.6843C8.91928 13.8684 8.79269 13.8569 8.62008 13.6843C8.15978 13.224 7.68798 12.7522 7.22768 12.2919C7.04356 12.1078 7.05507 11.9812 7.22768 11.8086L8.36692 10.6693C8.3324 10.6348 7.66496 9.96738 7.35426 9.65668C6.89396 9.19638 6.53723 8.67855 6.36462 8.04564C6.19201 7.38971 6.26105 6.76831 6.53723 6.16992C6.72135 5.77867 6.96301 5.44495 7.27371 5.13425L8.40144 4.00652C8.56255 3.84541 8.70064 3.84541 8.86174 4.00652L10.1736 5.31837C10.3347 5.47947 10.3347 5.61756 10.1736 5.77867C9.86289 6.08937 9.55219 6.40007 9.25299 6.72228C8.94229 7.03298 8.93079 7.34368 9.25299 7.66589C9.58671 8.02262 9.93193 8.34483 10.2887 8.70156L11.6235 7.3667C11.8077 7.18258 11.9457 7.18258 12.1299 7.3667L13.5223 8.7591C13.7064 8.94322 13.7064 9.05829 13.5108 9.25392C13.0965 9.66819 12.2104 10.5543 12.1759 10.5888L15.9273 14.3402C16.1229 14.5358 16.1345 14.6624 15.9273 14.8696C15.444 15.3529 14.9722 15.8247 14.4889 16.308C14.3163 16.4806 14.1782 16.4806 14.0056 16.308C12.7973 15.0997 10.2772 12.5796 10.2426 12.5451Z"
-                                                                    fill="white" />
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
-                                                            viewBox="0 0 21 21" fill="none">
-                                                            <path
-                                                                d="M10.609 8.46602L10.0233 0.668197L9.16875 1.52272L9.67725 8.29351L3.53676 7.1547L0.652344 10.0391L9.93789 11.7612L10.5518 19.9386L11.4064 19.084L10.8694 11.9339L17.354 13.1364L20.2385 10.252L10.6088 8.46623Z"
-                                                                fill="#121212" />
-                                                        </svg>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
-                                                            viewBox="0 0 21 21" fill="none">
-                                                            <path
-                                                                d="M1.57141 9.1344C0.844403 9.86141 0.844289 11.0451 1.57134 11.7732C2.29891 12.5008 3.48275 12.5008 4.21029 11.7733C4.93757 11.046 4.93726 9.86247 4.20968 9.13489C3.48218 8.40739 2.29865 8.40716 1.57141 9.1344Z"
-                                                                fill="white" />
-                                                        </svg>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
-                                                            viewBox="0 0 21 21" fill="none">
-                                                            <path
-                                                                d="M13.7458 3.76926C13.1966 3.26645 12.7499 2.98989 12.3147 2.79839C11.8564 2.59148 11.3652 2.48709 10.8643 2.4929C10.3654 2.48905 9.87026 2.59345 9.41777 2.79847C8.98076 2.99178 8.53597 3.26645 7.98678 3.76926C7.4317 4.27403 7.25765 4.43644 5.91361 5.78049C4.56956 7.12453 4.40715 7.29858 3.90238 7.84973Z"
-                                                                fill="white" />
-                                                        </svg>
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Testimonial Section Start -->
-                <div class="testimonial-area-two fix">
+                <!-- Testimonial Section End -->
+                <div class="d-none testimonial-area-two fix">
                     <div class="testimonial-wrapper pb-150">
                         <div class="container">
                             <div class="row gy-5">
@@ -788,8 +831,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Testimonial Section End -->
-
                 <!-- CTA Section Start -->
                 <div class="cta-area-three fix">
                     <div class="cta-wrapper pb-150">
@@ -852,7 +893,7 @@
                     .custom-footer-bg {
                         background-color: #1a1a1a;
                         padding: 60px 0;
-                        color: #a1a1a1;
+                        color: #fff;
                         font-family: 'Inter', sans-serif;
                     }
 
@@ -861,7 +902,7 @@
                         border-left: 2px solid #C9F31D;
                         background: #222;
                         padding: 12px 24px;
-                        color: #a1a1a1;
+                        color: #fff;
                         margin-bottom: 15px;
                         text-decoration: none;
                         font-size: 14px;
@@ -912,7 +953,7 @@
 
                     .custom-contact-text,
                     .custom-contact-text a {
-                        color: #a1a1a1;
+                        color: #fff;
                         font-size: 13px;
                         line-height: 1.6;
                         text-decoration: none;
@@ -942,11 +983,11 @@
                     .custom-footer-link li {
                         margin-bottom: 12px;
                         font-size: 13px;
-                        color: #a1a1a1;
+                        color: #fff;
                     }
 
                     .custom-footer-link a {
-                        color: #a1a1a1;
+                        color: #fff;
                         text-decoration: none;
                         transition: 0.3se;
                     }
@@ -997,7 +1038,7 @@
                     .custom-big-text-2 {
                         font-size: 8vw;
                         font-weight: 400;
-                        color: #666;
+                        color: #fff;
                         font-style: italic;
                         letter-spacing: -2px;
                         padding-left: 20%;
@@ -1043,7 +1084,7 @@
                         text-transform: uppercase;
                         letter-spacing: 2px;
                         text-align: center;
-                        color: #666;
+                        color: #fff;
                     }
                 </style>
 
@@ -1056,9 +1097,7 @@
                                     <img src="assets/img/update new logo.png" alt="logo"
                                         style="height: 40px; width: auto;">
                                 </a>
-                                <p style="font-size: 13px; line-height: 1.8;">2026 Begins Its Journey With
-                                    Road To Jia CURATED, An Immersive Exhibition Featuring Threadapeutic, A
-                                    Pioneering Studio Redefining Textile Re-Crafting.</p>
+                                <p style="font-size: 13px; line-height: 1.8;">ADES — AirDesign Engineered Solutions. Leading MEP consultancy since 2008, delivering intelligent, integrated, and future-ready engineering across India and internationally.</p>
                             </div>
 
                             <!-- Center Social -->
@@ -1079,8 +1118,7 @@
                                                     d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                             </svg>
                                         </div>
-                                        <div class="custom-contact-text">731 Madison Ave, New York,
-                                            NY<br>10065 New York City</div>
+                                        <div class="custom-contact-text">260/8, Anbu Colony,<br>Anna Nagar West, Chennai 600 040</div>
                                     </div>
                                     <div class="custom-contact-item">
                                         <div class="custom-contact-icon">
@@ -1089,8 +1127,7 @@
                                                     d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                                             </svg>
                                         </div>
-                                        <div class="custom-contact-text">+91 0321 5098 003<br>+88 0123 987
-                                            258 002</div>
+                                        <div class="custom-contact-text">+91-97909 51112</div>
                                     </div>
                                     <div class="custom-contact-item">
                                         <div class="custom-contact-icon">
@@ -1100,7 +1137,7 @@
                                             </svg>
                                         </div>
                                         <div class="custom-contact-text">
-                                            Info.Company@Yahoo.Mail.Com<br>Hi@Adas.Com</div>
+                                            ferno@ades.in<br>info@ades.in</div>
                                     </div>
                                 </div>
                             </div>
@@ -1123,23 +1160,24 @@
                                 </ul>
                             </div>
                             <div class="col-lg-3 col-md-6 mb-4 pl-lg-4">
-                                <h4 class="custom-footer-title">Main Services</h4>
+                                <h4 class="custom-footer-title">Our Services</h4>
                                 <ul class="custom-footer-link">
-                                    <li><a href="service-details.html">Branding Guideline</a></li>
-                                    <li><a href="service-details.html">Ux/Ui Design</a></li>
-                                    <li><a href="service-details.html">Digital Marketing</a></li>
-                                    <li><a href="service-details.html">Website Design</a></li>
-                                    <li><a href="service-details.html">Graphic Design</a></li>
-                                    <li><a href="service-details.html">Consulting Services</a></li>
+                                    <li><a href="service-hvac.html">HVAC Engineering</a></li>
+                                    <li><a href="service-electrical.html">Electrical Systems</a></li>
+                                    <li><a href="service-phe.html">Plumbing &amp; PHE</a></li>
+                                    <li><a href="service-fire.html">Fire Protection</a></li>
+                                    <li><a href="service-mep.html">Integrated MEP</a></li>
+                                    <li><a href="service-2.html">All Services</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-3 col-md-6 mb-4">
-                                <h4 class="custom-footer-title">Worldwide Office Locations</h4>
+                                <h4 class="custom-footer-title">Contact</h4>
                                 <ul class="custom-footer-link">
-                                    <li><a href="#">United State Of America</a></li>
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">United Kingdom</a></li>
-                                    <li><a href="#">India</a></li>
+                                    <li><a href="#">Chennai, India</a></li>
+                                    <li><a href="tel:+919790951112">+91-97909 51112</a></li>
+                                    <li><a href="mailto:ferno@ades.in">ferno@ades.in</a></li>
+                                    <li><a href="mailto:info@ades.in">info@ades.in</a></li>
+                                    <li><a href="http://www.ades.in">www.ades.in</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-4 col-md-6 mb-4 pl-lg-5">
@@ -1186,7 +1224,7 @@
                         <div class="custom-divider"></div>
 
                         <div class="custom-copyright">
-                            © ADAS. ALL RIGHT RESERVED
+                            © 2024 ADES — AirDesign Engineered Solutions. All Rights Reserved.
                         </div>
                     </div>
                 </div>

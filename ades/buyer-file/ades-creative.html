@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ADES - AirDesign Engineered Solutions. Integrated MEP Engineering Excellence since 2008. HVAC, Electrical, Plumbing, Fire Protection consultancy.">
+  <title>ADES | Integrated Engineering for Intelligent Infrastructure</title>
+  <link rel="shortcut icon" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ─── RESET & VARIABLES ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #050a14;
+      --bg2:       #080f1e;
+      --surface:   rgba(255,255,255,0.04);
+      --border:    rgba(255,255,255,0.08);
+      --accent:    #00c8ff;
+      --accent2:   #0066ff;
+      --accent3:   #7b2fff;
+      --gold:      #f5c542;
+      --green:     #00e5a0;
+      --red:       #ff4d6a;
+      --text:      #e8edf5;
+      --muted:     #8a97ae;
+      --radius:    16px;
+      --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ─── SCROLLBAR ─────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 3px; }
+
+    /* ─── UTILITIES ─────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-sm { padding: 60px 0; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); padding: 6px 14px;
+      background: rgba(0,200,255,0.08); border: 1px solid rgba(0,200,255,0.2);
+      border-radius: 100px; margin-bottom: 20px;
+    }
+    .tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+
+    .heading-xl {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.03em;
+    }
+    .heading-lg {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+    }
+    .heading-md {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 600; line-height: 1.3;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .gold-text { color: var(--gold); }
+    .green-text { color: var(--green); }
+
+    .glass-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(20px);
+      transition: var(--transition);
+    }
+    .glass-card:hover {
+      border-color: rgba(0,200,255,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,102,255,0.12);
+    }
+
+    .img-placeholder {
+      background: linear-gradient(135deg, rgba(0,200,255,0.06), rgba(0,102,255,0.06));
+      border: 2px dashed rgba(0,200,255,0.25);
+      border-radius: var(--radius);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; color: var(--muted); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .img-placeholder i { font-size: 32px; color: rgba(0,200,255,0.3); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+    @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(0,200,255,0.2)} 50%{box-shadow:0 0 60px rgba(0,200,255,0.5)} }
+    @keyframes spin { to{transform:rotate(360deg)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes slideIn { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes draw { from{stroke-dashoffset:1000} to{stroke-dashoffset:0} }
+    @keyframes bgMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes orb { 0%{transform:translate(0,0) scale(1)} 33%{transform:translate(40px,-30px) scale(1.1)} 66%{transform:translate(-20px,20px) scale(0.9)} 100%{transform:translate(0,0) scale(1)} }
+
+    .animate-fadeup { animation: fadeUp 0.8s ease forwards; }
+
+    /* ─── NAVBAR ─────────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      transition: all 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(5,10,20,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 8px 14px; font-size: 13px; font-weight: 500;
+      color: var(--muted); text-decoration: none; border-radius: 8px;
+      transition: all 0.25s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .nav-cta {
+      padding: 9px 20px !important; color: #fff !important;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3)) !important;
+      border-radius: 10px !important;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: rgba(5,10,20,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); padding: 20px 24px; z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 12px 0; color: var(--text); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--border); }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0,102,255,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 50% at 80% 70%, rgba(123,47,255,0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse 40% 40% at 10% 80%, rgba(0,200,255,0.06) 0%, transparent 50%);
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); animation: orb 12s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .orb-1 { width: 400px; height: 400px; background: rgba(0,102,255,0.15); top: -100px; right: -100px; animation-delay: 0s; }
+    .orb-2 { width: 300px; height: 300px; background: rgba(123,47,255,0.12); bottom: -50px; left: 10%; animation-delay: -4s; }
+    .orb-3 { width: 250px; height: 250px; background: rgba(0,200,255,0.1); top: 40%; left: 60%; animation-delay: -8s; }
+
+    .grid-overlay {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 750px; }
+    .hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero-title { margin-bottom: 24px; }
+    .hero-subtitle { font-size: 1.15rem; color: var(--muted); margin-bottom: 40px; max-width: 560px; line-height: 1.8; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 60px; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+      border-radius: 12px; transition: var(--transition);
+      box-shadow: 0 8px 30px rgba(0,102,255,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,102,255,0.4); color: #fff; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border: 1px solid var(--border);
+      color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px;
+      border-radius: 12px; transition: var(--transition);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,200,255,0.05); }
+
+    /* Organ/MEPF mapping */
+    .body-mepf-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;
+      margin-top: 20px;
+    }
+    .bm-card {
+      padding: 14px 16px; border-radius: 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .bm-icon { font-size: 18px; width: 36px; text-align: center; flex-shrink: 0; }
+    .bm-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .bm-value { font-size: 13px; font-weight: 700; color: var(--text); }
+
+    /* ─── ABOUT (WHO WE ARE) ─────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img-main { width: 100%; aspect-ratio: 4/5; border-radius: 20px; overflow: hidden; }
+    .about-badge {
+      position: absolute; bottom: 30px; right: -20px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      border-radius: 16px; padding: 20px 24px; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,102,255,0.3);
+    }
+    .about-badge-num { font-size: 2.5rem; font-weight: 800; color: #fff; line-height: 1; }
+    .about-badge-lbl { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.1em; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .about-stat { text-align: center; }
+    .about-stat-num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .about-stat-lbl { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--muted); }
+    .feature-list li i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
+
+    /* Principal card */
+    .principal-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; margin-top: 30px;
+    }
+    .principal-img { width: 80px; height: 80px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
+    .principal-img .img-placeholder { width: 100%; height: 100%; border-radius: 12px; }
+    .principal-info h4 { font-size: 16px; font-weight: 700; color: #fff; }
+    .principal-title { font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .principal-tag { display: inline-block; padding: 3px 10px; border-radius: 6px; background: rgba(245,197,66,0.1); border: 1px solid rgba(245,197,66,0.2); color: var(--gold); font-size: 11px; font-weight: 600; margin-bottom: 6px; }
+
+    /* ─── ETHOS ──────────────────────────────────────── */
+    .ethos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .ethos-card { padding: 36px 28px; position: relative; overflow: hidden; }
+    .ethos-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+    }
+    .ethos-icon { font-size: 28px; margin-bottom: 20px; }
+    .ethos-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .ethos-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .ethos-list li { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .ethos-list li::before { content: '→'; color: var(--accent); font-weight: 700; }
+
+    /* values pills */
+    .values-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill {
+      padding: 7px 16px; border-radius: 100px; font-size: 12px; font-weight: 600;
+      border: 1px solid var(--border); color: var(--text);
+      background: rgba(255,255,255,0.04);
+      transition: 0.3s;
+    }
+    .pill:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,200,255,0.06); }
+
+    /* ─── PROCESS ────────────────────────────────────── */
+    .process-header { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+    .process-timeline { position: relative; }
+    .process-timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent2), var(--accent3), transparent);
+      transform: translateX(-50%);
+    }
+    .process-steps { display: flex; flex-direction: column; gap: 32px; }
+    .process-step { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 24px; align-items: center; }
+    .process-step:nth-child(even) .step-content { grid-column: 3; grid-row: 1; }
+    .process-step:nth-child(even) .step-empty { grid-column: 1; grid-row: 1; }
+    .step-number {
+      grid-column: 2; width: 50px; height: 50px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; color: #fff;
+      box-shadow: 0 0 0 4px rgba(0,102,255,0.15); z-index: 1; position: relative;
+      margin: 0 auto;
+    }
+    .step-content { padding: 22px; }
+    .step-content h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .step-content p { font-size: 13px; color: var(--muted); }
+
+    /* Mobile process */
+    @media (max-width: 768px) {
+      .process-timeline::before { left: 28px; }
+      .process-step { grid-template-columns: 60px 1fr; gap: 16px; }
+      .step-number { grid-column: 1; margin: 0; }
+      .step-content { grid-column: 2; grid-row: 1; }
+      .step-empty { display: none; }
+      .process-step:nth-child(even) .step-content { grid-column: 2; grid-row: 1; }
+      .process-step:nth-child(even) .step-empty { display: none; }
+      .process-step:nth-child(even) .step-number { grid-column: 1; grid-row: 1; }
+    }
+
+    /* ─── SERVICES ───────────────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .service-card { padding: 30px; position: relative; overflow: hidden; cursor: default; }
+    .service-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(0,102,255,0.05), rgba(123,47,255,0.05));
+      opacity: 0; transition: 0.4s;
+    }
+    .service-card:hover::after { opacity: 1; }
+    .service-num { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .service-icon { font-size: 32px; margin-bottom: 16px; }
+    .service-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .service-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .service-items li { font-size: 12px; color: var(--muted); padding-left: 16px; position: relative; }
+    .service-items li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
+
+    /* ─── STATS ──────────────────────────────────────── */
+    #stats { position: relative; overflow: hidden; }
+    .stats-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,102,255,0.08), rgba(123,47,255,0.08));
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; z-index: 1; }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+    }
+    .stat-unit { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+    .stat-label { font-size: 14px; color: var(--muted); font-weight: 500; }
+    .stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* ─── AWARDS ─────────────────────────────────────── */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .award-card { padding: 30px; display: flex; gap: 20px; align-items: flex-start; }
+    .award-icon-wrap {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(245,197,66,0.15), rgba(245,197,66,0.05));
+      border: 1px solid rgba(245,197,66,0.25); display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .award-year { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .award-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .award-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── INNOVATION ─────────────────────────────────── */
+    .innovation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .inno-card { padding: 36px; position: relative; overflow: hidden; }
+    .inno-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--accent));
+    }
+    .inno-project { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .inno-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .inno-desc { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.7; }
+    .inno-img { width: 100%; aspect-ratio: 16/9; margin-bottom: 20px; }
+    .metrics-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+    .metric-box {
+      flex: 1; min-width: 100px; padding: 16px; border-radius: 12px;
+      background: rgba(0,229,160,0.05); border: 1px solid rgba(0,229,160,0.15);
+      text-align: center;
+    }
+    .metric-val { font-size: 1.6rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .metric-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* chart bar */
+    .chart-compare { margin-top: 20px; }
+    .chart-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .chart-label { font-size: 12px; color: var(--muted); width: 120px; flex-shrink: 0; }
+    .chart-bar-wrap { flex: 1; background: rgba(255,255,255,0.05); border-radius: 6px; height: 28px; overflow: hidden; position: relative; }
+    .chart-bar {
+      height: 100%; border-radius: 6px; display: flex; align-items: center; padding: 0 10px;
+      font-size: 12px; font-weight: 700; color: #fff; position: relative;
+      transition: width 1.5s ease;
+    }
+    .chart-bar.conventional { background: rgba(255,77,106,0.4); }
+    .chart-bar.ades { background: linear-gradient(90deg, var(--green), var(--accent)); }
+
+    /* ─── BUILDING TYPOLOGIES ────────────────────────── */
+    .typologies-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; gap: 16px; }
+    .typo-card { border-radius: var(--radius); overflow: hidden; position: relative; }
+    .typo-card.wide { grid-column: span 2; }
+    .typo-img { width: 100%; aspect-ratio: 4/3; }
+    .typo-img.tall { aspect-ratio: 3/4; }
+    .typo-label {
+      position: absolute; bottom: 12px; left: 12px; right: 12px;
+      padding: 8px 14px; background: rgba(5,10,20,0.85); backdrop-filter: blur(8px);
+      border-radius: 8px; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: #fff;
+    }
+
+    /* ─── WHY US ─────────────────────────────────────── */
+    .whyus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .whyus-card { padding: 32px; }
+    .whyus-stat-row { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+    .whyus-stat { flex: 1; min-width: 100px; }
+    .whyus-stat-num { font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .whyus-stat-label { font-size: 12px; color: var(--muted); }
+    .cfd-subtitle { font-size: 12px; color: var(--green); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .saving-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.25);
+      border-radius: 10px; padding: 10px 16px; margin-top: 12px;
+    }
+    .saving-badge span { font-size: 1.4rem; font-weight: 800; color: var(--green); }
+    .saving-badge small { font-size: 12px; color: var(--muted); }
+
+    /* ─── PHILOSOPHY ─────────────────────────────────── */
+    .philosophy-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .philosophy-img-wrap { position: relative; }
+    .philosophy-img { width: 100%; aspect-ratio: 3/4; border-radius: 20px; overflow: hidden; }
+    .philosophy-quote {
+      position: absolute; bottom: -20px; right: -20px;
+      max-width: 320px; padding: 28px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,102,255,0.95), rgba(123,47,255,0.95));
+      box-shadow: 0 30px 80px rgba(0,102,255,0.3);
+    }
+    .quote-text { font-size: 14px; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.7; }
+    .quote-text::before { content: '"'; font-size: 40px; color: rgba(255,255,255,0.3); line-height: 0; vertical-align: -0.3em; margin-right: 4px; }
+    .philosophy-points { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+    .philo-point { display: flex; gap: 16px; align-items: flex-start; }
+    .philo-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(0,102,255,0.2), rgba(123,47,255,0.2));
+      border: 1px solid rgba(0,102,255,0.3); display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .philo-content h5 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .philo-content p { font-size: 13px; color: var(--muted); }
+
+    /* ─── CONTACT ────────────────────────────────────── */
+    #contact {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg) 100%);
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-subtitle { color: var(--muted); margin-bottom: 40px; }
+    .contact-item { display: flex; gap: 16px; margin-bottom: 28px; }
+    .contact-item-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(0,200,255,0.08); border: 1px solid rgba(0,200,255,0.15);
+      display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--accent);
+    }
+    .contact-item-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+    .contact-item-value { color: #fff; font-weight: 500; text-decoration: none; transition: 0.2s; }
+    .contact-item-value:hover { color: var(--accent); }
+    .contact-form-card { padding: 36px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 13px 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif;
+      transition: 0.25s; outline: none;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); background: rgba(0,200,255,0.04); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(138,151,174,0.6); }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 40px 0 24px;
+    }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo img { height: 32px; width: auto; }
+    .footer-tagline { font-size: 13px; color: var(--muted); }
+    .footer-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 12px; color: rgba(138,151,174,0.5); margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
+
+    /* ─── SECTION DIVIDERS ───────────────────────────── */
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-badge { right: 20px; bottom: 20px; }
+      .philosophy-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .philosophy-quote { position: relative; bottom: auto; right: auto; margin-top: 20px; max-width: 100%; }
+      .typologies-grid { grid-template-columns: repeat(2, 1fr); }
+      .typo-card.wide { grid-column: span 1; }
+      .innovation-grid { grid-template-columns: 1fr; }
+      .whyus-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 70px 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .ethos-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .typologies-grid { grid-template-columns: 1fr 1fr; }
+      .body-mepf-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .typologies-grid { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; }
+      .btn-primary, .btn-outline { text-align: center; justify-content: center; }
+      .about-stats { grid-template-columns: 1fr; }
+    }
+
+    /* Back to top */
+    #back-top {
+      position: fixed; bottom: 30px; right: 30px; z-index: 100;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      color: #fff; display: none; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 16px; transition: var(--transition);
+      box-shadow: 0 8px 24px rgba(0,102,255,0.3);
+    }
+    #back-top.show { display: flex; }
+    #back-top:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,102,255,0.4); }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════ NAVBAR ══════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img src="assets/img/update new logo.png" alt="ADES Logo" onerror="this.style.display='none'">
+        <span class="nav-logo-text">ADES</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">Who We Are</a></li>
+        <li><a href="#ethos">Our Ethos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#innovation">Innovation</a></li>
+        <li><a href="#whyus">Why Us</a></li>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMobile()">Who We Are</a>
+  <a href="#ethos" onclick="closeMobile()">Our Ethos</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#innovation" onclick="closeMobile()">Innovation</a>
+  <a href="#whyus" onclick="closeMobile()">Why Us</a>
+  <a href="#philosophy" onclick="closeMobile()">Philosophy</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ══════════════════════ HERO ══════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Since 2008 · MEP Consultancy Excellence</div>
+      <h1 class="heading-xl hero-title">
+        <span class="gradient-text">MEPF Systems</span><br>
+        Are the Lifelines of Buildings
+      </h1>
+      <p class="hero-subtitle">
+        Just as organ systems sustain the human body, MEPF systems sustain every building.
+        <strong style="color:#fff;">ADES delivers Integrated Engineering for Intelligent Infrastructure</strong>
+        — turning empty rooms into comfortable, intelligent spaces.
+      </p>
+      <div class="hero-cta">
+        <a href="#services" class="btn-primary">
+          <i class="fas fa-layer-group"></i> Explore Our Services
+        </a>
+        <a href="#contact" class="btn-outline">
+          <i class="fas fa-phone-alt"></i> Get in Touch
+        </a>
+      </div>
+
+      <!-- Body ↔ MEPF mapping -->
+      <div class="body-mepf-grid">
+        <div class="bm-card">
+          <div class="bm-icon" style="color:#00c8ff">🌬️</div>
+          <div><div class="bm-label">Respiratory System</div><div class="bm-value">HVAC</div></div>
+        </div>
+        <div class="bm-card">
+          <div class="bm-icon" style="color:#ff4d6a">💧</div>
+          <div><div class="bm-label">Circulatory System</div><div class="bm-value">Plumbing</div></div>
+        </div>
+        <div class="bm-card">
+          <div class="bm-icon" style="color:#f5c542">⚡</div>
+          <div><div class="bm-label">Nervous System</div><div class="bm-value">Electrical</div></div>
+        </div>
+        <div class="bm-card">
+          <div class="bm-icon" style="color:#7b2fff">📡</div>
+          <div><div class="bm-label">Endocrine System</div><div class="bm-value">Low Voltage / BMS</div></div>
+        </div>
+        <div class="bm-card">
+          <div class="bm-icon" style="color:#00e5a0">👁️</div>
+          <div><div class="bm-label">Sensory System</div><div class="bm-value">CCTV / Access Control</div></div>
+        </div>
+        <div class="bm-card">
+          <div class="bm-icon" style="color:#ff7700">🛡️</div>
+          <div><div class="bm-label">Immune / Defence</div><div class="bm-value">Fire Alarm &amp; Suppression</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ WHO WE ARE ════════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Image side -->
+      <div class="about-img-wrap reveal">
+        <div class="about-img-main img-placeholder" style="min-height:480px;">
+          <i class="fas fa-image"></i>
+          <span>Team / Office Photo</span>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">2008</div>
+          <div class="about-badge-lbl">Year Founded</div>
+        </div>
+      </div>
+      <!-- Content side -->
+      <div class="reveal reveal-delay-2">
+        <div class="tag"><span>Who We Are</span></div>
+        <h2 class="heading-lg" style="margin-bottom:16px;">
+          An Innovative MEP Consultancy <span class="gradient-text">Passionately Dedicated</span> to Results
+        </h2>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:20px;">
+          ADES offers comprehensive MEP Building Services across all sectors of the property and construction industries —
+          with a continuously expanding team and a globally trained, process-driven approach.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Founded in 2008 with dedicated professionals delivering outstanding design and consulting services</li>
+          <li><i class="fas fa-check-circle"></i> Over <strong>39+ years of collective industry experience</strong> across the team</li>
+          <li><i class="fas fa-check-circle"></i> Global perspective with experts from various locations</li>
+          <li><i class="fas fa-check-circle"></i> Process-driven and service-oriented design firm</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Principal involvement in every project</strong> — no hand-offs, no exceptions</li>
+        </ul>
+
+        <!-- Principal card -->
+        <div class="glass-card principal-card">
+          <div class="principal-img">
+            <div class="img-placeholder" style="height:80px;width:80px;border-radius:12px;">
+              <i class="fas fa-user" style="font-size:20px;"></i>
+            </div>
+          </div>
+          <div class="principal-info">
+            <div class="principal-tag">🏆 Doctorate in Human Rights (Honoris Causa)</div>
+            <h4>Principal Consultant</h4>
+            <div class="principal-title">Lead Designer · Trainer · ISHRAE President 2022–23 (Chennai)</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6;">
+              39 years total experience · 18 years as Principal Consultant · Master's in Sociology ·
+              Active Member, WHRPC · Proven expertise in visionary project leadership, innovation, and client relations.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-stats" style="margin-top:32px;">
+          <div class="about-stat">
+            <div class="about-stat-num counter" data-target="350">0</div>
+            <div class="about-stat-lbl">Projects +</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num counter" data-target="39">0</div>
+            <div class="about-stat-lbl">Years Experience</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num counter" data-target="20">0</div>
+            <div class="about-stat-lbl">International Projects+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ OUR ETHOS ═════════════════════ -->
+<section class="section" id="ethos">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;" class="reveal">
+      <div class="tag">Our Ethos</div>
+      <h2 class="heading-lg">The Values That Drive <span class="gradient-text">Every Decision</span></h2>
+      <p style="color:var(--muted);margin-top:14px;">
+        Committed to work-life balance while delivering excellence that empowers our clients' success.
+      </p>
+    </div>
+    <div class="ethos-grid">
+      <div class="glass-card ethos-card reveal">
+        <div class="ethos-icon">🎯</div>
+        <h3 class="ethos-title">Our Mission</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">
+          Delivering high-quality, cost-effective projects by employing and supporting motivated, flexible,
+          and focused individuals. We value relationships and remain fair and true in all our dealings.
+        </p>
+      </div>
+      <div class="glass-card ethos-card reveal reveal-delay-2">
+        <div class="ethos-icon">⭐</div>
+        <h3 class="ethos-title">Our Values</h3>
+        <div class="values-pills">
+          <span class="pill">Work-Life Balance</span>
+          <span class="pill">Passion</span>
+          <span class="pill">Ownership</span>
+          <span class="pill">Respect &amp; Integrity</span>
+          <span class="pill">Excellence</span>
+        </div>
+      </div>
+      <div class="glass-card ethos-card reveal reveal-delay-3">
+        <div class="ethos-icon">🔭</div>
+        <h3 class="ethos-title">Our Vision</h3>
+        <ul class="ethos-list">
+          <li>Optimised design solutions</li>
+          <li>Energy efficient systems</li>
+          <li>Industry standard high quality</li>
+          <li>Business ethics in every engagement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="glass-card" style="padding:36px;margin-top:32px;text-align:center;" class="reveal">
+      <p style="font-size:1.2rem;font-style:italic;color:var(--muted);max-width:700px;margin:0 auto;">
+        "We Excel in Optimizing Capacity in the Most Effective and Efficient Ways
+        <strong style="color:#fff;">Without Compromising the Design Intent.</strong>"
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ PROJECT PROCESS FLOW ══════════ -->
+<section class="section" id="process" style="background:var(--bg2);">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="tag">How We Do It</div>
+      <h2 class="heading-lg">Project <span class="gradient-text">Process Flow</span></h2>
+      <p style="color:var(--muted);margin-top:14px;">
+        A disciplined 10-step methodology that ensures design excellence from brief to commissioning.
+      </p>
+    </div>
+    <div class="process-timeline">
+      <div class="process-steps">
+
+        <!-- Step 1 -->
+        <div class="process-step reveal">
+          <div class="glass-card step-content">
+            <h4>Building Survey &amp; Feasibility Study</h4>
+            <p>Comprehensive site assessment and evaluation of project requirements to establish solid foundations.</p>
+          </div>
+          <div class="step-number">01</div>
+          <div class="step-empty"></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step reveal">
+          <div class="step-empty"></div>
+          <div class="step-number">02</div>
+          <div class="glass-card step-content">
+            <h4>Concept Design Submittal</h4>
+            <p>Concept design developed based on complete input from the client, presented for review and approval.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step reveal">
+          <div class="glass-card step-content">
+            <h4>Budgetary Proposal</h4>
+            <p>Cost estimation submitted based on approved concept design — transparent, detailed, and realistic.</p>
+          </div>
+          <div class="step-number">03</div>
+          <div class="step-empty"></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step reveal">
+          <div class="step-empty"></div>
+          <div class="step-number">04</div>
+          <div class="glass-card step-content">
+            <h4>Detail Design Development</h4>
+            <p>Rigorous engineering calculations and coordinated design development across all MEPF disciplines.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="process-step reveal">
+          <div class="glass-card step-content">
+            <h4>Preparation of Bill of Quantities</h4>
+            <p>Precise BOQ documentation enabling accurate pricing and effective contractor procurement.</p>
+          </div>
+          <div class="step-number">05</div>
+          <div class="step-empty"></div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="process-step reveal">
+          <div class="step-empty"></div>
+          <div class="step-number">06</div>
+          <div class="glass-card step-content">
+            <h4>Preparation of Material Specifications</h4>
+            <p>Technical specifications for all materials ensuring quality, performance, and compliance with standards.</p>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="process-step reveal">
+          <div class="glass-card step-content">
+            <h4>Preparation of Tender Documents</h4>
+            <p>Complete tender package preparation and floating of tenders to qualified contractors.</p>
+          </div>
+          <div class="step-number">07</div>
+          <div class="step-empty"></div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="process-step reveal">
+          <div class="step-empty"></div>
+          <div class="step-number">08</div>
+          <div class="glass-card step-content">
+            <h4>Vendor Bid Evaluation</h4>
+            <p>Rigorous evaluation of bids to select the right contractor — balancing quality, cost, and capability.</p>
+          </div>
+        </div>
+
+        <!-- Step 9 -->
+        <div class="process-step reveal">
+          <div class="glass-card step-content">
+            <h4>Construction Documents</h4>
+            <p>Preparation and review of detailed construction drawings and documentation by the contractor.</p>
+          </div>
+          <div class="step-number">09</div>
+          <div class="step-empty"></div>
+        </div>
+
+        <!-- Step 10 -->
+        <div class="process-step reveal">
+          <div class="step-empty"></div>
+          <div class="step-number">10</div>
+          <div class="glass-card step-content">
+            <h4>Pre &amp; Post Commissioning Analysis</h4>
+            <p>Execution analysis and performance verification of installed systems — closing the loop on design intent.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ WHAT WE DO ════════════════════ -->
+<section class="section" id="services">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;" class="reveal">
+      <div class="tag">What We Do</div>
+      <h2 class="heading-lg">10 Areas of <span class="gradient-text">Engineering Excellence</span></h2>
+      <p style="color:var(--muted);margin-top:14px;">
+        Comprehensive MEPF consultancy services engineered for performance, sustainability, and intelligence.
+      </p>
+    </div>
+    <div class="services-grid">
+
+      <div class="glass-card service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🌿</div>
+        <h3 class="service-title">Smart &amp; Energy-Efficient Building Design</h3>
+        <ul class="service-items">
+          <li>High-performance HVAC optimization</li>
+          <li>Demand-based ventilation control</li>
+          <li>Energy modeling &amp; simulation</li>
+          <li>Net-zero / green building strategies</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-icon">🏗️</div>
+        <h3 class="service-title">BIM-Based Integrated Design</h3>
+        <ul class="service-items">
+          <li>3D coordinated MEPF modeling</li>
+          <li>Clash detection &amp; resolution</li>
+          <li>Digital twins &amp; construction visualization</li>
+          <li>Multi-disciplinary BIM integration</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <div class="service-icon">♻️</div>
+        <h3 class="service-title">Sustainable Engineering Solutions</h3>
+        <ul class="service-items">
+          <li>Water conservation &amp; rainwater harvesting</li>
+          <li>Solar power integration</li>
+          <li>Carbon footprint reduction</li>
+          <li>IGBC / LEED / GRIHA compliant designs</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">❄️</div>
+        <h3 class="service-title">Intelligent HVAC Engineering</h3>
+        <ul class="service-items">
+          <li>AI-based load optimization</li>
+          <li>Chilled water system optimization</li>
+          <li>CFD analysis for airflow studies</li>
+          <li>Thermal comfort engineering</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal reveal-delay-1">
+        <div class="service-num">05</div>
+        <div class="service-icon">🔥</div>
+        <h3 class="service-title">Advanced Fire &amp; Life Safety Engineering</h3>
+        <ul class="service-items">
+          <li>Performance-based fire design</li>
+          <li>Smoke management systems</li>
+          <li>Fire evacuation simulations</li>
+          <li>Code-compliant life safety strategies</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal reveal-delay-2">
+        <div class="service-num">06</div>
+        <div class="service-icon">⚡</div>
+        <h3 class="service-title">Electrical &amp; Smart Infrastructure</h3>
+        <ul class="service-items">
+          <li>Smart power distribution</li>
+          <li>Energy monitoring systems</li>
+          <li>EV charging infrastructure</li>
+          <li>Intelligent lighting controls</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal">
+        <div class="service-num">07</div>
+        <div class="service-icon">🤖</div>
+        <h3 class="service-title">Digital Engineering &amp; Automation</h3>
+        <ul class="service-items">
+          <li>IoT-enabled building systems</li>
+          <li>Smart building integration</li>
+          <li>Building Management Systems (BMS)</li>
+          <li>Predictive maintenance strategies</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal reveal-delay-1">
+        <div class="service-num">08</div>
+        <div class="service-icon">📊</div>
+        <h3 class="service-title">Project Optimization &amp; Value Engineering</h3>
+        <ul class="service-items">
+          <li>Lifecycle cost optimization</li>
+          <li>Design audits &amp; peer reviews</li>
+          <li>CAPEX &amp; OPEX reduction</li>
+          <li>Technical risk mitigation</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal reveal-delay-2">
+        <div class="service-num">09</div>
+        <div class="service-icon">🏭</div>
+        <h3 class="service-title">Industrial &amp; Mission-Critical Solutions</h3>
+        <ul class="service-items">
+          <li>Clean room engineering</li>
+          <li>Data center MEPF systems</li>
+          <li>Pharma &amp; healthcare engineering</li>
+          <li>High-reliability utility infrastructure</li>
+        </ul>
+      </div>
+
+      <div class="glass-card service-card reveal">
+        <div class="service-num">10</div>
+        <div class="service-icon">🌐</div>
+        <h3 class="service-title">Resilient &amp; Future-Ready Design</h3>
+        <ul class="service-items">
+          <li>Climate-responsive engineering</li>
+          <li>Disaster-resilient systems</li>
+          <li>Redundancy &amp; reliability planning</li>
+          <li>Smart city infrastructure integration</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ STATS COUNTER ═════════════════ -->
+<section class="section-sm" id="stats">
+  <div class="stats-bg"></div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="counter" data-target="350">0</span><span class="stat-unit">+</span></div>
+        <div class="stat-label">Projects Delivered</div>
+        <div class="stat-sub">Across India &amp; internationally</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="counter" data-target="39">0</span><span class="stat-unit">+</span></div>
+        <div class="stat-label">Years of Experience</div>
+        <div class="stat-sub">Collective team expertise</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num"><span class="counter" data-target="20">0</span><span class="stat-unit">+</span></div>
+        <div class="stat-label">International Projects</div>
+        <div class="stat-sub">Global reach, local insight</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ HONOURS & AWARDS ══════════════ -->
+<section class="section" id="awards" style="background:var(--bg2);">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;" class="reveal">
+      <div class="tag">Recognition</div>
+      <h2 class="heading-lg">Honours &amp; <span class="gradient-text">Awards</span></h2>
+    </div>
+    <div class="awards-grid">
+      <div class="glass-card award-card reveal">
+        <div class="award-icon-wrap">🏆</div>
+        <div>
+          <div class="award-year">2023 · Tamil Nadu Tourism</div>
+          <div class="award-name">Best Theme Restaurant Award</div>
+          <div class="award-desc">Recognized for outstanding MEP design contribution to Tamil Nadu's premier hospitality experience.</div>
+        </div>
+      </div>
+      <div class="glass-card award-card reveal reveal-delay-2">
+        <div class="award-icon-wrap">🥇</div>
+        <div>
+          <div class="award-year">2016 · Design &amp; Architecture</div>
+          <div class="award-name">Global Research Centre Award — Apollo Tyres, Chennai</div>
+          <div class="award-desc">LEED Gold Certification achieved for the iconic Oragadam SIPCOT building with 100% glazed envelope HVAC challenges.</div>
+        </div>
+      </div>
+      <div class="glass-card award-card reveal reveal-delay-3">
+        <div class="award-icon-wrap">🌱</div>
+        <div>
+          <div class="award-year">Sustainability</div>
+          <div class="award-name">Awards in Sustainable Engineering</div>
+          <div class="award-desc">Efficient MEP system design achieving LEED Gold certification through innovative engineering and energy optimization.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ INNOVATION AT THE CORE ════════ -->
+<section class="section" id="innovation">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;" class="reveal">
+      <div class="tag">Innovation at the Core</div>
+      <h2 class="heading-lg">Real Projects. <span class="gradient-text">Real Savings.</span></h2>
+      <p style="color:var(--muted);margin-top:14px;">
+        Every project is an opportunity to engineer smarter. Here's how ADES turns ingenuity into measurable value.
+      </p>
+    </div>
+    <div class="innovation-grid">
+
+      <!-- Case 1: Industry Cost Saving -->
+      <div class="glass-card inno-card reveal">
+        <div class="inno-project">Industry · Cooling Optimization</div>
+        <h3 class="inno-title">40.5% Cost Reduction on Cooling</h3>
+        <div class="inno-img img-placeholder">
+          <i class="fas fa-image"></i>
+          <span>Project Image — Industry</span>
+        </div>
+        <p class="inno-desc">
+          Detailed engineering calculations led to optimizing 4,000 TR cooling capacity to just 2,400 TR.
+          Electrical transformer infrastructure was simultaneously reduced by 2,000 kVA.
+        </p>
+        <div class="metrics-row">
+          <div class="metric-box">
+            <div class="metric-val">40.5%</div>
+            <div class="metric-lbl">Cost Reduction</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">₹2042L</div>
+            <div class="metric-lbl">Cost Saved</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">−1600TR</div>
+            <div class="metric-lbl">Cooling Optimized</div>
+          </div>
+        </div>
+        <div class="chart-compare" style="margin-top:24px;">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Cooling Cost (Lakhs INR)</div>
+          <div class="chart-row">
+            <span class="chart-label">Conventional</span>
+            <div class="chart-bar-wrap"><div class="chart-bar conventional" style="width:100%">₹5,043L</div></div>
+          </div>
+          <div class="chart-row">
+            <span class="chart-label">ADES Design</span>
+            <div class="chart-bar-wrap"><div class="chart-bar ades" style="width:59.5%">₹3,001L</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: Hotel GRT Terrace -->
+      <div class="glass-card inno-card reveal reveal-delay-2">
+        <div class="inno-project">Hotel GRT Chennai · Terrace Revitalization</div>
+        <h3 class="inno-title">27,000 sq.ft. Unused Terrace Transformed</h3>
+        <div class="inno-img img-placeholder">
+          <i class="fas fa-image"></i>
+          <span>Hotel GRT — Terrace Project</span>
+        </div>
+        <p class="inno-desc">
+          Despite height restrictions from the Airport Authority, ADES cleared all utility services and removed
+          25-year-old chimneys — transforming an unused terrace into a revenue-generating outdoor lawn for events.
+        </p>
+        <div class="metrics-row">
+          <div class="metric-box">
+            <div class="metric-val">27K</div>
+            <div class="metric-lbl">sq.ft. Revitalized</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">25yr</div>
+            <div class="metric-lbl">Old Chimneys Removed</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:16px;border-radius:12px;background:rgba(0,229,160,0.05);border:1px solid rgba(0,229,160,0.15);">
+          <div style="font-size:13px;color:var(--green);font-weight:700;margin-bottom:4px;">✓ Revenue-Generating Guest Space Created</div>
+          <div style="font-size:12px;color:var(--muted);">Significantly increased client value and guest experience at airport-adjacent property.</div>
+        </div>
+      </div>
+
+      <!-- Case 3: Hotel GRT Basement SPA -->
+      <div class="glass-card inno-card reveal">
+        <div class="inno-project">Hotel GRT Chennai · Basement Transformation</div>
+        <h3 class="inno-title">3,300 sq.ft. Basement Reclaimed for Spa</h3>
+        <div class="inno-img img-placeholder">
+          <i class="fas fa-image"></i>
+          <span>Hotel GRT — Basement / Spa</span>
+        </div>
+        <p class="inno-desc">
+          A previously wasted basement area — occupied by utility sumps — has been transformed into a functional
+          guest spa space, now generating revenue and enhancing the hotel's service offering.
+        </p>
+        <div class="metrics-row">
+          <div class="metric-box">
+            <div class="metric-val">3,300</div>
+            <div class="metric-lbl">sq.ft. Reclaimed</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">SPA</div>
+            <div class="metric-lbl">Revenue Space Created</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 4: Apollo Tyres LEED Gold -->
+      <div class="glass-card inno-card reveal reveal-delay-2">
+        <div class="inno-project">Apollo Tyres R&amp;D Centre · Oragadam</div>
+        <h3 class="inno-title">LEED Gold — 100% Glazed Envelope Challenge</h3>
+        <div class="inno-img img-placeholder">
+          <i class="fas fa-image"></i>
+          <span>Apollo Tyres R&amp;D Centre</span>
+        </div>
+        <p class="inno-desc">
+          Iconic building in Oragadam SIPCOT industrial area. ADES engineered HVAC/MEP solutions for a fully glazed
+          envelope — one of the most thermally challenging building typologies — achieving LEED Gold certification.
+        </p>
+        <div class="metrics-row">
+          <div class="metric-box" style="background:rgba(245,197,66,0.05);border-color:rgba(245,197,66,0.2);">
+            <div class="metric-val" style="color:var(--gold);">LEED</div>
+            <div class="metric-lbl">Gold Certified</div>
+          </div>
+          <div class="metric-box" style="background:rgba(245,197,66,0.05);border-color:rgba(245,197,66,0.2);">
+            <div class="metric-val" style="color:var(--gold);">100%</div>
+            <div class="metric-lbl">Glazed Envelope</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ BUILDING TYPOLOGIES ═══════════ -->
+<section class="section" id="typologies" style="background:var(--bg2);">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;" class="reveal">
+      <div class="tag">Building Typologies</div>
+      <h2 class="heading-lg">Engineered Across <span class="gradient-text">Every Typology</span></h2>
+      <p style="color:var(--muted);margin-top:14px;">
+        From hospitals to data centres, luxury hospitality to industrial facilities — ADES has delivered across them all.
+      </p>
+    </div>
+    <div class="typologies-grid reveal">
+      <div class="typo-card wide">
+        <div class="img-placeholder typo-img" style="aspect-ratio:16/7;min-height:200px;">
+          <i class="fas fa-image"></i>
+          <span>Commercial / Office</span>
+        </div>
+        <div class="typo-label">Commercial &amp; Office</div>
+      </div>
+      <div class="typo-card">
+        <div class="img-placeholder typo-img" style="min-height:200px;">
+          <i class="fas fa-image"></i>
+          <span>Hospitality</span>
+        </div>
+        <div class="typo-label">Hospitality</div>
+      </div>
+      <div class="typo-card">
+        <div class="img-placeholder typo-img" style="min-height:200px;">
+          <i class="fas fa-image"></i>
+          <span>Healthcare</span>
+        </div>
+        <div class="typo-label">Healthcare</div>
+      </div>
+      <div class="typo-card">
+        <div class="img-placeholder typo-img" style="min-height:200px;">
+          <i class="fas fa-image"></i>
+          <span>Industrial / R&amp;D</span>
+        </div>
+        <div class="typo-label">Industrial &amp; R&amp;D</div>
+      </div>
+      <div class="typo-card">
+        <div class="img-placeholder typo-img" style="min-height:200px;">
+          <i class="fas fa-image"></i>
+          <span>Residential</span>
+        </div>
+        <div class="typo-label">Residential</div>
+      </div>
+      <div class="typo-card wide">
+        <div class="img-placeholder typo-img" style="aspect-ratio:16/7;min-height:200px;">
+          <i class="fas fa-image"></i>
+          <span>Retail / Mixed-Use</span>
+        </div>
+        <div class="typo-label">Retail &amp; Mixed-Use</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ WHY US ════════════════════════ -->
+<section class="section" id="whyus">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;" class="reveal">
+      <div class="tag">Why ADES</div>
+      <h2 class="heading-lg">The Difference <span class="gradient-text">That Matters</span></h2>
+      <p style="color:var(--muted);margin-top:14px;">
+        Technical excellence backed by engineering proof — not just promises.
+      </p>
+    </div>
+    <div class="whyus-grid">
+
+      <!-- CFD Analysis -->
+      <div class="glass-card whyus-card reveal">
+        <div class="cfd-subtitle">CFD Analysis Result</div>
+        <h3 class="heading-md" style="margin-bottom:16px;">Fabric Duct Technology for Even Temperature</h3>
+        <div class="whyus-stat-row">
+          <div class="whyus-stat">
+            <div class="whyus-stat-num">100%</div>
+            <div class="whyus-stat-label">Even Temperature</div>
+          </div>
+          <div class="whyus-stat">
+            <div class="whyus-stat-num">82%</div>
+            <div class="whyus-stat-label">Reduction in Duct Weight</div>
+          </div>
+          <div class="whyus-stat">
+            <div class="whyus-stat-num">66%</div>
+            <div class="whyus-stat-label">Less Cooling System Cost</div>
+          </div>
+        </div>
+        <div class="chart-compare">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Cooling Cost (Lakhs INR)</div>
+          <div class="chart-row">
+            <span class="chart-label">Conventional</span>
+            <div class="chart-bar-wrap"><div class="chart-bar conventional" style="width:100%">₹345L</div></div>
+          </div>
+          <div class="chart-row">
+            <span class="chart-label">ADES Design</span>
+            <div class="chart-bar-wrap"><div class="chart-bar ades" style="width:34%">₹118L</div></div>
+          </div>
+        </div>
+        <div class="saving-badge">
+          <span>₹227L</span>
+          <small>Total Cost Saving Achieved</small>
+        </div>
+      </div>
+
+      <!-- Fresh Air Pre-cooling -->
+      <div class="glass-card whyus-card reveal reveal-delay-2">
+        <div class="cfd-subtitle">Fresh Air Pre-Cooling Innovation</div>
+        <h3 class="heading-md" style="margin-bottom:16px;">Pressurized Zone Cooling Reduction</h3>
+        <div class="whyus-stat-row">
+          <div class="whyus-stat">
+            <div class="whyus-stat-num">19%</div>
+            <div class="whyus-stat-label">Cooling Initial Cost Reduction</div>
+          </div>
+          <div class="whyus-stat">
+            <div class="whyus-stat-num">17%</div>
+            <div class="whyus-stat-label">Reduction in O&amp;M Cost</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+          Through innovative fresh air pre-cooling in pressurized zones, ADES achieved a 19% reduction
+          in cooling capacity and operational costs — delivering sustained savings over the building's lifecycle.
+        </p>
+        <div class="saving-badge">
+          <span>₹24L</span>
+          <small>Cost Saving on this Project</small>
+        </div>
+        <div style="margin-top:24px;padding:16px;border-radius:12px;background:rgba(0,102,255,0.06);border:1px solid rgba(0,102,255,0.15);">
+          <div style="font-size:13px;color:var(--accent);font-weight:700;margin-bottom:6px;">Integrated MEPF Design Approach</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:12px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--accent)">→</span> Project Optimization</li>
+            <li style="font-size:12px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--accent)">→</span> Integrated MEPF Design</li>
+            <li style="font-size:12px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--accent)">→</span> Peer Review</li>
+            <li style="font-size:12px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--accent)">→</span> Technical Design Audit</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ OUR DESIGN PHILOSOPHY ═════════ -->
+<section class="section" id="philosophy" style="background:var(--bg2);">
+  <div class="container">
+    <div class="philosophy-wrap">
+      <!-- Image + Quote -->
+      <div class="philosophy-img-wrap reveal">
+        <div class="philosophy-img img-placeholder">
+          <i class="fas fa-image"></i>
+          <span>Philosophy / Design Image</span>
+        </div>
+        <div class="philosophy-quote">
+          <p class="quote-text">
+            We design intelligent MEPF ecosystems that seamlessly integrate performance,
+            sustainability, safety, and human comfort.
+          </p>
+        </div>
+      </div>
+
+      <!-- Philosophy Content -->
+      <div class="reveal reveal-delay-2">
+        <div class="tag">Our Design Philosophy</div>
+        <h2 class="heading-lg" style="margin-bottom:20px;">
+          Engineering Buildings as <span class="gradient-text">Intelligent Living Systems</span>
+        </h2>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:8px;">
+          We believe MEPF systems are not merely utilities — they are the <strong style="color:#fff;">operational lifeline</strong> of every building.
+          Our design philosophy is centered on creating intelligent, integrated, and future-ready engineering environments
+          that enhance performance, efficiency, safety, and human comfort.
+        </p>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:28px;">
+          We approach every project with a balance of technical precision, sustainability, innovation, and practical functionality.
+        </p>
+
+        <div class="philosophy-points">
+          <div class="philo-point">
+            <div class="philo-icon">🔗</div>
+            <div class="philo-content">
+              <h5>Integrated Multidisciplinary Coordination</h5>
+              <p>Mechanical, Electrical, Plumbing, and Fire Protection unified as one coordinated ecosystem.</p>
+            </div>
+          </div>
+          <div class="philo-point">
+            <div class="philo-icon">🌱</div>
+            <div class="philo-content">
+              <h5>Sustainable &amp; Energy-Efficient Engineering</h5>
+              <p>Designing for the environment — today and the decades ahead.</p>
+            </div>
+          </div>
+          <div class="philo-point">
+            <div class="philo-icon">📡</div>
+            <div class="philo-content">
+              <h5>Smart &amp; Digitally Enabled Infrastructure</h5>
+              <p>IoT, BMS, and digital twins that make buildings more responsive and intelligent.</p>
+            </div>
+          </div>
+          <div class="philo-point">
+            <div class="philo-icon">🛡️</div>
+            <div class="philo-content">
+              <h5>Safety, Resilience &amp; Code Compliance</h5>
+              <p>Every design meets and exceeds regulatory requirements — built to last and built to protect.</p>
+            </div>
+          </div>
+          <div class="philo-point">
+            <div class="philo-icon">🏃</div>
+            <div class="philo-content">
+              <h5>Lifecycle Optimization &amp; Operational Reliability</h5>
+              <p>Buildings that operate seamlessly throughout their lifecycle — beyond day one delivery.</p>
+            </div>
+          </div>
+          <div class="philo-point">
+            <div class="philo-icon">🧑‍🤝‍🧑</div>
+            <div class="philo-content">
+              <h5>Human-Centric Environmental Comfort</h5>
+              <p>At the core of every decision: the health, wellbeing, and comfort of building occupants.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;padding:20px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.02);">
+          <p style="font-size:13px;font-style:italic;color:var(--muted);">
+            "Engineering smarter building ecosystems through integrated, sustainable, and
+            <strong style="color:#fff;">performance-driven MEPF design.</strong>"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ CONTACT / CTA ═════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="tag">Let's Connect</div>
+        <h2 class="heading-lg" style="margin-bottom:14px;">
+          Ready to Engineer Your <span class="gradient-text">Next Project?</span>
+        </h2>
+        <p class="contact-subtitle">
+          Whether you're planning a new build, a retrofit, or seeking an expert design audit — ADES is ready
+          to bring precision engineering to your project.
+        </p>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <a href="tel:+919790951112" class="contact-item-value">+91-97909 51112</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <a href="mailto:ferno@ades.in" class="contact-item-value">ferno@ades.in</a><br>
+            <a href="mailto:info@ades.in" class="contact-item-value">info@ades.in</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <div class="contact-item-label">Website</div>
+            <a href="http://www.ades.in" class="contact-item-value" target="_blank">www.ades.in</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-item-label">Address</div>
+            <span class="contact-item-value">260/8, Anbu Colony,<br>Anna Nagar West,<br>Chennai 600 040</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card contact-form-card reveal reveal-delay-2">
+        <h3 class="heading-md" style="margin-bottom:24px;">Send Us a Message</h3>
+        <form onsubmit="handleForm(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="John">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="john@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Type</label>
+            <input type="text" class="form-input" placeholder="e.g. Commercial HVAC Design, MEP Consultancy...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;font-size:15px;">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ═════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="#hero" class="footer-logo">
+          <img src="assets/img/update new logo.png" alt="ADES" onerror="this.style.display='none'">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:#fff;">ADES</span>
+        </a>
+        <p class="footer-tagline" style="margin-top:8px;">Integrated Engineering for Intelligent Infrastructure</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">Who We Are</a></li>
+        <li><a href="#ethos">Our Ethos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#innovation">Innovation</a></li>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">
+      &copy; 2024 ADES — AirDesign Engineered Solutions. All rights reserved.
+      &nbsp;·&nbsp; 260/8 Anbu Colony, Anna Nagar West, Chennai 600 040
+      &nbsp;·&nbsp; +91-97909 51112
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<a href="#hero" id="back-top"><i class="fas fa-chevron-up"></i></a>
+
+<!-- ══════════════════════ SCRIPTS ════════════════════════ -->
+<script>
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+      backTop.classList.add('show');
+    } else {
+      navbar.classList.remove('scrolled');
+      backTop.classList.remove('show');
+    }
+  });
+
+  /* ── Mobile menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  /* ── Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── Counter animation ── */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+  /* ── Form submission ── */
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, var(--green), #00a070)';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  /* ── Active nav link highlighting ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current) a.style.color = 'var(--accent)';
+    });
+  });
+</script>
+
+</body>
+</html>

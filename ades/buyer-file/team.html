@@ -16,40 +16,131 @@
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/style-6.css">
     <!-- Team Specific Styles -->
     <style>
-        .team-card {
-            background: rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .profile-wrap {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 60px;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            background: rgba(0, 0, 0, 0.06);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .team-card img {
+        .profile-img-col { position: relative; }
+        .profile-img-col img {
             width: 100%;
-            height: 320px;
+            border-radius: 20px;
+            display: block;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.5s ease;
         }
-
-        .team-card:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+        .profile-name-badge {
+            margin-top: 24px;
         }
-
-        .team-info {
-            padding: 24px;
+        .profile-name-badge h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .profile-name-badge span {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #00c8ff;
+        }
+        .profile-content-col { padding-top: 8px; }
+        .profile-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00c8ff;
+            margin-bottom: 16px;
+        }
+        .profile-headline {
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .profile-bio {
+            font-size: 15px;
+            color: #fff;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .exp-stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .exp-stat {
+            flex: 1;
+            min-width: 120px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 20px 24px;
             text-align: center;
+        }
+        .exp-stat-num {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+        .exp-stat-label {
+            font-size: 11px;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 6px;
+        }
+        .credential-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .credential-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .credential-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+            color: #fff;
+        }
+        .credential-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .credential-desc {
+            font-size: 13px;
+            color: #fff;
+            line-height: 1.6;
+        }
+        @media (max-width: 900px) {
+            .profile-wrap { grid-template-columns: 1fr; gap: 36px; }
+            .profile-img-col img { max-height: 480px; object-fit: cover; object-position: top; }
         }
     </style>
     <!-- Glassmorphism Footer Style -->
@@ -75,7 +166,7 @@
     </style>
 </head>
 
-<body>    <!-- Header Section Start -->
+<body class="dark-bg">    <!-- Header Section Start -->
     <header class="header-section">
         <div id="header-sticky" class="header-3">
             <div class="container-fluid">
@@ -169,23 +260,76 @@
             </div>
 
             <!-- Team Section -->
-            <section class="team-area pt-150 pb-150">
+            <section class="team-area pt-120 pb-120">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5 col-md-8">
-                            <div class="team-card">
-                                <img src="./assets/img/about/prinicpal.png" alt="Dr. Ferno Susai A">
-                                <div class="team-info">
-                                    <h4 class="text-dark mb-1">Dr. Ferno Susai A</h4>
-                                    <p class="text-primary mb-2">Principal Consultant</p>
-                                    <p class="small opacity-75 mb-3">36+ Years
-                                        Experience</p>
-                                    <p class="small opacity-75">Past President of ISHRAE Chennai (2014-15) and visionary
-                                        behind ADES. Expert in Sustainable Energy Management and Industrial
-                                        Ventilation.</p>
+                    <div class="profile-wrap">
+
+                        <!-- Photo Column -->
+                        <div class="profile-img-col">
+                            <img src="./assets/img/about/prinicpal.png" alt="Dr. Ferno Susai A">
+                            <div class="profile-name-badge">
+                                <h3>Dr. Ferno Susai A</h3>
+                                <span>Principal Consultant</span>
+                            </div>
+                        </div>
+
+                        <!-- Content Column -->
+                        <div class="profile-content-col">
+                            <div class="profile-eyebrow">Our Principal</div>
+                            <h2 class="profile-headline">
+                                Versatile Design Team Lead,<br>Trainer &amp; Principal Consultant
+                            </h2>
+                            <p class="profile-bio">
+                                Proven success in steering diverse building projects with visionary leadership.
+                                Expertise in project management, innovation, and client relations.
+                                Committed to design excellence and team growth.
+                            </p>
+
+                            <!-- Stats -->
+                            <div class="exp-stats">
+                                <div class="exp-stat">
+                                    <div class="exp-stat-num">39</div>
+                                    <div class="exp-stat-label">Years Total<br>Experience</div>
+                                </div>
+                                <div class="exp-stat">
+                                    <div class="exp-stat-num">18</div>
+                                    <div class="exp-stat-label">Years as<br>Principal Consultant</div>
+                                </div>
+                            </div>
+
+                            <!-- Credentials -->
+                            <div class="credential-list">
+                                <div class="credential-item">
+                                    <div class="credential-icon"><i class="fas fa-award"></i></div>
+                                    <div>
+                                        <div class="credential-title">Doctorate in Human Rights (Honoris Causa)</div>
+                                        <div class="credential-desc">Conferred by the Board of the World Human Rights Protection Commission (WHRPC)</div>
+                                    </div>
+                                </div>
+                                <div class="credential-item">
+                                    <div class="credential-icon"><i class="fas fa-globe"></i></div>
+                                    <div>
+                                        <div class="credential-title">Active Member — WHRPC</div>
+                                        <div class="credential-desc">World Human Rights Protection Commission</div>
+                                    </div>
+                                </div>
+                                <div class="credential-item">
+                                    <div class="credential-icon"><i class="fas fa-graduation-cap"></i></div>
+                                    <div>
+                                        <div class="credential-title">Master's Degree in Sociology</div>
+                                        <div class="credential-desc">Advanced academic background complementing engineering expertise</div>
+                                    </div>
+                                </div>
+                                <div class="credential-item">
+                                    <div class="credential-icon"><i class="fas fa-trophy"></i></div>
+                                    <div>
+                                        <div class="credential-title">President 2022–23</div>
+                                        <div class="credential-desc">ISHRAE — Indian Society of Heating, Refrigerating and Air-conditioning Engineers, Chennai Chapter</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -196,7 +340,7 @@
                                 .custom-footer-bg {
                                     background-color: #1a1a1a;
                                     padding: 60px 0;
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     font-family: 'Inter', sans-serif;
                                 }
 
@@ -205,7 +349,7 @@
                                     border-left: 2px solid #C9F31D;
                                     background: #222;
                                     padding: 12px 24px;
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     margin-bottom: 15px;
                                     text-decoration: none;
                                     font-size: 14px;
@@ -256,7 +400,7 @@
 
                                 .custom-contact-text,
                                 .custom-contact-text a {
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     font-size: 13px;
                                     line-height: 1.6;
                                     text-decoration: none;
@@ -286,11 +430,11 @@
                                 .custom-footer-link li {
                                     margin-bottom: 12px;
                                     font-size: 13px;
-                                    color: #a1a1a1;
+                                    color: #fff;
                                 }
 
                                 .custom-footer-link a {
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     text-decoration: none;
                                     transition: 0.3se;
                                 }
@@ -341,7 +485,7 @@
                                 .custom-big-text-2 {
                                     font-size: 8vw;
                                     font-weight: 400;
-                                    color: #666;
+                                    color: #fff;
                                     font-style: italic;
                                     letter-spacing: -2px;
                                     padding-left: 20%;
@@ -387,7 +531,7 @@
                                     text-transform: uppercase;
                                     letter-spacing: 2px;
                                     text-align: center;
-                                    color: #666;
+                                    color: #fff;
                                 }
                             </style>
 
@@ -400,9 +544,7 @@
                                                 <img src="assets/img/update new logo.png" alt="logo"
                                                     style="height: 40px; width: auto;">
                                             </a>
-                                            <p style="font-size: 13px; line-height: 1.8;">2026 Begins Its Journey With
-                                                Road To Jia CURATED, An Immersive Exhibition Featuring Threadapeutic, A
-                                                Pioneering Studio Redefining Textile Re-Crafting.</p>
+                                            <p style="font-size: 13px; line-height: 1.8;">ADES — AirDesign Engineered Solutions. Leading MEP consultancy since 2008, delivering intelligent and integrated engineering across India and internationally.</p>
                                         </div>
 
                                         <!-- Center Social -->
@@ -423,8 +565,7 @@
                                                                 d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                                         </svg>
                                                     </div>
-                                                    <div class="custom-contact-text">731 Madison Ave, New York,
-                                                        NY<br>10065 New York City</div>
+                                                    <div class="custom-contact-text">260/8, Anbu Colony,<br>Anna Nagar West, Chennai 600 040</div>
                                                 </div>
                                                 <div class="custom-contact-item">
                                                     <div class="custom-contact-icon">
@@ -433,8 +574,7 @@
                                                                 d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                                                         </svg>
                                                     </div>
-                                                    <div class="custom-contact-text">+91 0321 5098 003<br>+88 0123 987
-                                                        258 002</div>
+                                                    <div class="custom-contact-text">+91-97909 51112</div>
                                                 </div>
                                                 <div class="custom-contact-item">
                                                     <div class="custom-contact-icon">
@@ -443,8 +583,7 @@
                                                                 d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                                         </svg>
                                                     </div>
-                                                    <div class="custom-contact-text">
-                                                        Info.Company@Yahoo.Mail.Com<br>Hi@Adas.Com</div>
+                                                    <div class="custom-contact-text">ferno@ades.in<br>info@ades.in</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -467,28 +606,29 @@
                                             </ul>
                                         </div>
                                         <div class="col-lg-3 col-md-6 mb-4 pl-lg-4">
-                                            <h4 class="custom-footer-title">Main Services</h4>
+                                            <h4 class="custom-footer-title">Our Services</h4>
                                             <ul class="custom-footer-link">
-                                                <li><a href="service-details.html">Branding Guideline</a></li>
-                                                <li><a href="service-details.html">Ux/Ui Design</a></li>
-                                                <li><a href="service-details.html">Digital Marketing</a></li>
-                                                <li><a href="service-details.html">Website Design</a></li>
-                                                <li><a href="service-details.html">Graphic Design</a></li>
-                                                <li><a href="service-details.html">Consulting Services</a></li>
+                                                <li><a href="service-hvac.html">HVAC Engineering</a></li>
+                                                <li><a href="service-electrical.html">Electrical Systems</a></li>
+                                                <li><a href="service-phe.html">Plumbing &amp; PHE</a></li>
+                                                <li><a href="service-fire.html">Fire Protection</a></li>
+                                                <li><a href="service-mep.html">Integrated MEP</a></li>
+                                                <li><a href="service-2.html">All Services</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-lg-3 col-md-6 mb-4">
-                                            <h4 class="custom-footer-title">Worldwide Office Locations</h4>
+                                            <h4 class="custom-footer-title">Contact</h4>
                                             <ul class="custom-footer-link">
-                                                <li><a href="#">United State Of America</a></li>
-                                                <li><a href="#">Canada</a></li>
-                                                <li><a href="#">United Kingdom</a></li>
-                                                <li><a href="#">India</a></li>
+                                                <li><a href="#">Chennai, India</a></li>
+                                                <li><a href="tel:+919790951112">+91-97909 51112</a></li>
+                                                <li><a href="mailto:ferno@ades.in">ferno@ades.in</a></li>
+                                                <li><a href="mailto:info@ades.in">info@ades.in</a></li>
+                                                <li><a href="http://www.ades.in">www.ades.in</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-4 pl-lg-5">
                                             <h4 class="custom-footer-title">Newsletter</h4>
-                                            <p style="font-size: 12px; color: #a1a1a1; margin-bottom: 20px;">Don't Miss
+                                            <p style="font-size: 12px; color: #fff; margin-bottom: 20px;">Don't Miss
                                                 Out—Join Now For Promotions & Deals.</p>
                                             <div class="custom-newsletter-form">
                                                 <input type="email" placeholder="Enter You Email"
@@ -533,7 +673,7 @@
                                     <div class="custom-divider"></div>
 
                                     <div class="custom-copyright">
-                                        © ADAS. ALL RIGHT RESERVED
+                                        © 2024 ADES — AirDesign Engineered Solutions. All Rights Reserved.
                                     </div>
                                 </div>
                             </div>

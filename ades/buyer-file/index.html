@@ -32,7 +32,96 @@
     <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/style-6.css">
-
+    <style>
+        /* ── Global Hover Popup ── */
+        #ades-popup {
+            position: fixed;
+            z-index: 99999;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px) scale(0.96);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            max-width: 320px;
+            min-width: 240px;
+        }
+        #ades-popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        #ades-popup .ap-inner {
+            background: rgba(6,11,24,0.97);
+            border: 1px solid rgba(0,200,255,0.3);
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,200,255,0.08);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        #ades-popup .ap-inner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #00c8ff, #0066ff, #7b2fff);
+        }
+        #ades-popup .ap-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #00c8ff;
+            margin-bottom: 7px;
+        }
+        #ades-popup .ap-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        #ades-popup .ap-body {
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+        #ades-popup .ap-list {
+            list-style: none;
+            padding: 0; margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        #ades-popup .ap-list li {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        #ades-popup .ap-list li::before {
+            content: '';
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: #00c8ff;
+            flex-shrink: 0;
+        }
+        /* Make popup trigger elements show cursor pointer */
+        [data-popup] { cursor: pointer; }
+    </style>
+        .fsb-ppt-section { background:#060b18; padding:80px 0 70px; }
+        .fsb-ppt-title { text-align:center; font-size:clamp(16px,2vw,24px); font-weight:900; color:#ffffff; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:44px; }
+        .fppt-row { display:flex; justify-content:center; align-items:flex-end; gap:3px; margin-bottom:6px; flex-wrap:wrap; }
+        .fppt-card { display:flex; flex-direction:column; align-items:center; gap:5px; opacity:0; transform:translateX(-24px); transition:opacity 0.55s ease, transform 0.55s ease; }
+        .fppt-card.visible { opacity:1; transform:translateX(0); }
+        .fppt-sys { font-size:13px; font-weight:500; color:#ffffff; letter-spacing:0.02em; text-align:center; }
+        .fppt-svg { display:block; transition:transform 0.35s cubic-bezier(0.23,1,0.32,1), filter 0.35s ease; cursor:pointer; }
+        .fppt-svg:hover { transform:scale(1.06) translateX(6px); filter:drop-shadow(0 10px 24px rgba(26,93,181,0.6)); }
+        .fppt-outline { display:block; align-self:flex-end; opacity:0.4; }
+        .fppt-quote { text-align:center; margin-top:36px; font-size:15px; font-style:italic; color:rgba(255,255,255,0.7); }
+        @media(max-width:1100px){ .fppt-row{ gap:2px; } }
+        @media(max-width:768px){ .fppt-row{ flex-wrap:wrap; gap:8px; } .fppt-outline{ display:none; } }
+    </style>
 </head>
 
 <body class="dark-bg">
@@ -125,7 +214,7 @@
             </div>
         </div>
     </div>
-    <div class="offcanvas__overlay"></div>    <!-- Header Section Start -->
+    <div class="offcanvas__overlay"></div> <!-- Header Section Start -->
     <header class="header-section">
         <div id="header-sticky" class="header-3">
             <div class="container-fluid">
@@ -133,7 +222,8 @@
                     <div class="header-main">
                         <div class="logo">
                             <a href="index.html" class="header-logo-2">
-                                <img src="assets/img/update new logo.png" alt="ADES logo" style="height:40px;width:auto;">
+                                <img src="assets/img/update new logo.png" alt="ADES logo"
+                                    style="height:40px;width:auto;">
                             </a>
                         </div>
 
@@ -188,10 +278,17 @@
                             <div class="header__hamburger">
                                 <div class="sidebar__toggle">
                                     <div class="header-bar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M19.375 5H0.625C0.45924 5 0.300269 4.93415 0.183058 4.81694C0.065848 4.69973 0 4.54076 0 4.375C0 4.20924 0.065848 4.05027 0.183058 3.93306C0.300269 3.81585 0.45924 3.75 0.625 3.75H19.375C19.5408 3.75 19.6997 3.81585 19.8169 3.93306C19.9342 4.05027 20 4.20924 20 4.375C20 4.54076 19.9342 4.69973 19.8169 4.81694C19.6997 4.93415 19.5408 5 19.375 5Z" fill="currentColor"/>
-                                            <path d="M19.375 11.25H0.625C0.45924 11.25 0.300269 11.1842 0.183058 11.0669C0.065848 10.9497 0 10.7908 0 10.625C0 10.4592 0.065848 10.3003 0.183058 10.1831C0.300269 10.0658 0.45924 10 0.625 10H19.375C19.5408 10 19.6997 10.0658 19.8169 10.1831C19.9342 10.3003 20 10.4592 20 10.625C20 10.7908 19.9342 10.9497 19.8169 11.0669C19.6997 11.1842 19.5408 11.25 19.375 11.25Z" fill="currentColor"/>
-                                            <path d="M19.375 17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.065848 17.1997 0 17.0408 0 16.875C0 16.7092 0.065848 16.5503 0.183058 16.4331C0.300269 16.3158 0.45924 16.25 0.625 16.25H19.375C19.5408 16.25 19.6997 16.3158 19.8169 16.4331C19.9342 16.5503 20 16.7092 20 16.875C20 17.0408 19.9342 17.1997 19.8169 17.3169C19.6997 17.4342 19.5408 17.5 19.375 17.5Z" fill="currentColor"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M19.375 5H0.625C0.45924 5 0.300269 4.93415 0.183058 4.81694C0.065848 4.69973 0 4.54076 0 4.375C0 4.20924 0.065848 4.05027 0.183058 3.93306C0.300269 3.81585 0.45924 3.75 0.625 3.75H19.375C19.5408 3.75 19.6997 3.81585 19.8169 3.93306C19.9342 4.05027 20 4.20924 20 4.375C20 4.54076 19.9342 4.69973 19.8169 4.81694C19.6997 4.93415 19.5408 5 19.375 5Z"
+                                                fill="currentColor" />
+                                            <path
+                                                d="M19.375 11.25H0.625C0.45924 11.25 0.300269 11.1842 0.183058 11.0669C0.065848 10.9497 0 10.7908 0 10.625C0 10.4592 0.065848 10.3003 0.183058 10.1831C0.300269 10.0658 0.45924 10 0.625 10H19.375C19.5408 10 19.6997 10.0658 19.8169 10.1831C19.9342 10.3003 20 10.4592 20 10.625C20 10.7908 19.9342 10.9497 19.8169 11.0669C19.6997 11.1842 19.5408 11.25 19.375 11.25Z"
+                                                fill="currentColor" />
+                                            <path
+                                                d="M19.375 17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.065848 17.1997 0 17.0408 0 16.875C0 16.7092 0.065848 16.5503 0.183058 16.4331C0.300269 16.3158 0.45924 16.25 0.625 16.25H19.375C19.5408 16.25 19.6997 16.3158 19.8169 16.4331C19.9342 16.5503 20 16.7092 20 16.875C20 17.0408 19.9342 17.1997 19.8169 17.3169C19.6997 17.4342 19.5408 17.5 19.375 17.5Z"
+                                                fill="currentColor" />
                                         </svg>
                                     </div>
                                 </div>
@@ -212,193 +309,15 @@
             <div class="hero-area-four pt-155 pb-150">
                 <div class="hero-wrapper">
 
-                    <div class="hero-top-content fix">
-                        <div dir="rtl" class="swiper hero-image-slider-four">
-                            <div class="swiper-wrapper gt-slide-transtion">
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_1.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern1" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_2.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern1)" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern2" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_3.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern2)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern3" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_4.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern3)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern4" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_5.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern4)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern5" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_1.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern5)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern14" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_2.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern4)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern25" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_3.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern5)" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide gt-brand-slide-element">
-                                    <div class="thumb">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="384" height="278"
-                                            viewBox="0 0 384 278">
-                                            <defs>
-                                                <pattern id="heroThumbPattern34" patternUnits="objectBoundingBox"
-                                                    width="1" height="1">
-                                                    <image href="./assets/img/heroThumb1_4.jpg" width="384" height="278"
-                                                        preserveAspectRatio="xMidYMid slice" />
-                                                </pattern>
-                                            </defs>
-
-                                            <path
-                                                d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"
-                                                fill="url(#heroThumbPattern4)" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="hero-main-content">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-9 col-lg-12">
                                     <div class="hero-main-right-content">
                                         <div class="section-title">
-                                            <div class="sub-title title-anim">Engineering Excellence in MEP Consultancy
-                                            </div>
-                                            <div class="title title-anim"><span>Designing Smarter,</span> Sustainable
-                                                Building
-                                                <span>Systems</span>
+                                            <div class="title-anim" style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#ffffff;margin-bottom:14px;">Designing Smarter, Sustainable Building Systems</div>
+                                            <div class="title title-anim"><span>Engineering Excellence</span> in MEP
+                                                <span>Consultancy</span>
                                             </div>
                                         </div>
 
@@ -407,7 +326,7 @@
 
                                 <div class="col-xl-3">
                                     <div class="hero-right-content">
-                                        <p class="right-text title-anim">
+                                        <p class="right-text title-anim" style="font-size:18px;line-height:1.7;">
                                             Integrated Engineering Solutions tailored for performance.
                                             We specialize in HVAC, Electrical, and BIM coordination
                                             to deliver cost-effective and energy-efficient building systems.
@@ -430,7 +349,7 @@
 
                         <div class="row gy-4">
                             <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="counter-items">
+                                <div class="counter-items" data-popup="projects">
                                     <span class="gt-count">250</span><span>+</span>
                                     <div class="counter-title">
                                         <h4>projects completed</h4>
@@ -448,7 +367,7 @@
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="counter-items">
+                                <div class="counter-items" data-popup="experience">
                                     <span class="gt-count">36</span><span>+</span>
                                     <div class="counter-title">
                                         <h4>years of experience</h4>
@@ -558,17 +477,17 @@
                                     </div>
 
                                     <div class="about-card">
-                                        <div class="about-card-items">
+                                        <div class="about-card-items" data-popup="audit-service">
                                             <span>01</span>
                                             <div class="card-title">Technical Design Audit</div>
                                         </div>
 
-                                        <div class="about-card-items">
+                                        <div class="about-card-items" data-popup="mep-service">
                                             <span>02</span>
                                             <div class="card-title">Integrated MEP BIM</div>
                                         </div>
 
-                                        <div class="about-card-items">
+                                        <div class="about-card-items" data-popup="opt-service">
                                             <span>03</span>
                                             <div class="card-title">Project Optimization</div>
                                         </div>
@@ -605,353 +524,209 @@
             <!-- About Section End -->
 
             <!-- Functional Services of Buildings Section Start -->
-            <section class="functional-services-area pt-150 pb-100 fix">
-                <div class="container">
-                    <!-- Section Heading -->
-                    <div class="text-center mb-60">
-                        <h2 class="fsb-main-title">FUNCTIONAL SERVICES OF BUILDINGS</h2>
-                    </div>
+            <section class="fsb-ppt-section">
+              <!-- Shared invisible SVG for gradient reuse -->
+              <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+                <defs>
+                  <linearGradient id="fsbGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="45%" stop-color="transparent" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="#000" stop-opacity="0.8"/>
+                  </linearGradient>
+                </defs>
+              </svg>
 
-                    <!-- Non Functional Elements -->
-                    <div class="fsb-block fsb-non-functional mb-50">
-                        <div class="fsb-block-label">NON FUNCTIONAL ELEMENTS &ndash; BY OTHERS</div>
-                        <div class="fsb-nf-grid">
-                            <div class="fsb-nf-item">
-                                <div class="fsb-nf-title">CIVIL</div>
-                                <div class="fsb-nf-sub">MUSCULAR SYSTEM</div>
-                            </div>
-                            <div class="fsb-nf-center-img">
-                                <img src="./assets/img/15279774-a-front-split-view-illustration-of-the-male-muscular-skeleton-anatomy-very-educational-and-detailed (1).jpg" alt="Muscular Skeleton Anatomy">
-                                <div class="fsb-img-caption">Muscular Skeleton Anatomy</div>
-                            </div>
-                            <div class="fsb-nf-item">
-                                <div class="fsb-nf-title">STRUCTURAL</div>
-                                <div class="fsb-nf-sub">SKELETON SYSTEM</div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="container-fluid" style="max-width:1300px;margin:0 auto;padding:0 24px;">
 
-                    <!-- Functional Elements By ADES -->
-                    <div class="fsb-block fsb-functional mb-50">
-                        <div class="fsb-block-label fsb-functional-label">FUNCTIONAL ELEMENTS BY ADES</div>
-                        <div class="fsb-func-grid">
-                            <div class="fsb-func-item">
-                                <div class="fsb-func-img-box">
-                                    <img src="./assets/img/fsb_mechanical.png" alt="Cardiovascular / Respiratory System">
-                                </div>
-                                <div class="fsb-func-sys">CARDIOVASCULAR / RESPIRATORY SYSTEM</div>
-                            </div>
-                            <div class="fsb-func-item">
-                                <div class="fsb-func-img-box">
-                                    <img src="./assets/img/fsb_electrical.png" alt="Nervous System">
-                                </div>
-                                <div class="fsb-func-sys">NERVOUS SYSTEM</div>
-                            </div>
-                            <div class="fsb-func-item">
-                                <div class="fsb-func-img-box">
-                                    <img src="./assets/img/fsb_phe_fps.png" alt="Circulatory System">
-                                </div>
-                                <div class="fsb-func-sys">CIRCULATORY SYSTEM</div>
-                            </div>
-                            <div class="fsb-func-item">
-                                <div class="fsb-func-img-box">
-                                    <img src="./assets/img/fsb_elv_ibms.png" alt="Endocrine / Cerebro Spinal Nervous System">
-                                </div>
-                                <div class="fsb-func-sys">ENDOCRINE / CEREBRO SPINAL NERVOUS SYSTEM</div>
-                            </div>
-                        </div>
-                    </div>
+                <h2 class="fsb-ppt-title">Integrated Engineering for Intelligent Infrastructure</h2>
 
-                    <!-- Service Lists -->
-                    <div class="fsb-services-row mb-50">
-                        <div class="fsb-service-box fsb-purple">
-                            <div class="fsb-service-cols">
-                                <ul>
-                                    <li>HVAC</li>
-                                    <li>Plumbing</li>
-                                    <li>Electrical</li>
-                                    <li>Low Voltage System</li>
-                                </ul>
-                                <ul>
-                                    <li>- Respiratory System</li>
-                                    <li>- Circulatory System</li>
-                                    <li>- Nervous System</li>
-                                    <li>- Endocrine System</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fsb-service-box fsb-red">
-                            <div class="fsb-service-cols">
-                                <ul>
-                                    <li>Fire Alarm</li>
-                                    <li>CCTV / PAS</li>
-                                    <li>Access Control</li>
-                                    <li>Fire Suppression</li>
-                                </ul>
-                                <ul>
-                                    <li>- Sensory System</li>
-                                    <li>- visual / Auditory System</li>
-                                    <li>- Immune System</li>
-                                    <li>- Defence Mechanisms</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quote -->
-                    <div class="fsb-quote">
-                        <p>"Functional elements within a building can be likened to the efficient and harmonious functions of the human body.<br>
-                        These elements are akin to the well-coordinated systems and organs that operate smoothly to ensure the building's optimal performance and usability."</p>
-                    </div>
-
-                    <!-- Inner Footer Credits -->
-                    <div class="fsb-inner-footer">
-                        <div class="fsb-logo-side">
-                            <span class="fsb-ades">ades</span>
-                        </div>
-                        <div class="fsb-name-side">
-                            <span>airdesign engineered solutions pvt ltd</span>
-                            <span class="fsb-page-num">4</span>
-                        </div>
-                    </div>
+                <!-- ── ROW 1: Non-Functional ── -->
+                <div class="fppt-row" style="margin-bottom:14px;">
+                  <!-- Muscular System → CIVIL -->
+                  <div class="fppt-card" data-delay="0" data-popup="civil">
+                    <span class="fppt-sys">Muscular System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="300" height="217">
+                      <defs>
+                        <clipPath id="fcp1"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp1" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/muscular system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp1)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp1)"/>
+                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="2">CIVIL</text>
+                    </svg>
+                  </div>
+                  <!-- Skeleton System → STRUCTURAL -->
+                  <div class="fppt-card" data-delay="140" data-popup="structural">
+                    <span class="fppt-sys">Skeleton System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="300" height="217">
+                      <defs>
+                        <clipPath id="fcp2"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp2" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/skeletal system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp2)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp2)"/>
+                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" letter-spacing="2">STRUCTURAL</text>
+                    </svg>
+                  </div>
                 </div>
 
-                <style>
-                    .functional-services-area {
-                        background: #1a1a1a;
-                    }
-                    .fsb-main-title {
-                        font-size: clamp(22px, 3.5vw, 40px);
-                        font-weight: 800;
-                        color: #e84393;
-                        letter-spacing: 0.08em;
-                        text-transform: uppercase;
-                        margin-bottom: 0;
-                    }
-                    .mb-60 { margin-bottom: 60px; }
-                    .mb-50 { margin-bottom: 50px; }
+                <!-- ── ROW 2: Functional (HVAC, Plumbing, Electrical, Low Voltage) ── -->
+                <div class="fppt-row">
+                  <!-- Decorative outline arrows -->
+                  <svg class="fppt-outline" viewBox="0 0 384 278" width="160" height="116">
+                    <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                  </svg>
+                  <svg class="fppt-outline" viewBox="0 0 384 278" width="160" height="116">
+                    <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                  </svg>
+                  <!-- HVAC -->
+                  <div class="fppt-card" data-delay="0" data-popup="hvac">
+                    <span class="fppt-sys">Respiratory System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp3"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp3" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/respiratory.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp3)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp3)"/>
+                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="2">HVAC</text>
+                    </svg>
+                  </div>
+                  <!-- PLUMBING -->
+                  <div class="fppt-card" data-delay="100" data-popup="plumbing">
+                    <span class="fppt-sys">Circulatory System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp4"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp4" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/circulatory.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp4)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp4)"/>
+                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" letter-spacing="2">PLUMBING</text>
+                    </svg>
+                  </div>
+                  <!-- ELECTRICAL -->
+                  <div class="fppt-card" data-delay="200" data-popup="electrical">
+                    <span class="fppt-sys">Nervous System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp5"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp5" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/nervous.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp5)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp5)"/>
+                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" letter-spacing="2">ELECTRICAL</text>
+                    </svg>
+                  </div>
+                  <!-- LOW VOLTAGE -->
+                  <div class="fppt-card" data-delay="300" data-popup="lowvoltage">
+                    <span class="fppt-sys">Endocrine System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp6"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp6" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/endocrine.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp6)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp6)"/>
+                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">LOW VOLTAGE</tspan><tspan x="165" dy="26">SYSTEM</tspan></text>
+                    </svg>
+                  </div>
+                </div>
 
-                    /* Non-Functional block */
-                    .fsb-block {
-                        border-radius: 12px;
-                        padding: 30px 40px;
-                    }
-                    .fsb-non-functional {
-                        background: #2a2a2a;
-                    }
-                    .fsb-block-label {
-                        text-align: center;
-                        font-size: 15px;
-                        font-weight: 700;
-                        color: white;
-                        letter-spacing: 0.1em;
-                        text-transform: uppercase;
-                        margin-bottom: 28px;
-                    }
-                    .fsb-nf-grid {
-                        display: grid;
-                        grid-template-columns: 1fr auto 1fr;
-                        align-items: center;
-                        gap: 20px;
-                    }
-                    .fsb-nf-item {
-                        text-align: center;
-                    }
-                    .fsb-nf-title {
-                        font-size: 26px;
-                        font-weight: 800;
-                        color: white;
-                        letter-spacing: 0.06em;
-                        margin-bottom: 6px;
-                    }
-                    .fsb-nf-sub {
-                        font-size: 13px;
-                        font-weight: 600;
-                        color: white;
-                        letter-spacing: 0.05em;
-                    }
-                    .fsb-nf-center-img {
-                        text-align: center;
-                    }
-                    .fsb-nf-center-img img {
-                        max-height: 200px;
-                        width: auto;
-                        object-fit: contain;
-                        border-radius: 8px;
-                        display: block;
-                        margin: 0 auto;
-                    }
-                    .fsb-img-caption {
-                        color: white;
-                        font-size: 11px;
-                        font-weight: 500;
-                        margin-top: 8px;
-                        letter-spacing: 0.05em;
-                        opacity: 0.8;
-                    }
+                <!-- ── ROW 3: Functional (Fire, CCTV, Access, Suppression) ── -->
+                <div class="fppt-row" style="margin-top:6px;">
+                  <!-- Decorative outline arrow -->
+                  <svg class="fppt-outline" viewBox="0 0 384 278" width="160" height="116">
+                    <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                  </svg>
+                  <!-- FIRE ALARM -->
+                  <div class="fppt-card" data-delay="0" data-popup="firealarm">
+                    <span class="fppt-sys">Sensory System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp7"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp7" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/sensory.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp7)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp7)"/>
+                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">FIRE ALARM</tspan><tspan x="165" dy="24">SYSTEM</tspan></text>
+                    </svg>
+                  </div>
+                  <!-- CCTV/PAS -->
+                  <div class="fppt-card" data-delay="100" data-popup="cctvpas">
+                    <span class="fppt-sys">Visual / Auditory System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp8"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp8" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/visual system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp8)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp8)"/>
+                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="white" letter-spacing="1">CCTV / PAS</text>
+                    </svg>
+                  </div>
+                  <!-- ACCESS CONTROL -->
+                  <div class="fppt-card" data-delay="200" data-popup="accesscontrol">
+                    <span class="fppt-sys">Immune System</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp9"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp9" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/immune system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp9)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp9)"/>
+                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">ACCESS</tspan><tspan x="165" dy="24">CONTROL</tspan></text>
+                    </svg>
+                  </div>
+                  <!-- FIRE SUPPRESSION -->
+                  <div class="fppt-card" data-delay="300" data-popup="firesuppression">
+                    <span class="fppt-sys">Defence Mechanisms</span>
+                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
+                      <defs>
+                        <clipPath id="fcp10"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
+                        <pattern id="fp10" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/defence mechanism.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
+                      </defs>
+                      <g clip-path="url(#fcp10)">
+                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp10)"/>
+                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
+                      </g>
+                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
+                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">FIRE</tspan><tspan x="165" dy="24">SUPPRESSION</tspan></text>
+                    </svg>
+                  </div>
+                </div>
 
-                    /* Functional block */
-                    .fsb-functional {
-                        background: #222;
-                        padding-top: 36px;
-                    }
-                    .fsb-functional-label {
-                        color: white;
-                    }
-                    .fsb-func-grid {
-                        display: grid;
-                        grid-template-columns: repeat(4, 1fr);
-                        gap: 24px;
-                    }
-                    .fsb-func-item {
-                        text-align: center;
-                    }
-                    .fsb-func-img-box {
-                        position: relative;
-                        overflow: hidden;
-                        border-radius: 8px;
-                        margin-bottom: 10px;
-                        width: 100%;
-                        aspect-ratio: 1 / 1;
-                    }
-                    .fsb-func-img-box img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        display: block;
-                        border-radius: 8px;
-                    }
-                    .fsb-func-label {
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        padding: 10px 0 10px;
-                        font-size: 13px;
-                        font-weight: 800;
-                        color: #fff;
-                        background: rgba(0,0,0,0.65);
-                        letter-spacing: 0.1em;
-                        text-align: center;
-                    }
-                    .fsb-func-sys {
-                        font-size: 10px;
-                        color: #aaa;
-                        letter-spacing: 0.04em;
-                        text-transform: uppercase;
-                        line-height: 1.4;
-                    }
+                <!-- Quote -->
+                <p class="fppt-quote">"MEPF Systems are the Lifelines of Buildings — Just as Organ Systems are to the Human Body."</p>
 
-                    /* Service Lists */
-                    .fsb-services-row {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 24px;
-                    }
-                    .fsb-service-box {
-                        border-radius: 40px 10px 10px 40px;
-                        padding: 35px 45px;
-                    }
-                    .fsb-purple {
-                        background: #ccff00;
-                    }
-                    .fsb-red {
-                        background: #ccff00;
-                        border-radius: 10px 40px 40px 10px;
-                    }
-                    .fsb-service-cols {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 16px;
-                    }
-                    .fsb-service-cols ul {
-                        list-style: none;
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .fsb-service-cols ul li {
-                        color: #121212;
-                        font-size: 19px;
-                        font-weight: 800;
-                        padding: 7px 0;
-                        letter-spacing: 0.02em;
-                    }
+              </div>
 
-                    /* Quote */
-                    .fsb-quote {
-                        text-align: center;
-                        border-top: 1px solid #333;
-                        padding-top: 30px;
-                    }
-                    .fsb-quote p {
-                        color: #bbb;
-                        font-size: 14px;
-                        line-height: 1.8;
-                        font-style: italic;
-                        max-width: 900px;
-                        margin: 0 auto;
-                    }
-
-                    /* Inner Footer */
-                    .fsb-inner-footer {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding-top: 40px;
-                        margin-top: 40px;
-                        border-top: 1px solid rgba(255,255,255,0.05);
-                    }
-                    .fsb-ades {
-                        color: white;
-                        font-size: 24px;
-                        font-weight: 800;
-                        background: #0033cc;
-                        padding: 2px 12px;
-                        border-radius: 4px;
-                        letter-spacing: 0.2em;
-                        text-transform: lowercase;
-                    }
-                    .fsb-name-side {
-                        display: flex;
-                        align-items: center;
-                        gap: 20px;
-                        color: white;
-                        font-size: 16px;
-                        font-weight: 600;
-                        letter-spacing: 0.05em;
-                    }
-                    .fsb-page-num {
-                        font-size: 14px;
-                        opacity: 0.6;
-                    }
-
-                    /* Responsive */
-                    @media (max-width: 992px) {
-                        .fsb-func-grid {
-                            grid-template-columns: repeat(2, 1fr);
-                        }
-                        .fsb-services-row {
-                            grid-template-columns: 1fr;
-                        }
-                        .fsb-service-box, .fsb-red {
-                            border-radius: 16px;
-                        }
-                    }
-                    @media (max-width: 576px) {
-                        .fsb-nf-grid {
-                            grid-template-columns: 1fr;
-                        }
-                        .fsb-func-grid {
-                            grid-template-columns: repeat(2, 1fr);
-                        }
-                        .fsb-service-cols {
-                            grid-template-columns: 1fr;
-                        }
-                        .fsb-block {
-                            padding: 20px;
-                        }
-                    }
-                </style>
             </section>
             <!-- Functional Services of Buildings Section End -->
 
@@ -1881,7 +1656,7 @@
                                 .custom-footer-bg {
                                     background-color: #1a1a1a;
                                     padding: 60px 0;
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     font-family: 'Inter', sans-serif;
                                 }
 
@@ -1890,7 +1665,7 @@
                                     border-left: 2px solid #C9F31D;
                                     background: #222;
                                     padding: 12px 24px;
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     margin-bottom: 15px;
                                     text-decoration: none;
                                     font-size: 14px;
@@ -1941,7 +1716,7 @@
 
                                 .custom-contact-text,
                                 .custom-contact-text a {
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     font-size: 13px;
                                     line-height: 1.6;
                                     text-decoration: none;
@@ -1971,11 +1746,11 @@
                                 .custom-footer-link li {
                                     margin-bottom: 12px;
                                     font-size: 13px;
-                                    color: #a1a1a1;
+                                    color: #fff;
                                 }
 
                                 .custom-footer-link a {
-                                    color: #a1a1a1;
+                                    color: #fff;
                                     text-decoration: none;
                                     transition: 0.3se;
                                 }
@@ -2173,7 +1948,7 @@
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-4 pl-lg-5">
                                             <h4 class="custom-footer-title">Newsletter</h4>
-                                            <p style="font-size: 12px; color: #a1a1a1; margin-bottom: 20px;">Don't Miss
+                                            <p style="font-size: 12px; color: #fff; margin-bottom: 20px;">Don't Miss
                                                 Out—Join Now For Promotions & Deals.</p>
                                             <div class="custom-newsletter-form">
                                                 <input type="email" placeholder="Enter You Email"
@@ -2186,7 +1961,7 @@
                                                 </svg>
                                             </div>
                                             <div
-                                                style="font-size: 11px; color: #888; display: flex; align-items: center;">
+                                                style="font-size: 11px; color: #fff; display: flex; align-items: center;">
                                                 <input type="checkbox" style="margin-right: 8px;"> I Here By Accept All
                                                 <strong style="color: #fff; margin-left: 4px;">Terms &
                                                     Conditions.</strong>
@@ -2263,6 +2038,21 @@
 
                     <!--<< Main.js >>-->
                     <script src="assets/js/main.js"></script>
+                    <!-- FSB scroll-in animation -->
+                    <script>
+                        (function(){
+                            var obs = new IntersectionObserver(function(entries){
+                                entries.forEach(function(e){
+                                    if(e.isIntersecting){
+                                        var el=e.target, d=parseInt(el.dataset.delay)||0;
+                                        setTimeout(function(){ el.classList.add('visible'); },d);
+                                        obs.unobserve(el);
+                                    }
+                                });
+                            },{threshold:0.1});
+                            document.querySelectorAll('.fppt-card').forEach(function(c){ obs.observe(c); });
+                        })();
+                    </script>
                     <!-- Custom Nav Script -->
                     <script>
                         const navWrap = document.querySelector(".nav-wrap");
@@ -2279,6 +2069,110 @@
                                 menu.classList.toggle("open");
                             });
                         }
+                    </script>
+
+                    <!-- ══ Global Hover Popup System ══ -->
+                    <div id="ades-popup" role="tooltip" aria-hidden="true">
+                        <div class="ap-inner">
+                            <div class="ap-tag" id="ap-tag"></div>
+                            <div class="ap-title" id="ap-title"></div>
+                            <div class="ap-body" id="ap-body"></div>
+                            <ul class="ap-list" id="ap-list"></ul>
+                        </div>
+                    </div>
+
+                    <script>
+                    (function(){
+                        // ── Popup data registry ──
+                        var POPUPS = {
+                            // FSB arrows
+                            'civil':        { tag:'Non-Functional · By Others', title:'Civil Engineering', body:'The muscular skeleton of every building — foundations, load-bearing structures, walls and slabs that give form and strength.', list:['Foundations & Substructure','Load-bearing walls & columns','Slabs & structural beams','Facade & cladding support'] },
+                            'structural':   { tag:'Non-Functional · By Others', title:'Structural Engineering', body:'The skeleton system — the internal framework that holds a building rigid, upright and safe against gravity and lateral forces.', list:['Steel & concrete framing','Seismic & wind load design','Roof trusses & long-span structures','Connection & joint detailing'] },
+                            'hvac':         { tag:'Functional · By ADES', title:'HVAC — Respiratory System', body:'Heating, Ventilation & Air Conditioning controls the indoor climate, fresh air supply and thermal comfort for every occupant.', list:['Chilled water & DX cooling systems','Fresh air ventilation & AHUs','Energy recovery & heat pumps','BMS-integrated climate control'] },
+                            'plumbing':     { tag:'Functional · By ADES', title:'Plumbing — Circulatory System', body:'The circulatory system — domestic hot & cold water, drainage, sanitation and water conservation through the entire building.', list:['Cold & hot water distribution','Soil, waste & vent systems','Rainwater harvesting','Water treatment & conservation'] },
+                            'electrical':   { tag:'Functional · By ADES', title:'Electrical — Nervous System', body:'Power distribution, lighting, earthing and protection systems that energise and control every function of the building.', list:['HT/LT power distribution','Emergency & standby generation','Intelligent lighting control','Energy monitoring & metering'] },
+                            'lowvoltage':   { tag:'Functional · By ADES', title:'Low Voltage — Endocrine System', body:'Building Management, ELV and ICT infrastructure that co-ordinate and communicate across all building systems.', list:['Building Management System (BMS)','Structured cabling & data','AV & public address systems','Smart building integration'] },
+                            'firealarm':    { tag:'Functional · By ADES', title:'Fire Alarm — Sensory System', body:'Early detection, alert and evacuation systems that sense danger and trigger rapid, life-saving responses.', list:['Addressable fire detection','Smoke management & pressurisation','Voice evacuation systems','Integration with suppression & BMS'] },
+                            'cctvpas':      { tag:'Functional · By ADES', title:'CCTV / PAS — Visual & Auditory', body:'Surveillance, public address and intercom systems that monitor, communicate and respond across the entire facility.', list:['HD CCTV & video analytics','IP intercom & video door entry','Public address & emergency broadcast','Integrated security management'] },
+                            'accesscontrol':{ tag:'Functional · By ADES', title:'Access Control — Immune System', body:'Security and personnel management that protects the building and regulates who can access every zone.', list:['Card & biometric access','Visitor management','Perimeter intrusion detection','Integration with CCTV & fire'] },
+                            'firesuppression':{ tag:'Functional · By ADES', title:'Fire Suppression — Defence', body:'Active fire-fighting systems that suppress and contain fire, protecting lives, assets and structure.', list:['Wet & dry sprinkler systems','Gas suppression (clean agent/CO₂)','Foam & deluge systems','Hydrant & hose reel networks'] },
+                            // Counter stats
+                            'projects':     { tag:'Track Record', title:'350+ Projects Delivered', body:'Across commercial, hospitality, healthcare, industrial and residential sectors in India and internationally.', list:['LEED Gold certified projects','Large-scale MEP designs','Mission-critical facilities','Green building certifications'] },
+                            'experience':   { tag:'Expertise', title:'39+ Years Collective Experience', body:'A seasoned team led by a principal with 18 years as head consultant — bringing depth and vision to every project.', list:['Principal involvement on every project','Multi-disciplinary MEP expertise','Pan-India & international projects','Continuous professional development'] },
+                            'international':{ tag:'Global Reach', title:'20+ International Projects', body:'ADES brings a global perspective to MEP design, with successful project delivery across the Middle East, South Asia and beyond.', list:['Lulu Mall, Sharjah','Cross-border coordination','International code compliance','Global best-practice integration'] },
+                            // Services
+                            'hvac-service': { tag:'Service 01', title:'Smart HVAC Engineering', body:'High-performance HVAC design optimised for energy efficiency, indoor air quality and occupant comfort.', list:['AI-based load optimisation','CFD airflow analysis','Chilled water system design','Net-zero cooling strategies'] },
+                            'mep-service':  { tag:'Service 02', title:'Integrated MEP Design', body:'Fully coordinated Mechanical, Electrical, Plumbing and Fire systems designed as a single intelligent ecosystem.', list:['3D BIM-coordinated models','Clash detection & resolution','Multi-discipline integration','Digital twin delivery'] },
+                            'audit-service':{ tag:'Service 03', title:'Technical Design Audit', body:'Independent peer review and audit of MEP designs to identify risks, optimise performance and ensure compliance.', list:['CAPEX & OPEX review','Code compliance verification','Value engineering opportunities','Risk identification & mitigation'] },
+                            'opt-service':  { tag:'Service 04', title:'Project Optimisation', body:'Systematic analysis of MEP systems to reduce costs, improve efficiency and deliver measurable value to clients.', list:['40.5% cost reduction proven','Cooling capacity optimisation','Transformer sizing review','Lifecycle cost analysis'] },
+                        };
+
+                        var popup  = document.getElementById('ades-popup');
+                        var apTag  = document.getElementById('ap-tag');
+                        var apTitle= document.getElementById('ap-title');
+                        var apBody = document.getElementById('ap-body');
+                        var apList = document.getElementById('ap-list');
+                        var activeEl = null;
+                        var hideTimer = null;
+
+                        function showPopup(data, el) {
+                            clearTimeout(hideTimer);
+                            apTag.textContent   = data.tag   || '';
+                            apTitle.textContent = data.title || '';
+                            apBody.textContent  = data.body  || '';
+                            apList.innerHTML = (data.list || []).map(function(item){
+                                return '<li>' + item + '</li>';
+                            }).join('');
+                            apTag.style.display   = data.tag   ? '' : 'none';
+                            apBody.style.display  = data.body  ? '' : 'none';
+                            apList.style.display  = (data.list && data.list.length) ? '' : 'none';
+                            positionPopup(el);
+                            popup.classList.add('show');
+                            popup.setAttribute('aria-hidden','false');
+                        }
+
+                        function hidePopup() {
+                            hideTimer = setTimeout(function(){
+                                popup.classList.remove('show');
+                                popup.setAttribute('aria-hidden','true');
+                            }, 120);
+                        }
+
+                        function positionPopup(el) {
+                            var rect = el.getBoundingClientRect();
+                            var pw   = popup.offsetWidth  || 280;
+                            var ph   = popup.offsetHeight || 200;
+                            var margin = 14;
+                            var left = rect.right + margin;
+                            var top  = rect.top + (rect.height / 2) - (ph / 2);
+                            // flip left if overflows right
+                            if (left + pw > window.innerWidth - 10) left = rect.left - pw - margin;
+                            // clamp vertically
+                            top = Math.max(10, Math.min(top, window.innerHeight - ph - 10));
+                            popup.style.left = left + 'px';
+                            popup.style.top  = top  + 'px';
+                        }
+
+                        // Attach listeners to all [data-popup] elements
+                        document.querySelectorAll('[data-popup]').forEach(function(el){
+                            var key = el.getAttribute('data-popup');
+                            var data = POPUPS[key];
+                            if (!data) return;
+                            el.addEventListener('mouseenter', function(){
+                                activeEl = el;
+                                showPopup(data, el);
+                            });
+                            el.addEventListener('mouseleave', function(){
+                                activeEl = null;
+                                hidePopup();
+                            });
+                            el.addEventListener('mousemove', function(){
+                                if (popup.classList.contains('show')) positionPopup(el);
+                            });
+                        });
+                        popup.addEventListener('mouseenter', function(){ clearTimeout(hideTimer); });
+                        popup.addEventListener('mouseleave', hidePopup);
+                    })();
                     </script>
 </body>
 
