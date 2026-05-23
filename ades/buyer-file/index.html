@@ -108,10 +108,50 @@
         }
         /* Make popup trigger elements show cursor pointer */
         [data-popup] { cursor: pointer; }
-    </style>
-        .fsb-ppt-section { background:#060b18; padding:80px 0 70px; }
+
+        /* ── FSB Rectangle Section ── */
+        .fsb-ppt-section { background:#000000; padding:80px 0 70px; }
+
+        /* Rectangle image card */
+        .fsb-rect {
+            position: relative;
+            width: 420px;
+            height: 300px;
+            border: 2px solid #1a5db5;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+        .fsb-rect:hover {
+            border-color: #00c8ff;
+            box-shadow: 0 0 0 1px #00c8ff, 0 12px 40px rgba(0,102,255,0.45);
+            transform: scale(1.04);
+        }
+        .fsb-rect img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+            transition: transform 0.4s ease;
+        }
+        .fsb-rect:hover img { transform: scale(1.08); }
+        .fsb-rect-sm { width: 300px; height: 220px; }
+        .fsb-rect-lbl {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 40px 12px 14px;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 100%);
+            color: #fff;
+            font-size: 22px; font-weight: 900;
+            text-align: center; letter-spacing: 0.12em;
+            text-transform: uppercase; line-height: 1.3;
+        }
+        /* Outline placeholder box */
+        .fsb-outline-box {
+            width: 140px; height: 155px;
+            border: 2px solid rgba(26,93,181,0.35);
+            align-self: flex-end;
+            flex-shrink: 0;
+        }
         .fsb-ppt-title { text-align:center; font-size:clamp(16px,2vw,24px); font-weight:900; color:#ffffff; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:44px; }
-        .fppt-row { display:flex; justify-content:center; align-items:flex-end; gap:3px; margin-bottom:6px; flex-wrap:wrap; }
+        .fppt-row { display:flex; justify-content:center; align-items:flex-end; gap:3px; margin-bottom:6px; flex-wrap:nowrap; }
         .fppt-card { display:flex; flex-direction:column; align-items:center; gap:5px; opacity:0; transform:translateX(-24px); transition:opacity 0.55s ease, transform 0.55s ease; }
         .fppt-card.visible { opacity:1; transform:translateX(0); }
         .fppt-sys { font-size:13px; font-weight:500; color:#ffffff; letter-spacing:0.02em; text-align:center; }
@@ -119,8 +159,8 @@
         .fppt-svg:hover { transform:scale(1.06) translateX(6px); filter:drop-shadow(0 10px 24px rgba(26,93,181,0.6)); }
         .fppt-outline { display:block; align-self:flex-end; opacity:0.4; }
         .fppt-quote { text-align:center; margin-top:36px; font-size:15px; font-style:italic; color:rgba(255,255,255,0.7); }
-        @media(max-width:1100px){ .fppt-row{ gap:2px; } }
-        @media(max-width:768px){ .fppt-row{ flex-wrap:wrap; gap:8px; } .fppt-outline{ display:none; } }
+        @media(max-width:1200px){ .fppt-row{ gap:2px; } .fppt-svg[width="300"]{ width:240px!important; height:174px!important; } .fppt-svg[width="220"]{ width:180px!important; height:130px!important; } }
+        @media(max-width:900px){ .fppt-row{ flex-wrap:wrap; gap:10px; justify-content:center; } .fppt-outline{ display:none; } }
     </style>
 </head>
 
@@ -525,208 +565,94 @@
 
             <!-- Functional Services of Buildings Section Start -->
             <section class="fsb-ppt-section">
-              <!-- Shared invisible SVG for gradient reuse -->
-              <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-                <defs>
-                  <linearGradient id="fsbGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="45%" stop-color="transparent" stop-opacity="0"/>
-                    <stop offset="100%" stop-color="#000" stop-opacity="0.8"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-
-              <div class="container-fluid" style="max-width:1300px;margin:0 auto;padding:0 24px;">
+              <div style="max-width:1400px;margin:0 auto;padding:0 30px;overflow-x:auto;">
 
                 <h2 class="fsb-ppt-title">Integrated Engineering for Intelligent Infrastructure</h2>
 
-                <!-- ── ROW 1: Non-Functional ── -->
-                <div class="fppt-row" style="margin-bottom:14px;">
-                  <!-- Muscular System → CIVIL -->
+                <!-- ROW 1: Non-Functional -->
+                <div class="fppt-row" style="margin-bottom:20px;gap:20px;">
                   <div class="fppt-card" data-delay="0" data-popup="civil">
                     <span class="fppt-sys">Muscular System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="300" height="217">
-                      <defs>
-                        <clipPath id="fcp1"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp1" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/muscular system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp1)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp1)"/>
-                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="2">CIVIL</text>
-                    </svg>
+                    <div class="fsb-rect">
+                      <img src="./assets/img/muscular system.png" alt="Civil">
+                      <div class="fsb-rect-lbl">CIVIL</div>
+                    </div>
                   </div>
-                  <!-- Skeleton System → STRUCTURAL -->
                   <div class="fppt-card" data-delay="140" data-popup="structural">
                     <span class="fppt-sys">Skeleton System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="300" height="217">
-                      <defs>
-                        <clipPath id="fcp2"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp2" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/skeletal system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp2)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp2)"/>
-                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" letter-spacing="2">STRUCTURAL</text>
-                    </svg>
+                    <div class="fsb-rect">
+                      <img src="./assets/img/skeletal system.png" alt="Structural">
+                      <div class="fsb-rect-lbl">STRUCTURAL</div>
+                    </div>
                   </div>
                 </div>
 
-                <!-- ── ROW 2: Functional (HVAC, Plumbing, Electrical, Low Voltage) ── -->
-                <div class="fppt-row">
-                  <!-- Decorative outline arrows -->
-                  <svg class="fppt-outline" viewBox="0 0 384 278" width="160" height="116">
-                    <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                  </svg>
-                  <svg class="fppt-outline" viewBox="0 0 384 278" width="160" height="116">
-                    <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                  </svg>
-                  <!-- HVAC -->
+                <!-- ROW 2: HVAC / Plumbing / Electrical / Low Voltage -->
+                <div class="fppt-row" style="gap:20px;margin-bottom:16px;">
                   <div class="fppt-card" data-delay="0" data-popup="hvac">
                     <span class="fppt-sys">Respiratory System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp3"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp3" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/respiratory.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp3)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp3)"/>
-                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="2">HVAC</text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/respiratory.png" alt="HVAC">
+                      <div class="fsb-rect-lbl">HVAC</div>
+                    </div>
                   </div>
-                  <!-- PLUMBING -->
                   <div class="fppt-card" data-delay="100" data-popup="plumbing">
                     <span class="fppt-sys">Circulatory System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp4"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp4" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/circulatory.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp4)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp4)"/>
-                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" letter-spacing="2">PLUMBING</text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/circulatory.png" alt="Plumbing">
+                      <div class="fsb-rect-lbl">PLUMBING</div>
+                    </div>
                   </div>
-                  <!-- ELECTRICAL -->
                   <div class="fppt-card" data-delay="200" data-popup="electrical">
                     <span class="fppt-sys">Nervous System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp5"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp5" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/nervous.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp5)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp5)"/>
-                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" letter-spacing="2">ELECTRICAL</text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/nervous.png" alt="Electrical">
+                      <div class="fsb-rect-lbl">ELECTRICAL</div>
+                    </div>
                   </div>
-                  <!-- LOW VOLTAGE -->
                   <div class="fppt-card" data-delay="300" data-popup="lowvoltage">
                     <span class="fppt-sys">Endocrine System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp6"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp6" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/endocrine.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp6)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp6)"/>
-                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">LOW VOLTAGE</tspan><tspan x="165" dy="26">SYSTEM</tspan></text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/endocrine.png" alt="Low Voltage">
+                      <div class="fsb-rect-lbl">LOW VOLTAGE<br>SYSTEM</div>
+                    </div>
                   </div>
                 </div>
 
-                <!-- ── ROW 3: Functional (Fire, CCTV, Access, Suppression) ── -->
-                <div class="fppt-row" style="margin-top:6px;">
-                  <!-- Decorative outline arrow -->
-                  <svg class="fppt-outline" viewBox="0 0 384 278" width="160" height="116">
-                    <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                  </svg>
-                  <!-- FIRE ALARM -->
+                <!-- ROW 3: Fire Alarm / CCTV / Access / Suppression -->
+                <div class="fppt-row" style="gap:20px;">
                   <div class="fppt-card" data-delay="0" data-popup="firealarm">
                     <span class="fppt-sys">Sensory System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp7"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp7" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/sensory.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp7)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp7)"/>
-                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">FIRE ALARM</tspan><tspan x="165" dy="24">SYSTEM</tspan></text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/sensory.png" alt="Fire Alarm" style="object-position:center center;object-fit:contain;background:#0a1020;">
+                      <div class="fsb-rect-lbl">FIRE ALARM<br>SYSTEM</div>
+                    </div>
                   </div>
-                  <!-- CCTV/PAS -->
                   <div class="fppt-card" data-delay="100" data-popup="cctvpas">
                     <span class="fppt-sys">Visual / Auditory System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp8"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp8" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/visual system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp8)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp8)"/>
-                        <rect x="0" y="200" width="384" height="78" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="white" letter-spacing="1">CCTV / PAS</text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/visual system.png" alt="CCTV PAS">
+                      <div class="fsb-rect-lbl">CCTV / PAS</div>
+                    </div>
                   </div>
-                  <!-- ACCESS CONTROL -->
                   <div class="fppt-card" data-delay="200" data-popup="accesscontrol">
                     <span class="fppt-sys">Immune System</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp9"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp9" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/immune system.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp9)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp9)"/>
-                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">ACCESS</tspan><tspan x="165" dy="24">CONTROL</tspan></text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/immune system.png" alt="Access Control">
+                      <div class="fsb-rect-lbl">ACCESS<br>CONTROL</div>
+                    </div>
                   </div>
-                  <!-- FIRE SUPPRESSION -->
                   <div class="fppt-card" data-delay="300" data-popup="firesuppression">
                     <span class="fppt-sys">Defence Mechanisms</span>
-                    <svg class="fppt-svg" viewBox="0 0 384 278" width="220" height="159">
-                      <defs>
-                        <clipPath id="fcp10"><path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z"/></clipPath>
-                        <pattern id="fp10" patternUnits="objectBoundingBox" width="1" height="1"><image href="./assets/img/defence mechanism.png" width="384" height="278" preserveAspectRatio="xMidYMid slice"/></pattern>
-                      </defs>
-                      <g clip-path="url(#fcp10)">
-                        <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="url(#fp10)"/>
-                        <rect x="0" y="195" width="384" height="83" fill="url(#fsbGrad)"/>
-                      </g>
-                      <path d="M4.29862 55.937C-7.17646 29.5206 12.1856 0 40.9866 0H294.194C309.385 0 323.266 8.60601 330.021 22.2133L379.17 121.213C384.733 132.419 384.733 145.581 379.17 156.787L330.021 255.787C323.266 269.394 309.385 278 294.194 278H40.9866C12.1855 278 -7.17646 248.479 4.29861 222.063L33.4576 154.937C37.8736 144.771 37.8736 133.229 33.4576 123.063L4.29862 55.937Z" fill="none" stroke="#1a5db5" stroke-width="6"/>
-                      <text x="165" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1"><tspan x="165" dy="0">FIRE</tspan><tspan x="165" dy="24">SUPPRESSION</tspan></text>
-                    </svg>
+                    <div class="fsb-rect fsb-rect-sm">
+                      <img src="./assets/img/defence mechanism.png" alt="Fire Suppression">
+                      <div class="fsb-rect-lbl">FIRE<br>SUPPRESSION</div>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Quote -->
                 <p class="fppt-quote">"MEPF Systems are the Lifelines of Buildings — Just as Organ Systems are to the Human Body."</p>
-
               </div>
-
             </section>
             <!-- Functional Services of Buildings Section End -->
 
