@@ -6,18 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="ADES">
-    <meta name="description" content="Key Highlights – ADES terrace revitalization project transforming an unused 27,000 sq.ft space into a revenue-generating guest area.">
+    <meta name="description" content="Key Highlights – ADES terrace revitalization transforming 27,000 sq.ft into a revenue-generating guest space.">
     <title>Key Highlights | ADES - Engineering Excellence</title>
     <link rel="shortcut icon" href="assets/img/favicon.svg">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/style-6.css">
 
     <style>
-        /* ── Page Base ── */
-        body { background: #0d0d0d; color: #e0e0e0; }
+        /* ── Override theme CSS variables to force white text on dark bg ── */
+        :root {
+            --gt-body:    #0d0d0d;
+            --gt-header:  #ffffff;
+            --gt-text:    #cccccc;
+            --gt-text-1:  #aaaaaa;
+            --gt-text-2:  #aaaaaa;
+            --gt-text-3:  #ffffff;
+            --gt-text-4:  #888888;
+            --gt-text-5:  #aaaaaa;
+            --gt-text-6:  #dddddd;
+        }
+
+        body { background: #0d0d0d; color: #ccc; }
 
         /* ── Hero ── */
         .kh-hero {
@@ -25,7 +42,7 @@
             text-align: center;
             background: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
         }
-        .kh-hero .kh-tag {
+        .kh-tag {
             display: inline-block;
             background: #C9F31D;
             color: #000;
@@ -38,24 +55,23 @@
             margin-bottom: 24px;
         }
         .kh-hero h1 {
-            font-size: clamp(2.4rem, 5vw, 4rem);
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.1;
+            font-size: clamp(2.4rem, 5vw, 4rem) !important;
+            font-weight: 800 !important;
+            color: #fff !important;
+            line-height: 1.15 !important;
             margin-bottom: 20px;
+            text-transform: none !important;
         }
         .kh-hero p {
             font-size: 1.05rem;
-            color: #888;
+            color: #888 !important;
             max-width: 580px;
             margin: 0 auto;
             line-height: 1.7;
         }
 
-        /* ── Before / After Slider ── */
-        .transformation-section {
-            padding: 80px 0 100px;
-        }
+        /* ── Before/After Slider section ── */
+        .transformation-section { padding: 80px 0 100px; background: #0d0d0d; }
         .transformation-section .section-label {
             text-align: center;
             font-size: 11px;
@@ -67,19 +83,20 @@
         }
         .transformation-section h2 {
             text-align: center;
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-            font-weight: 700;
-            color: #fff;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+            font-weight: 700 !important;
+            color: #fff !important;
             margin-bottom: 10px;
+            text-transform: none !important;
         }
         .transformation-section .sub {
             text-align: center;
-            color: #666;
+            color: #666 !important;
             font-size: 0.9rem;
             margin-bottom: 56px;
         }
 
-        /* Slider wrapper */
+        /* Before/After widget */
         .ba-wrap {
             position: relative;
             width: 100%;
@@ -90,62 +107,49 @@
             cursor: ew-resize;
             user-select: none;
             box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            touch-action: pan-y;
         }
-        .ba-wrap img.ba-after {
+        /* "after" image — sits at the back, sets the container height */
+        .ba-img-after {
             display: block;
             width: 100%;
             height: auto;
         }
-        /* "before" image revealed via clip-path */
-        .ba-before {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            width: 50%;
-        }
-        .ba-before img {
-            display: block;
-            width: 100%;
-            max-width: none;
-            /* stretch to match parent width ratio */
+        /* "before" image — same position/size, clipped from the right */
+        .ba-img-before {
             position: absolute;
             top: 0; left: 0;
+            width: 100%;
             height: 100%;
             object-fit: cover;
+            clip-path: inset(0 50% 0 0);
+            pointer-events: none;
         }
-        /* After image behind */
-        .ba-wrap > img.ba-after {
-            object-fit: cover;
-        }
-
         /* Divider line */
-        .ba-handle {
+        .ba-line {
             position: absolute;
             top: 0; bottom: 0;
             left: 50%;
-            width: 3px;
+            width: 2px;
             background: #C9F31D;
             transform: translateX(-50%);
             pointer-events: none;
             z-index: 10;
         }
-        .ba-handle-btn {
+        /* Drag button on the line */
+        .ba-btn {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             background: #C9F31D;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             pointer-events: none;
         }
-        .ba-handle-btn svg { width: 22px; height: 22px; fill: #000; }
-
+        .ba-btn svg { width: 22px; height: 22px; }
         /* Labels */
         .ba-label {
             position: absolute;
@@ -159,19 +163,17 @@
             z-index: 20;
             pointer-events: none;
         }
-        .ba-label.before { left: 18px; background: rgba(0,0,0,0.6); color: #fff; }
-        .ba-label.after  { right: 18px; background: #C9F31D; color: #000; }
+        .ba-label.bl { left: 18px; background: rgba(0,0,0,0.65); color: #fff; }
+        .ba-label.al { right: 18px; background: #C9F31D; color: #000; }
 
-        /* ── Challenge → Result Timeline ── */
-        .highlights-section {
-            padding: 80px 0 100px;
-            background: #111;
-        }
+        /* ── Challenge → Result section ── */
+        .highlights-section { padding: 80px 0 100px; background: #111; }
         .highlights-section h2 {
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
-            font-weight: 700;
-            color: #fff;
+            font-size: clamp(1.6rem, 3vw, 2.4rem) !important;
+            font-weight: 700 !important;
+            color: #fff !important;
             margin-bottom: 56px;
+            text-transform: none !important;
         }
         .hl-grid {
             display: grid;
@@ -180,10 +182,9 @@
             align-items: start;
         }
         @media (max-width: 768px) {
-            .hl-grid { grid-template-columns: 1fr; gap: 0; }
+            .hl-grid { grid-template-columns: 1fr; }
             .hl-divider { display: none; }
         }
-
         .hl-col-title {
             font-size: 11px;
             font-weight: 700;
@@ -193,70 +194,54 @@
         }
         .hl-col-title.challenge { color: #888; }
         .hl-col-title.result    { color: #C9F31D; }
-
         .hl-item {
             display: flex;
             align-items: flex-start;
             gap: 16px;
-            margin-bottom: 24px;
-            padding: 20px 24px;
+            margin-bottom: 20px;
+            padding: 20px 22px;
             border-radius: 14px;
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: border-color 0.3s, background 0.3s;
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: background 0.25s, border-color 0.25s;
         }
-        .hl-item:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.12);
-        }
+        .hl-item:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
         .hl-icon {
-            width: 36px;
-            height: 36px;
+            width: 38px; height: 38px;
             flex-shrink: 0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 17px;
         }
-        .hl-icon.c { background: rgba(255,255,255,0.06); }
-        .hl-icon.r { background: rgba(201,243,29,0.12); }
-        .hl-item p { margin: 0; font-size: 0.92rem; color: #bbb; line-height: 1.5; }
-        .hl-item p strong { color: #fff; display: block; margin-bottom: 2px; font-size: 0.95rem; }
-
-        .hl-divider {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 46px;
+        .hl-icon.c { background: rgba(255,255,255,0.07); }
+        .hl-icon.r { background: rgba(201,243,29,0.13); }
+        .hl-item p { margin: 0; font-size: 0.9rem; line-height: 1.55; }
+        .hl-item p,
+        .hl-item p strong { color: #ccc !important; }
+        .hl-item p strong {
+            display: block;
+            font-size: 0.94rem;
+            margin-bottom: 3px;
+            color: #fff !important;
         }
-        .hl-divider-line {
-            width: 1px;
-            background: linear-gradient(180deg, transparent, #333, transparent);
-            flex: 1;
-        }
-        .hl-divider-arrow {
-            width: 36px;
-            height: 36px;
+        /* Arrow divider */
+        .hl-divider { display: flex; flex-direction: column; align-items: center; padding-top: 40px; }
+        .hl-div-line { width: 1px; background: linear-gradient(180deg, transparent, #333, transparent); flex: 1; }
+        .hl-div-arrow {
+            width: 36px; height: 36px;
             border-radius: 50%;
             background: #C9F31D;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 12px 0;
-            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            margin: 12px 0; flex-shrink: 0;
         }
-        .hl-divider-arrow svg { width: 16px; height: 16px; fill: #000; }
+        .hl-div-arrow svg { width: 16px; height: 16px; fill: #000; }
 
-        /* ── Impact Banner ── */
-        .impact-section {
-            padding: 80px 0 100px;
-            background: #0d0d0d;
-        }
+        /* ── Impact banner ── */
+        .impact-section { padding: 80px 0 100px; background: #0d0d0d; }
         .impact-card {
             background: linear-gradient(135deg, #C9F31D 0%, #a8d416 100%);
             border-radius: 24px;
-            padding: 60px 56px;
+            padding: 56px 52px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -264,59 +249,35 @@
             flex-wrap: wrap;
         }
         .impact-card h2 {
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-            font-weight: 800;
-            color: #000;
+            font-size: clamp(1.7rem, 3.2vw, 2.6rem) !important;
+            font-weight: 800 !important;
+            color: #000 !important;
             margin: 0;
-            line-height: 1.1;
-            max-width: 560px;
+            line-height: 1.15 !important;
+            max-width: 540px;
+            text-transform: none !important;
         }
-        .impact-stat {
-            text-align: center;
-            flex-shrink: 0;
-        }
-        .impact-stat .num {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #000;
-            line-height: 1;
-        }
-        .impact-stat .lbl {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: rgba(0,0,0,0.6);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
+        .impact-stat { text-align: center; flex-shrink: 0; }
+        .impact-stat .num { font-size: 3.4rem; font-weight: 800; color: #000; line-height: 1; }
+        .impact-stat .lbl { font-size: 0.75rem; font-weight: 600; color: rgba(0,0,0,0.55); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 4px; }
 
-        /* ── CTA strip ── */
-        .kh-cta {
-            padding: 60px 0 80px;
-            text-align: center;
-            background: #111;
-        }
-        .kh-cta p { color: #888; margin-bottom: 24px; }
-        .kh-cta a.btn-primary-ades {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #C9F31D;
-            color: #000;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 16px 36px;
-            border-radius: 100px;
+        /* ── CTA ── */
+        .kh-cta { padding: 60px 0 80px; text-align: center; background: #111; }
+        .kh-cta p { color: #777 !important; margin-bottom: 24px; }
+        .btn-primary-ades {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #C9F31D; color: #000;
+            font-weight: 700; font-size: 0.88rem;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            padding: 16px 36px; border-radius: 100px;
             text-decoration: none;
             transition: background 0.25s, transform 0.25s;
         }
-        .kh-cta a.btn-primary-ades:hover { background: #d8ff22; transform: translateY(-2px); }
+        .btn-primary-ades:hover { background: #d8ff22; transform: translateY(-2px); color: #000; }
 
         /* ── Footer ── */
         .custom-footer-bg { background-color: #1a1a1a; padding: 60px 0; color: #a1a1a1; }
-        .custom-social-btn { display: block; border-left: 2px solid #C9F31D; background: #222; padding: 12px 24px; color: #a1a1a1; margin-bottom: 15px; text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; max-width: 200px; }
+        .custom-social-btn { display: block; border-left: 2px solid #C9F31D; background: #222; padding: 12px 24px; color: #a1a1a1; margin-bottom: 15px; text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; }
         .custom-social-btn:hover { color: #fff; background: #2a2a2a; }
         .custom-contact-card { background: #222; border-radius: 12px; padding: 30px; border: 1px solid #333; }
         .custom-contact-item { display: flex; align-items: center; margin-bottom: 25px; }
@@ -325,19 +286,19 @@
         .custom-contact-icon svg { width: 16px; height: 16px; fill: #fff; }
         .custom-contact-text, .custom-contact-text a { color: #a1a1a1; font-size: 13px; line-height: 1.6; text-decoration: none; }
         .custom-footer-container { background-color: #111; border-radius: 20px; padding: 60px 50px 30px; margin: 0 20px 20px; color: #fff; }
-        .custom-footer-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 25px; }
+        .custom-footer-title { font-size: 16px; font-weight: 600; color: #fff !important; margin-bottom: 25px; }
         .custom-footer-link { list-style: none; padding: 0; margin: 0; }
         .custom-footer-link li { margin-bottom: 12px; font-size: 13px; color: #a1a1a1; }
-        .custom-footer-link a { color: #a1a1a1; text-decoration: none; transition: 0.3s; }
+        .custom-footer-link a { color: #a1a1a1; text-decoration: none; transition: color 0.3s; }
         .custom-footer-link a:hover { color: #fff; }
         .custom-newsletter-input { background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 12px 15px; color: #fff; width: 100%; font-size: 13px; }
         .custom-newsletter-input:focus { outline: none; border-color: #555; }
         .custom-newsletter-form { position: relative; margin-bottom: 15px; }
         .custom-newsletter-icon { position: absolute; right: 15px; top: 12px; color: #fff; }
         .custom-big-text { text-transform: uppercase; line-height: 1; }
-        .custom-big-text-1 { font-size: 8vw; font-weight: bold; color: #fff; letter-spacing: -2px; }
-        .custom-big-text-2 { font-size: 8vw; font-weight: 400; color: #666; font-style: italic; letter-spacing: -2px; padding-left: 20%; }
-        .custom-arrow-btn { width: 80px; height: 80px; border-radius: 50%; background: #fff; color: #000; display: flex; justify-content: center; align-items: center; font-size: 32px; text-decoration: none; position: relative; }
+        .custom-big-text-1 { font-size: 8vw; font-weight: bold; color: #fff !important; letter-spacing: -2px; }
+        .custom-big-text-2 { font-size: 8vw; font-weight: 400; color: #666 !important; font-style: italic; letter-spacing: -2px; padding-left: 20%; }
+        .custom-arrow-btn { width: 80px; height: 80px; border-radius: 50%; background: #fff; color: #000; display: flex; justify-content: center; align-items: center; text-decoration: none; position: relative; }
         .custom-arrow-btn::before { content: ''; position: absolute; bottom: 10px; left: 10px; width: 12px; height: 12px; border-radius: 50%; background: #C9F31D; }
         .custom-arrow-btn:hover { background: #e0e0e0; color: #000; }
         .custom-divider { border-top: 1px solid #333; margin: 40px 0; }
@@ -375,8 +336,12 @@
                                                     <li><a href="service-2.html">All Services</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="project-1.html">Projects</a></li>
-                                            <li><a href="key-highlights.html" class="active">Key Highlights</a></li>
+                                            <li>
+                                                <a href="project-1.html">Projects</a>
+                                            </li>
+                                            <li>
+                                                <a href="key-highlights.html">Key Highlights</a>
+                                            </li>
                                             <li class="has-dropdown">
                                                 <a href="#">Company <i class="fa-solid fa-chevron-down"></i></a>
                                                 <ul class="submenu">
@@ -419,11 +384,11 @@
                 <div class="container">
                     <span class="kh-tag">Case Study</span>
                     <h1>Terrace Revitalization<br>Key Highlights</h1>
-                    <p>How ADES transformed a constrained, unused 27,000 sq.ft rooftop into a premium revenue-generating guest space — all within strict airport height limits.</p>
+                    <p>How ADES transformed a constrained, unused 27,000 sq.ft rooftop into a premium revenue-generating guest space — within strict airport height limits.</p>
                 </div>
             </section>
 
-            <!-- Before / After Transformation -->
+            <!-- Before / After Slider -->
             <section class="transformation-section">
                 <div class="container">
                     <p class="section-label">Visual Transformation</p>
@@ -431,26 +396,25 @@
                     <p class="sub">Slide left and right to see the before &amp; after transformation</p>
 
                     <div class="ba-wrap" id="baWrap">
-                        <!-- After image (full width, sits behind) -->
-                        <img class="ba-after" src="assets/img/transformation image (2).png" alt="After – Revitalized Terrace">
+                        <!-- After image (base layer, sets container height) -->
+                        <img class="ba-img-after" src="assets/img/transformation image (2).png" alt="After – Revitalized Terrace" draggable="false">
 
-                        <!-- Before image (clipped to left portion) -->
-                        <div class="ba-before" id="baBefore">
-                            <img src="assets/img/transformation image (1).png" alt="Before – Unused Terrace">
-                        </div>
+                        <!-- Before image (clipped from right by JS) -->
+                        <img class="ba-img-before" id="baImgBefore" src="assets/img/transformation image (1).png" alt="Before – Unused Terrace" draggable="false">
 
-                        <!-- Handle -->
-                        <div class="ba-handle" id="baHandle">
-                            <div class="ba-handle-btn">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 5l-7 7 7 7M16 5l7 7-7 7"/>
+                        <!-- Divider line + handle button -->
+                        <div class="ba-line" id="baLine">
+                            <div class="ba-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                    <polyline points="9 18 15 12 9 6" transform="translate(6,0)"></polyline>
                                 </svg>
                             </div>
                         </div>
 
                         <!-- Labels -->
-                        <span class="ba-label before">Before</span>
-                        <span class="ba-label after">After</span>
+                        <span class="ba-label bl">Before</span>
+                        <span class="ba-label al">After</span>
                     </div>
                 </div>
             </section>
@@ -458,65 +422,62 @@
             <!-- Challenge → Result -->
             <section class="highlights-section">
                 <div class="container">
+                    <h2>From Constraints to Opportunity</h2>
                     <div class="hl-grid">
-                        <!-- Challenges column -->
+
+                        <!-- Challenges -->
                         <div>
                             <p class="hl-col-title challenge">Site Challenges</p>
 
                             <div class="hl-item">
                                 <div class="hl-icon c">✈️</div>
-                                <p><strong>Airport-Adjacent Location</strong>Ideal positioning, but strict Aviation Authority regulations limited the height of any new structure on the terrace.</p>
+                                <p><strong>Ideal Airport-Adjacent Location</strong>Prime positioning came with strict Aviation Authority regulations limiting the height of any new structure.</p>
                             </div>
-
                             <div class="hl-item">
                                 <div class="hl-icon c">📏</div>
-                                <p><strong>Height Restrictions</strong>Airport Authority clearance requirements capped vertical additions, ruling out conventional rooftop builds.</p>
+                                <p><strong>Height Restrictions</strong>Airport Authority clearance caps ruled out conventional rooftop builds entirely.</p>
                             </div>
-
                             <div class="hl-item">
                                 <div class="hl-icon c">🏗️</div>
-                                <p><strong>27,000 Sq.ft of Unused Space</strong>The entire terrace lay idle — generating zero revenue and offering no guest value.</p>
+                                <p><strong>Unused 27,000 Sq.ft Terrace</strong>The entire terrace lay idle — generating zero revenue and no guest value.</p>
                             </div>
-
                             <div class="hl-item">
                                 <div class="hl-icon c">⚡</div>
-                                <p><strong>Tangled Utility Services</strong>ADES had to clear, reroute, and rationalise all existing MEP utility services before any transformation could begin.</p>
+                                <p><strong>Tangled Utility Services</strong>ADES cleared and rerouted all MEP utility services before transformation could begin.</p>
                             </div>
-
                             <div class="hl-item">
                                 <div class="hl-icon c">🧱</div>
-                                <p><strong>25-Year-Old Chimneys</strong>Ageing chimney structures occupied prime terrace area. ADES engineered their safe removal and structural remediation.</p>
+                                <p><strong>25-Year-Old Chimneys</strong>Ageing chimney structures occupied prime terrace area — safely removed by ADES.</p>
                             </div>
                         </div>
 
                         <!-- Arrow divider -->
                         <div class="hl-divider">
-                            <div class="hl-divider-line"></div>
-                            <div class="hl-divider-arrow">
+                            <div class="hl-div-line"></div>
+                            <div class="hl-div-arrow">
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </div>
-                            <div class="hl-divider-line"></div>
+                            <div class="hl-div-line"></div>
                         </div>
 
-                        <!-- Results column -->
+                        <!-- Results -->
                         <div>
                             <p class="hl-col-title result">What ADES Delivered</p>
 
                             <div class="hl-item">
-                                <div class="hl-icon r">🌿</div>
-                                <p><strong>Revenue-Generating Guest Space</strong>The previously dead terrace is now a premium hospitality destination — directly added to the property's income sheet.</p>
+                                <div class="hl-icon r">🏆</div>
+                                <p><strong>Revitalized Into Revenue-Generating Space</strong>The previously idle terrace is now a premium hospitality destination added directly to the property's income sheet.</p>
                             </div>
-
                             <div class="hl-item">
-                                <div class="hl-icon r">🎪</div>
+                                <div class="hl-icon r">🌿</div>
                                 <p><strong>Outdoor Lawn for Events</strong>A landscaped open-air lawn now hosts private events, banquets, and corporate gatherings year-round.</p>
                             </div>
-
                             <div class="hl-item">
                                 <div class="hl-icon r">📈</div>
-                                <p><strong>Significantly Increased Client Value</strong>The transformation delivered a measurable uplift in asset valuation, occupancy appeal, and guest satisfaction scores.</p>
+                                <p><strong>Significantly Increased Client Value</strong>The transformation delivered a measurable uplift in asset valuation, occupancy appeal, and guest satisfaction.</p>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -531,7 +492,7 @@
                             <div class="lbl">Sq.ft Transformed</div>
                         </div>
                         <div class="impact-stat">
-                            <div class="num">25<span style="font-size:1.6rem">yr</span></div>
+                            <div class="num">25<span style="font-size:1.5rem">yr</span></div>
                             <div class="lbl">Old Infrastructure Cleared</div>
                         </div>
                     </div>
@@ -544,7 +505,7 @@
                     <p>Interested in what ADES can engineer for your property?</p>
                     <a href="contact.html" class="btn-primary-ades">
                         Get in Touch
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="10 5 19 5 19 14"/></svg>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="10 5 19 5 19 14"/></svg>
                     </a>
                 </div>
             </section>
@@ -557,7 +518,7 @@
                             <a href="index.html" class="d-inline-block mb-4">
                                 <img src="assets/img/update new logo.png" alt="logo" style="height:40px;width:auto;">
                             </a>
-                            <p style="font-size:13px;line-height:1.8;">Engineering Excellence — delivering integrated MEP design and revitalization solutions since 2008.</p>
+                            <p style="font-size:13px;line-height:1.8;color:#a1a1a1;">Engineering Excellence — delivering integrated MEP design and revitalization solutions since 2008.</p>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-6 d-flex flex-column align-items-center">
                             <a href="#" class="custom-social-btn w-100">Facebook</a>
@@ -656,57 +617,59 @@
                 </div>
             </div>
 
-        </div>
-    </div>
+        </div><!-- smooth-content -->
+    </div><!-- smooth-wrapper -->
 
+    <!-- Scripts — same set as every other page -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
     <script>
-        // Before/After slider
+        // Before/After drag slider
         (function () {
-            const wrap   = document.getElementById('baWrap');
-            const before = document.getElementById('baBefore');
-            const handle = document.getElementById('baHandle');
-            let dragging = false;
+            var wrap   = document.getElementById('baWrap');
+            var before = document.getElementById('baImgBefore');
+            var line   = document.getElementById('baLine');
+            var pct    = 50;
+            var active = false;
 
-            function setPosition(pct) {
-                pct = Math.max(2, Math.min(98, pct));
-                before.style.width = pct + '%';
-                handle.style.left  = pct + '%';
+            function set(p) {
+                p = Math.max(2, Math.min(98, p));
+                pct = p;
+                before.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+                line.style.left = p + '%';
             }
 
-            function getPct(clientX) {
-                const rect = wrap.getBoundingClientRect();
-                return ((clientX - rect.left) / rect.width) * 100;
+            function fromEvent(clientX) {
+                var r = wrap.getBoundingClientRect();
+                return ((clientX - r.left) / r.width) * 100;
             }
 
-            wrap.addEventListener('mousedown', e => { dragging = true; setPosition(getPct(e.clientX)); });
-            window.addEventListener('mousemove', e => { if (dragging) setPosition(getPct(e.clientX)); });
-            window.addEventListener('mouseup', () => { dragging = false; });
+            wrap.addEventListener('mousedown',  function(e){ active = true; set(fromEvent(e.clientX)); e.preventDefault(); });
+            window.addEventListener('mousemove', function(e){ if(active) set(fromEvent(e.clientX)); });
+            window.addEventListener('mouseup',   function(){ active = false; });
 
-            wrap.addEventListener('touchstart', e => { dragging = true; setPosition(getPct(e.touches[0].clientX)); }, { passive: true });
-            window.addEventListener('touchmove', e => { if (dragging) setPosition(getPct(e.touches[0].clientX)); }, { passive: true });
-            window.addEventListener('touchend', () => { dragging = false; });
+            wrap.addEventListener('touchstart', function(e){ active = true; set(fromEvent(e.touches[0].clientX)); }, { passive: true });
+            window.addEventListener('touchmove', function(e){ if(active) set(fromEvent(e.touches[0].clientX)); }, { passive: true });
+            window.addEventListener('touchend',  function(){ active = false; });
 
-            // Auto-animate on load to hint at interaction
-            let pct = 50, dir = -1, animating = true;
-            function hint() {
-                if (!animating) return;
-                pct += dir * 0.4;
-                if (pct <= 30) dir = 1;
-                if (pct >= 50) { animating = false; setPosition(50); return; }
-                setPosition(pct);
-                requestAnimationFrame(hint);
+            // Animate on load to hint draggability
+            set(50);
+            var hint = 50, dir = -1, running = true;
+            function animate() {
+                if (!running) return;
+                hint += dir * 0.5;
+                if (hint <= 28) dir = 1;
+                if (hint >= 50) { running = false; set(50); return; }
+                set(hint);
+                requestAnimationFrame(animate);
             }
-            setTimeout(() => requestAnimationFrame(hint), 900);
+            setTimeout(function(){ requestAnimationFrame(animate); }, 800);
         })();
-
-        // Sticky nav
-        const scrollNav = document.getElementById('header-sticky');
-        if (scrollNav) {
-            window.addEventListener('scroll', () => {
-                scrollNav.classList.toggle('scrolled', window.scrollY > 40);
-            });
-        }
     </script>
 </body>
 </html>
