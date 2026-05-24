@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="ADES">
-    <meta name="description" content="Key Highlights – ADES terrace revitalization transforming 27,000 sq.ft into a revenue-generating guest space.">
+    <meta name="description" content="Key Highlights – ADES transformation case studies showing revitalized spaces generating revenue.">
     <title>Key Highlights | ADES - Engineering Excellence</title>
     <link rel="shortcut icon" href="assets/img/favicon.svg">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -21,288 +21,203 @@
     <link rel="stylesheet" href="assets/css/style-6.css">
 
     <style>
-        /* ── Override theme CSS variables to force white text on dark bg ── */
-        :root {
-            --gt-body:    #0d0d0d;
-            --gt-header:  #ffffff;
-            --gt-text:    #cccccc;
-            --gt-text-1:  #aaaaaa;
-            --gt-text-2:  #aaaaaa;
-            --gt-text-3:  #ffffff;
-            --gt-text-4:  #888888;
-            --gt-text-5:  #aaaaaa;
-            --gt-text-6:  #dddddd;
-        }
-
-        body { background: #0d0d0d; color: #ccc; }
-
-        /* ── Hero ── */
-        .kh-hero {
-            padding: 160px 0 80px;
-            text-align: center;
-            background: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
-        }
-        .kh-tag {
-            display: inline-block;
-            background: #C9F31D;
-            color: #000;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 6px 18px;
-            border-radius: 100px;
-            margin-bottom: 24px;
-        }
-        .kh-hero h1 {
-            font-size: clamp(2.4rem, 5vw, 4rem) !important;
-            font-weight: 800 !important;
-            color: #fff !important;
-            line-height: 1.15 !important;
-            margin-bottom: 20px;
-            text-transform: none !important;
-        }
-        .kh-hero p {
-            font-size: 1.05rem;
-            color: #888 !important;
-            max-width: 580px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* ── Before/After Slider section ── */
-        .transformation-section { padding: 80px 0 100px; background: #0d0d0d; }
-        .transformation-section .section-label {
-            text-align: center;
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #C9F31D;
-            margin-bottom: 14px;
-            font-weight: 600;
-        }
-        .transformation-section h2 {
-            text-align: center;
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
-            font-weight: 700 !important;
-            color: #fff !important;
-            margin-bottom: 10px;
-            text-transform: none !important;
-        }
-        .transformation-section .sub {
-            text-align: center;
-            color: #666 !important;
-            font-size: 0.9rem;
-            margin-bottom: 56px;
-        }
-
-        /* Before/After widget */
+        /* ── Before/After Slider ── */
         .ba-wrap {
             position: relative;
             width: 100%;
-            max-width: 960px;
-            margin: 0 auto;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: ew-resize;
             user-select: none;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
             touch-action: pan-y;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.55);
         }
-        /* "after" image — sits at the back, sets the container height */
         .ba-img-after {
             display: block;
             width: 100%;
             height: auto;
         }
-        /* "before" image — same position/size, clipped from the right */
         .ba-img-before {
             position: absolute;
             top: 0; left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             clip-path: inset(0 50% 0 0);
             pointer-events: none;
         }
-        /* Divider line */
         .ba-line {
             position: absolute;
             top: 0; bottom: 0;
             left: 50%;
-            width: 2px;
+            width: 3px;
             background: #C9F31D;
             transform: translateX(-50%);
             pointer-events: none;
             z-index: 10;
         }
-        /* Drag button on the line */
         .ba-btn {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 48px; height: 48px;
+            width: 50px; height: 50px;
             background: #C9F31D;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
             pointer-events: none;
         }
         .ba-btn svg { width: 22px; height: 22px; }
-        /* Labels */
         .ba-label {
             position: absolute;
-            top: 18px;
+            top: 16px;
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            padding: 6px 14px;
+            padding: 5px 13px;
             border-radius: 6px;
             z-index: 20;
             pointer-events: none;
         }
-        .ba-label.bl { left: 18px; background: rgba(0,0,0,0.65); color: #fff; }
-        .ba-label.al { right: 18px; background: #C9F31D; color: #000; }
+        .ba-label.bl { left: 16px; background: rgba(0,0,0,0.65); color: #fff; }
+        .ba-label.al { right: 16px; background: #C9F31D; color: #000; }
 
-        /* ── Challenge → Result section ── */
-        .highlights-section { padding: 80px 0 100px; background: #111; }
-        .highlights-section h2 {
-            font-size: clamp(1.6rem, 3vw, 2.4rem) !important;
-            font-weight: 700 !important;
-            color: #fff !important;
-            margin-bottom: 56px;
-            text-transform: none !important;
+        /* ── Section shared ── */
+        .kh-section {
+            padding: 80px 0 90px;
         }
+        .kh-section:nth-child(odd)  { background: #0d0d0d; }
+        .kh-section:nth-child(even) { background: #111; }
+
+        .kh-eyebrow {
+            display: inline-block;
+            font-family: "Inter", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #C9F31D;
+            margin-bottom: 14px;
+        }
+        .kh-section-title {
+            font-family: "Anton", sans-serif !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #fff !important;
+            line-height: 1.05 !important;
+            text-transform: uppercase !important;
+            margin-bottom: 8px;
+        }
+        .kh-section-sub {
+            font-family: "Inter", sans-serif;
+            font-size: 0.88rem;
+            color: #666 !important;
+            margin-bottom: 48px;
+        }
+
+        /* ── Challenge / Result grid ── */
         .hl-grid {
             display: grid;
-            grid-template-columns: 1fr 80px 1fr;
+            grid-template-columns: 1fr 60px 1fr;
             gap: 0;
             align-items: start;
+            margin-top: 64px;
         }
         @media (max-width: 768px) {
             .hl-grid { grid-template-columns: 1fr; }
             .hl-divider { display: none; }
         }
-        .hl-col-title {
-            font-size: 11px;
+        .hl-col-label {
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
         }
-        .hl-col-title.challenge { color: #888; }
-        .hl-col-title.result    { color: #C9F31D; }
-        .hl-item {
+        .hl-col-label.challenge { color: #666; }
+        .hl-col-label.result    { color: #C9F31D; }
+
+        .hl-card {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 20px;
-            padding: 20px 22px;
-            border-radius: 14px;
+            gap: 14px;
+            margin-bottom: 16px;
+            padding: 18px 20px;
+            border-radius: 12px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.07);
-            transition: background 0.25s, border-color 0.25s;
+            transition: background 0.2s, border-color 0.2s;
         }
-        .hl-item:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
-        .hl-icon {
-            width: 38px; height: 38px;
-            flex-shrink: 0;
-            border-radius: 9px;
+        .hl-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.13); }
+        .hl-card-icon {
+            width: 36px; height: 36px; flex-shrink: 0;
+            border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 17px;
+            font-size: 16px;
         }
-        .hl-icon.c { background: rgba(255,255,255,0.07); }
-        .hl-icon.r { background: rgba(201,243,29,0.13); }
-        .hl-item p { margin: 0; font-size: 0.9rem; line-height: 1.55; }
-        .hl-item p,
-        .hl-item p strong { color: #ccc !important; }
-        .hl-item p strong {
+        .hl-card-icon.c { background: rgba(255,255,255,0.06); }
+        .hl-card-icon.r { background: rgba(201,243,29,0.12); }
+        .hl-card-body { font-family: "Inter", sans-serif; }
+        .hl-card-title {
             display: block;
-            font-size: 0.94rem;
-            margin-bottom: 3px;
+            font-size: 0.88rem;
+            font-weight: 600;
             color: #fff !important;
+            margin-bottom: 3px;
+            line-height: 1.3;
         }
+        .hl-card-text {
+            font-size: 0.82rem;
+            color: #888 !important;
+            line-height: 1.55;
+            margin: 0;
+        }
+
         /* Arrow divider */
-        .hl-divider { display: flex; flex-direction: column; align-items: center; padding-top: 40px; }
-        .hl-div-line { width: 1px; background: linear-gradient(180deg, transparent, #333, transparent); flex: 1; }
-        .hl-div-arrow {
-            width: 36px; height: 36px;
-            border-radius: 50%;
+        .hl-divider { display: flex; flex-direction: column; align-items: center; padding-top: 36px; }
+        .hl-div-line { width: 1px; background: linear-gradient(180deg, transparent, #2a2a2a, transparent); flex: 1; }
+        .hl-div-dot  {
+            width: 32px; height: 32px; border-radius: 50%;
             background: #C9F31D;
             display: flex; align-items: center; justify-content: center;
-            margin: 12px 0; flex-shrink: 0;
+            margin: 10px 0; flex-shrink: 0;
         }
-        .hl-div-arrow svg { width: 16px; height: 16px; fill: #000; }
+        .hl-div-dot svg { width: 14px; height: 14px; fill: #000; }
 
         /* ── Impact banner ── */
-        .impact-section { padding: 80px 0 100px; background: #0d0d0d; }
-        .impact-card {
-            background: linear-gradient(135deg, #C9F31D 0%, #a8d416 100%);
-            border-radius: 24px;
-            padding: 56px 52px;
+        .kh-impact {
+            padding: 80px 0 90px;
+            background: #0d0d0d;
+        }
+        .kh-impact-card {
+            background: #C9F31D;
+            border-radius: 20px;
+            padding: 52px 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 32px;
+            gap: 28px;
             flex-wrap: wrap;
         }
-        .impact-card h2 {
-            font-size: clamp(1.7rem, 3.2vw, 2.6rem) !important;
-            font-weight: 800 !important;
+        .kh-impact-card h2 {
+            font-family: "Anton", sans-serif !important;
+            font-size: clamp(1.6rem, 3vw, 2.5rem) !important;
             color: #000 !important;
             margin: 0;
-            line-height: 1.15 !important;
-            max-width: 540px;
-            text-transform: none !important;
+            line-height: 1.1 !important;
+            max-width: 520px;
+            text-transform: uppercase !important;
         }
-        .impact-stat { text-align: center; flex-shrink: 0; }
-        .impact-stat .num { font-size: 3.4rem; font-weight: 800; color: #000; line-height: 1; }
-        .impact-stat .lbl { font-size: 0.75rem; font-weight: 600; color: rgba(0,0,0,0.55); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 4px; }
+        .kh-stat { text-align: center; flex-shrink: 0; }
+        .kh-stat-num { font-family: "Anton", sans-serif; font-size: 3.2rem; color: #000; line-height: 1; }
+        .kh-stat-lbl { font-family: "Inter", sans-serif; font-size: 0.7rem; font-weight: 600; color: rgba(0,0,0,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
 
-        /* ── CTA ── */
-        .kh-cta { padding: 60px 0 80px; text-align: center; background: #111; }
-        .kh-cta p { color: #777 !important; margin-bottom: 24px; }
-        .btn-primary-ades {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: #C9F31D; color: #000;
-            font-weight: 700; font-size: 0.88rem;
-            letter-spacing: 0.06em; text-transform: uppercase;
-            padding: 16px 36px; border-radius: 100px;
-            text-decoration: none;
-            transition: background 0.25s, transform 0.25s;
-        }
-        .btn-primary-ades:hover { background: #d8ff22; transform: translateY(-2px); color: #000; }
-
-        /* ── Footer ── */
-        .custom-footer-bg { background-color: #1a1a1a; padding: 60px 0; color: #a1a1a1; }
-        .custom-social-btn { display: block; border-left: 2px solid #C9F31D; background: #222; padding: 12px 24px; color: #a1a1a1; margin-bottom: 15px; text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; }
-        .custom-social-btn:hover { color: #fff; background: #2a2a2a; }
-        .custom-contact-card { background: #222; border-radius: 12px; padding: 30px; border: 1px solid #333; }
-        .custom-contact-item { display: flex; align-items: center; margin-bottom: 25px; }
-        .custom-contact-item:last-child { margin-bottom: 0; }
-        .custom-contact-icon { width: 36px; height: 36px; border: 1px solid #444; border-radius: 6px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0; }
-        .custom-contact-icon svg { width: 16px; height: 16px; fill: #fff; }
-        .custom-contact-text, .custom-contact-text a { color: #a1a1a1; font-size: 13px; line-height: 1.6; text-decoration: none; }
-        .custom-footer-container { background-color: #111; border-radius: 20px; padding: 60px 50px 30px; margin: 0 20px 20px; color: #fff; }
-        .custom-footer-title { font-size: 16px; font-weight: 600; color: #fff !important; margin-bottom: 25px; }
-        .custom-footer-link { list-style: none; padding: 0; margin: 0; }
-        .custom-footer-link li { margin-bottom: 12px; font-size: 13px; color: #a1a1a1; }
-        .custom-footer-link a { color: #a1a1a1; text-decoration: none; transition: color 0.3s; }
-        .custom-footer-link a:hover { color: #fff; }
-        .custom-newsletter-input { background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 12px 15px; color: #fff; width: 100%; font-size: 13px; }
-        .custom-newsletter-input:focus { outline: none; border-color: #555; }
-        .custom-newsletter-form { position: relative; margin-bottom: 15px; }
-        .custom-newsletter-icon { position: absolute; right: 15px; top: 12px; color: #fff; }
-        .custom-big-text { text-transform: uppercase; line-height: 1; }
-        .custom-big-text-1 { font-size: 8vw; font-weight: bold; color: #fff !important; letter-spacing: -2px; }
-        .custom-big-text-2 { font-size: 8vw; font-weight: 400; color: #666 !important; font-style: italic; letter-spacing: -2px; padding-left: 20%; }
-        .custom-arrow-btn { width: 80px; height: 80px; border-radius: 50%; background: #fff; color: #000; display: flex; justify-content: center; align-items: center; text-decoration: none; position: relative; }
-        .custom-arrow-btn::before { content: ''; position: absolute; bottom: 10px; left: 10px; width: 12px; height: 12px; border-radius: 50%; background: #C9F31D; }
-        .custom-arrow-btn:hover { background: #e0e0e0; color: #000; }
-        .custom-divider { border-top: 1px solid #333; margin: 40px 0; }
-        .custom-copyright { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; text-align: center; color: #666; }
+        /* footer overrides for consistency */
+        .custom-footer-bg { background-color: #1a1a1a !important; padding: 60px 0; }
+        .custom-footer-bg p { color: #a1a1a1 !important; }
+        .custom-footer-title { color: #fff !important; }
+        .custom-big-text-1 { color: #fff !important; }
+        .custom-big-text-2 { color: #666 !important; }
     </style>
 </head>
 
@@ -379,138 +294,275 @@
     <div id="smooth-wrapper">
         <div id="smooth-content">
 
-            <!-- Hero -->
-            <section class="kh-hero">
-                <div class="container">
-                    <span class="kh-tag">Case Study</span>
-                    <h1>Terrace Revitalization<br>Key Highlights</h1>
-                    <p>How ADES transformed a constrained, unused 27,000 sq.ft rooftop into a premium revenue-generating guest space — within strict airport height limits.</p>
+            <!-- Hero / Breadcrumb — same class as Projects page -->
+            <div class="breadcrumb-page-area-one">
+                <div class="breadcrumb-page-wrap">
+                    <div class="bg-shape-2">
+                        <img src="./assets/img/pages/projectPageBg1_1.png" alt="background shape">
+                    </div>
+                    <div class="container">
+                        <div class="gt-breadcrumb-wrapper">
+                            <div class="title title-1">Key Highlights</div>
+                            <div class="right-contents">
+                                <p class="text">Real transformations by ADES — turning constrained, idle spaces into revenue-generating guest destinations through precision MEP engineering.</p>
+                                <div class="info-cta mb-0">
+                                    <div class="cta-item gt_fade_anim" data-delay=".3" data-fade-from="bottom">
+                                        <div class="title">Sq.ft Transformed</div>
+                                        <span>30K+</span>
+                                    </div>
+                                    <div class="cta-item gt_fade_anim" data-delay=".6" data-fade-from="bottom">
+                                        <div class="title">Years of Infra Cleared</div>
+                                        <span>25+</span>
+                                    </div>
+                                    <div class="cta-item gt_fade_anim" data-delay=".9" data-fade-from="bottom">
+                                        <div class="title">Spaces Revitalized</div>
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Before / After Slider -->
-            <section class="transformation-section">
+            <!-- ═══════════════════════════════════════════════
+                 TRANSFORMATION 1 — Terrace
+            ════════════════════════════════════════════════ -->
+            <section class="kh-section" style="background:#0d0d0d;">
                 <div class="container">
-                    <p class="section-label">Visual Transformation</p>
-                    <h2>Drag to Compare</h2>
-                    <p class="sub">Slide left and right to see the before &amp; after transformation</p>
 
-                    <div class="ba-wrap" id="baWrap">
-                        <!-- After image (base layer, sets container height) -->
-                        <img class="ba-img-after" src="assets/img/new tranform images (2).png" alt="After – Revitalized Terrace" draggable="false">
+                    <span class="kh-eyebrow">Case Study 01</span>
+                    <h2 class="kh-section-title">Terrace Revitalization</h2>
+                    <p class="kh-section-sub">Drag to compare the before &amp; after transformation</p>
 
-                        <!-- Before image (clipped from right by JS) -->
-                        <img class="ba-img-before" id="baImgBefore" src="assets/img/new tranform images (1).png" alt="Before – Unused Terrace" draggable="false">
-
-                        <!-- Divider line + handle button -->
-                        <div class="ba-line" id="baLine">
+                    <!-- Slider 1 -->
+                    <div class="ba-wrap" id="baWrap1">
+                        <img class="ba-img-after"  src="assets/img/new tranform images (2).png" alt="After – Revitalized Terrace" draggable="false">
+                        <img class="ba-img-before" id="baB1"  src="assets/img/new tranform images (1).png" alt="Before – Unused Terrace"    draggable="false">
+                        <div class="ba-line" id="baL1">
                             <div class="ba-btn">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="15 18 9 12 15 6"></polyline>
-                                    <polyline points="9 18 15 12 9 6" transform="translate(6,0)"></polyline>
+                                    <polyline points="15 18 9 12 15 6"/>
+                                    <polyline points="9 18 15 12 9 6"/>
                                 </svg>
                             </div>
                         </div>
-
-                        <!-- Labels -->
                         <span class="ba-label bl">Before</span>
                         <span class="ba-label al">After</span>
                     </div>
-                </div>
-            </section>
 
-            <!-- Challenge → Result -->
-            <section class="highlights-section">
-                <div class="container">
-                    <h2>From Constraints to Opportunity</h2>
+                    <!-- Challenge → Result -->
                     <div class="hl-grid">
-
-                        <!-- Challenges -->
                         <div>
-                            <p class="hl-col-title challenge">Site Challenges</p>
-
-                            <div class="hl-item">
-                                <div class="hl-icon c">✈️</div>
-                                <p><strong>Ideal Airport-Adjacent Location</strong>Prime positioning came with strict Aviation Authority regulations limiting the height of any new structure.</p>
+                            <p class="hl-col-label challenge">Site Challenges</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">✈️</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Ideal Airport-Adjacent Location</span>
+                                    <p class="hl-card-text">Prime positioning came with strict Aviation Authority regulations limiting the height of any new structure.</p>
+                                </div>
                             </div>
-                            <div class="hl-item">
-                                <div class="hl-icon c">📏</div>
-                                <p><strong>Height Restrictions</strong>Airport Authority clearance caps ruled out conventional rooftop builds entirely.</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">📏</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Height Restrictions</span>
+                                    <p class="hl-card-text">Airport Authority clearance caps ruled out conventional rooftop builds entirely.</p>
+                                </div>
                             </div>
-                            <div class="hl-item">
-                                <div class="hl-icon c">🏗️</div>
-                                <p><strong>Unused 27,000 Sq.ft Terrace</strong>The entire terrace lay idle — generating zero revenue and no guest value.</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">🏗️</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Unused 27,000 Sq.ft Terrace</span>
+                                    <p class="hl-card-text">The entire terrace lay idle — generating zero revenue and no guest value.</p>
+                                </div>
                             </div>
-                            <div class="hl-item">
-                                <div class="hl-icon c">⚡</div>
-                                <p><strong>Tangled Utility Services</strong>ADES cleared and rerouted all MEP utility services before transformation could begin.</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">⚡</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">ADES Cleared Utility Services</span>
+                                    <p class="hl-card-text">ADES cleared and rerouted all MEP utility services before any transformation could begin.</p>
+                                </div>
                             </div>
-                            <div class="hl-item">
-                                <div class="hl-icon c">🧱</div>
-                                <p><strong>25-Year-Old Chimneys</strong>Ageing chimney structures occupied prime terrace area — safely removed by ADES.</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">🧱</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Removed 25-Year-Old Chimneys</span>
+                                    <p class="hl-card-text">Ageing chimney structures occupied prime terrace area — safely removed by ADES.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Arrow divider -->
                         <div class="hl-divider">
                             <div class="hl-div-line"></div>
-                            <div class="hl-div-arrow">
+                            <div class="hl-div-dot">
                                 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </div>
                             <div class="hl-div-line"></div>
                         </div>
 
-                        <!-- Results -->
                         <div>
-                            <p class="hl-col-title result">What ADES Delivered</p>
+                            <p class="hl-col-label result">What ADES Delivered</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon r">🏆</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Revitalized Terrace Into Revenue-Generating Guest Space</span>
+                                    <p class="hl-card-text">The previously idle terrace is now a premium hospitality destination directly on the property's income sheet.</p>
+                                </div>
+                            </div>
+                            <div class="hl-card">
+                                <div class="hl-card-icon r">🌿</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Added Outdoor Lawn for Events</span>
+                                    <p class="hl-card-text">A landscaped open-air lawn now hosts private events, banquets, and corporate gatherings year-round.</p>
+                                </div>
+                            </div>
+                            <div class="hl-card">
+                                <div class="hl-card-icon r">📈</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Significantly Increased Client Value</span>
+                                    <p class="hl-card-text">Measurable uplift in asset valuation, occupancy appeal, and guest satisfaction for our client.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            <div class="hl-item">
-                                <div class="hl-icon r">🏆</div>
-                                <p><strong>Revitalized Into Revenue-Generating Space</strong>The previously idle terrace is now a premium hospitality destination added directly to the property's income sheet.</p>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════
+                 TRANSFORMATION 2 — Basement Spa
+            ════════════════════════════════════════════════ -->
+            <section class="kh-section" style="background:#111;">
+                <div class="container">
+
+                    <span class="kh-eyebrow">Case Study 02</span>
+                    <h2 class="kh-section-title">Basement Revitalization</h2>
+                    <p class="kh-section-sub">Drag to compare the before &amp; after transformation</p>
+
+                    <!-- Slider 2 -->
+                    <div class="ba-wrap" id="baWrap2">
+                        <img class="ba-img-after"  src="assets/img/transformation 2 (2).png" alt="After – Revitalized Basement" draggable="false">
+                        <img class="ba-img-before" id="baB2"  src="assets/img/transformation 2 (1).png" alt="Before – Unused Basement"   draggable="false">
+                        <div class="ba-line" id="baL2">
+                            <div class="ba-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"/>
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
                             </div>
-                            <div class="hl-item">
-                                <div class="hl-icon r">🌿</div>
-                                <p><strong>Outdoor Lawn for Events</strong>A landscaped open-air lawn now hosts private events, banquets, and corporate gatherings year-round.</p>
+                        </div>
+                        <span class="ba-label bl">Before</span>
+                        <span class="ba-label al">After</span>
+                    </div>
+
+                    <!-- Challenge → Result -->
+                    <div class="hl-grid">
+                        <div>
+                            <p class="hl-col-label challenge">What Was There</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">🏚️</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Reclaiming 3,300 Sq.ft Used for Spa</span>
+                                    <p class="hl-card-text">The basement space was previously occupied by a non-revenue spa facility, leaving thousands of square feet underutilised.</p>
+                                </div>
                             </div>
-                            <div class="hl-item">
-                                <div class="hl-icon r">📈</div>
-                                <p><strong>Significantly Increased Client Value</strong>The transformation delivered a measurable uplift in asset valuation, occupancy appeal, and guest satisfaction.</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">🔧</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Outdated MEP Infrastructure</span>
+                                    <p class="hl-card-text">Ageing plumbing, electrical, and mechanical systems from the original spa fit-out had to be fully stripped and rationalised.</p>
+                                </div>
+                            </div>
+                            <div class="hl-card">
+                                <div class="hl-card-icon c">📐</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Tight Basement Constraints</span>
+                                    <p class="hl-card-text">Low ceiling heights and restricted access made re-engineering the space a complex coordination challenge.</p>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="hl-divider">
+                            <div class="hl-div-line"></div>
+                            <div class="hl-div-dot">
+                                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </div>
+                            <div class="hl-div-line"></div>
+                        </div>
+
+                        <div>
+                            <p class="hl-col-label result">What ADES Delivered</p>
+                            <div class="hl-card">
+                                <div class="hl-card-icon r">🏆</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Revitalized Basement</span>
+                                    <p class="hl-card-text">Transformed into a fully functional guest space — directly generating revenue for the property.</p>
+                                </div>
+                            </div>
+                            <div class="hl-card">
+                                <div class="hl-card-icon r">💡</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">Reclaiming 3,300 Sq.ft for Productive Use</span>
+                                    <p class="hl-card-text">Every square foot of the former spa was repurposed into high-value guest-facing space through smart MEP redesign.</p>
+                                </div>
+                            </div>
+                            <div class="hl-card">
+                                <div class="hl-card-icon r">📈</div>
+                                <div class="hl-card-body">
+                                    <span class="hl-card-title">It Has Now Been Transformed</span>
+                                    <p class="hl-card-text">A functional guest space now generating revenue — proving ADES can unlock value from even the most constrained areas.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
             <!-- Impact Banner -->
-            <section class="impact-section">
+            <section class="kh-impact">
                 <div class="container">
-                    <div class="impact-card">
-                        <h2>Revitalized Terrace Into a Revenue-Generating Guest Space</h2>
-                        <div class="impact-stat">
-                            <div class="num">27K</div>
-                            <div class="lbl">Sq.ft Transformed</div>
+                    <div class="kh-impact-card">
+                        <h2>Two Spaces.<br>One Vision.<br>Endless Value.</h2>
+                        <div class="kh-stat">
+                            <div class="kh-stat-num">27K</div>
+                            <div class="kh-stat-lbl">Sq.ft — Terrace</div>
                         </div>
-                        <div class="impact-stat">
-                            <div class="num">25<span style="font-size:1.5rem">yr</span></div>
-                            <div class="lbl">Old Infrastructure Cleared</div>
+                        <div class="kh-stat">
+                            <div class="kh-stat-num">3.3K</div>
+                            <div class="kh-stat-lbl">Sq.ft — Basement</div>
+                        </div>
+                        <div class="kh-stat">
+                            <div class="kh-stat-num">2</div>
+                            <div class="kh-stat-lbl">Spaces Revitalized</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- CTA -->
-            <section class="kh-cta">
-                <div class="container">
-                    <p>Interested in what ADES can engineer for your property?</p>
-                    <a href="contact.html" class="btn-primary-ades">
-                        Get in Touch
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="10 5 19 5 19 14"/></svg>
-                    </a>
-                </div>
-            </section>
+            <!-- Footer — same as project-1.html -->
+            <style>
+                .custom-social-btn { display:block; border-left:2px solid #C9F31D; background:#222; padding:12px 24px; color:#a1a1a1; margin-bottom:15px; text-decoration:none; font-size:14px; font-weight:500; text-align:center; max-width:200px; }
+                .custom-social-btn:hover { color:#fff; background:#2a2a2a; }
+                .custom-contact-card { background:#222; border-radius:12px; padding:30px; border:1px solid #333; }
+                .custom-contact-item { display:flex; align-items:center; margin-bottom:25px; }
+                .custom-contact-item:last-child { margin-bottom:0; }
+                .custom-contact-icon { width:36px; height:36px; border:1px solid #444; border-radius:6px; display:flex; justify-content:center; align-items:center; margin-right:15px; flex-shrink:0; }
+                .custom-contact-icon svg { width:16px; height:16px; fill:#fff; }
+                .custom-contact-text,.custom-contact-text a { color:#a1a1a1; font-size:13px; line-height:1.6; text-decoration:none; }
+                .custom-footer-container { background-color:#111; border-radius:20px; padding:60px 50px 30px; margin:0 20px 20px; color:#fff; }
+                .custom-footer-link { list-style:none; padding:0; margin:0; }
+                .custom-footer-link li { margin-bottom:12px; font-size:13px; color:#a1a1a1; }
+                .custom-footer-link a { color:#a1a1a1; text-decoration:none; transition:0.3s; }
+                .custom-footer-link a:hover { color:#fff; }
+                .custom-newsletter-input { background:#1a1a1a; border:1px solid #333; border-radius:4px; padding:12px 15px; color:#fff; width:100%; font-size:13px; }
+                .custom-newsletter-input:focus { outline:none; border-color:#555; }
+                .custom-newsletter-form { position:relative; margin-bottom:15px; }
+                .custom-newsletter-icon { position:absolute; right:15px; top:12px; color:#fff; }
+                .custom-divider { border-top:1px solid #333; margin:40px 0; }
+                .custom-copyright { font-size:11px; text-transform:uppercase; letter-spacing:2px; text-align:center; color:#666; }
+            </style>
 
-            <!-- Footer -->
             <div class="custom-footer-bg">
                 <div class="container">
                     <div class="row gy-5 align-items-center">
@@ -518,7 +570,7 @@
                             <a href="index.html" class="d-inline-block mb-4">
                                 <img src="assets/img/update new logo.png" alt="logo" style="height:40px;width:auto;">
                             </a>
-                            <p style="font-size:13px;line-height:1.8;color:#a1a1a1;">Engineering Excellence — delivering integrated MEP design and revitalization solutions since 2008.</p>
+                            <p style="font-size:13px;line-height:1.8;">Engineering Excellence — delivering integrated MEP design and revitalization solutions since 2008.</p>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-6 d-flex flex-column align-items-center">
                             <a href="#" class="custom-social-btn w-100">Facebook</a>
@@ -561,12 +613,13 @@
                                 <li><a href="service-2.html">Services</a></li>
                                 <li><a href="project-1.html">Cases</a></li>
                                 <li><a href="about-1.html">About</a></li>
+                                <li><a href="contact.html">Team &amp; Advisors</a></li>
                                 <li><a href="contact.html">Career</a></li>
                                 <li><a href="blog-1.html">Blog</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <h4 class="custom-footer-title">Services</h4>
+                        <div class="col-lg-3 col-md-6 mb-4 pl-lg-4">
+                            <h4 class="custom-footer-title">Main Services</h4>
                             <ul class="custom-footer-link">
                                 <li><a href="service-mep.html">Integrated MEP</a></li>
                                 <li><a href="service-electrical.html">Electrical Systems</a></li>
@@ -576,20 +629,20 @@
                             </ul>
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
-                            <h4 class="custom-footer-title">Office</h4>
+                            <h4 class="custom-footer-title">Office Locations</h4>
                             <ul class="custom-footer-link">
                                 <li><a href="#">Chennai, India</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="col-lg-4 col-md-6 mb-4 pl-lg-5">
                             <h4 class="custom-footer-title">Newsletter</h4>
-                            <p style="font-size:12px;color:#a1a1a1;margin-bottom:20px;">Stay updated with our latest projects and insights.</p>
+                            <p style="font-size:12px;color:#a1a1a1;margin-bottom:20px;">Don't Miss Out — Join Now For Promotions &amp; Deals.</p>
                             <div class="custom-newsletter-form">
-                                <input type="email" placeholder="Enter your email" class="custom-newsletter-input">
+                                <input type="email" placeholder="Enter Your Email" class="custom-newsletter-input">
                                 <svg class="custom-newsletter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                             </div>
                             <div style="font-size:11px;color:#888;display:flex;align-items:center;">
-                                <input type="checkbox" style="margin-right:8px;"> I accept all <strong style="color:#fff;margin-left:4px;">Terms &amp; Conditions.</strong>
+                                <input type="checkbox" style="margin-right:8px;"> I Here By Accept All <strong style="color:#fff;margin-left:4px;">Terms &amp; Conditions.</strong>
                             </div>
                         </div>
                     </div>
@@ -613,63 +666,71 @@
                     </div>
 
                     <div class="custom-divider"></div>
-                    <div class="custom-copyright">© ADES. All rights reserved</div>
+                    <div class="custom-copyright">© ADES. All Rights Reserved</div>
                 </div>
             </div>
 
-        </div><!-- smooth-content -->
-    </div><!-- smooth-wrapper -->
+        </div>
+    </div>
 
-    <!-- Scripts — same set as every other page -->
+    <!-- Scripts — identical stack to project-1.html -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/viewport.jquery.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="assets/js/parallaxie.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/gasp/plugin.js"></script>
+    <script src="assets/js/gasp/scroll-magic.js"></script>
+    <script src="assets/js/gasp/parallax-slider.js"></script>
+    <script src="assets/js/gasp/nice-select.js"></script>
+    <script src="assets/js/gasp/purecounter.js"></script>
+    <script src="assets/js/gasp/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/gasp/Observer.min.js"></script>
+    <script src="assets/js/gasp/splitting.min.js"></script>
+    <script src="assets/js/gasp/webgl.js"></script>
+    <script src="assets/js/gasp/parallax-scroll.js"></script>
+    <script src="assets/js/gasp/atropos.js"></script>
     <script src="assets/js/main.js"></script>
 
     <script>
-        // Before/After drag slider
-        (function () {
-            var wrap   = document.getElementById('baWrap');
-            var before = document.getElementById('baImgBefore');
-            var line   = document.getElementById('baLine');
-            var pct    = 50;
+        function makeSlider(wrapId, beforeId, lineId, autoDir) {
+            var wrap   = document.getElementById(wrapId);
+            var before = document.getElementById(beforeId);
+            var line   = document.getElementById(lineId);
             var active = false;
 
             function set(p) {
                 p = Math.max(2, Math.min(98, p));
-                pct = p;
                 before.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
                 line.style.left = p + '%';
             }
-
-            function fromEvent(clientX) {
+            function pct(clientX) {
                 var r = wrap.getBoundingClientRect();
                 return ((clientX - r.left) / r.width) * 100;
             }
 
-            wrap.addEventListener('mousedown',  function(e){ active = true; set(fromEvent(e.clientX)); e.preventDefault(); });
-            window.addEventListener('mousemove', function(e){ if(active) set(fromEvent(e.clientX)); });
-            window.addEventListener('mouseup',   function(){ active = false; });
+            wrap.addEventListener('mousedown',   function(e){ active=true; set(pct(e.clientX)); e.preventDefault(); });
+            window.addEventListener('mousemove', function(e){ if(active) set(pct(e.clientX)); });
+            window.addEventListener('mouseup',   function(){ active=false; });
+            wrap.addEventListener('touchstart',  function(e){ active=true; set(pct(e.touches[0].clientX)); }, {passive:true});
+            window.addEventListener('touchmove', function(e){ if(active) set(pct(e.touches[0].clientX)); }, {passive:true});
+            window.addEventListener('touchend',  function(){ active=false; });
 
-            wrap.addEventListener('touchstart', function(e){ active = true; set(fromEvent(e.touches[0].clientX)); }, { passive: true });
-            window.addEventListener('touchmove', function(e){ if(active) set(fromEvent(e.touches[0].clientX)); }, { passive: true });
-            window.addEventListener('touchend',  function(){ active = false; });
-
-            // Animate on load to hint draggability
+            // hint animation
             set(50);
-            var hint = 50, dir = -1, running = true;
-            function animate() {
-                if (!running) return;
-                hint += dir * 0.5;
-                if (hint <= 28) dir = 1;
-                if (hint >= 50) { running = false; set(50); return; }
-                set(hint);
-                requestAnimationFrame(animate);
-            }
-            setTimeout(function(){ requestAnimationFrame(animate); }, 800);
-        })();
+            var v=50, d=autoDir, going=true;
+            function anim(){ if(!going) return; v+=d*0.5; if(v<=28) d=1; if(v>=50){going=false;set(50);return;} set(v); requestAnimationFrame(anim); }
+            setTimeout(function(){ requestAnimationFrame(anim); }, 700 + (autoDir < 0 ? 0 : 300));
+        }
+
+        makeSlider('baWrap1','baB1','baL1',-1);
+        makeSlider('baWrap2','baB2','baL2',-1);
     </script>
 </body>
 </html>
